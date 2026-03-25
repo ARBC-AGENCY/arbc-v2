@@ -1,26 +1,232 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+
+/* ── FONT FACES ────────────────────────────────── */
+@font-face {
+  font-family: "Rockwell";
+  src: url("/fonts/Rockwell.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "Rockwell";
+  src: url("/fonts/Rockwell-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-UltraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Heavy.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-ExtraBold.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── DESIGN TOKENS ─────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand */
+  --color-orange: #e7501e;
+  --color-orange-hover: #c73f0e;
+
+  /* Light mode */
+  --color-bg: #cccccc;
+  --color-surface: #d9d9d9;
+  --color-border: #b5b5b5;
+  --color-text-primary: #242424;
+  --color-text-secondary: #747474;
+
+  /* Dark mode */
+  --color-bg-dark: #191919;
+  --color-surface-dark: #242424;
+  --color-border-dark: #2e2e2e;
+  --color-text-dark: #cccccc;
+  --color-text-dark-hi: #ffffff;
+
+  /* Fonts */
+  --font-title: "Rockwell", Georgia, serif;
+  --font-body: "Gilroy", system-ui, sans-serif;
+
+  /* ── FLUID TYPE SCALE ──────────────────────────
+     Interpolates between 375px → 1440px viewport.
+     Reuse this block on every future project.
+  ─────────────────────────────────────────────── */
+  --text-xs: clamp(0.694rem, 0.65rem + 0.22vw, 0.8rem);
+  --text-sm: clamp(0.833rem, 0.78rem + 0.26vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-md: clamp(1.2rem, 1.1rem + 0.5vw, 1.375rem);
+  --text-lg: clamp(1.44rem, 1.3rem + 0.7vw, 1.75rem);
+  --text-xl: clamp(1.728rem, 1.5rem + 1.14vw, 2.25rem);
+  --text-2xl: clamp(2.074rem, 1.75rem + 1.62vw, 3rem);
+  --text-3xl: clamp(2.488rem, 2rem + 2.44vw, 4rem);
+  --text-4xl: clamp(2.986rem, 2.3rem + 3.43vw, 5.5rem);
+  --text-hero: clamp(3.5rem, 2.5rem + 5vw, 8rem);
+
+  /* ── FLUID SPACING SCALE ───────────────────────
+     Reuse this block on every future project.
+  ─────────────────────────────────────────────── */
+  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 2rem);
+  --space-lg: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --space-xl: clamp(3rem, 2rem + 5vw, 8rem);
+
+  /* ── EASING CURVES ─────────────────────────────
+     Use in GSAP: { ease: "power3.out" }
+     Use in CSS:  transition: all var(--duration-normal) var(--ease-out-expo);
+  ─────────────────────────────────────────────── */
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --duration-fast: 200ms;
+  --duration-normal: 500ms;
+  --duration-slow: 900ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── BASE ──────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+
+/* ── TYPOGRAPHY ────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--text-hero);
+  font-weight: 700;
+}
+h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+}
+h3 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+}
+h4 {
+  font-size: var(--text-2xl);
+  font-weight: 400;
+}
+h5 {
+  font-size: var(--text-xl);
+  font-weight: 400;
+}
+h6 {
+  font-size: var(--text-lg);
+  font-weight: 400;
+}
+
+p {
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+li {
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+/* ── SCROLLBAR ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-orange);
+  border-radius: 99px;
+}
+
+/* ── SELECTION ─────────────────────────────────── */
+::selection {
+  background: var(--color-orange);
+  color: #ffffff;
 }

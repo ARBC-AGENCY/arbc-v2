@@ -1,0 +1,18 @@
+{
+  "Metadata": {
+    "title": "ARBC — The Shift Makers",
+    "description": "Strategy, design, video and digital development agency."
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "Home": {
+    "hero_title": "Moving the lines",
+    "hero_subtitle": "Provoking change",
+    "hero_cta": "Discover"
+  }
+}
