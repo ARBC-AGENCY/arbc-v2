@@ -14,5 +14,9 @@
     "hero_title": "Moving the lines",
     "hero_subtitle": "Provoking change",
     "hero_cta": "Discover"
-  }
+  },
+  "Loader": {
+  "line1": "The Shift",
+  "line2": "Makers"
+}
 }

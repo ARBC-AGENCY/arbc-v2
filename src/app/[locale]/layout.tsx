@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Providers } from "@/components/providers";
+import PageWrapper from "@/components/layout/PageWrapper";
 import "../globals.css";
 
 export async function generateMetadata({
@@ -16,10 +17,10 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `https://arbc.cm/${locale}`,
+      canonical: `https://www.arbc-agency.com/${locale}`,
       languages: {
-        fr: "https://arbc.cm/fr",
-        en: "https://arbc.cm/en",
+        fr: "https://www.arbc-agency.com/fr",
+        en: "https://www.arbc-agency.com/en",
       },
     },
   };
@@ -39,7 +40,9 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <PageWrapper>{children}</PageWrapper>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

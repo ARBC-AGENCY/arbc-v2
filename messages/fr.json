@@ -14,5 +14,9 @@
     "hero_title": "Bouger les lignes",
     "hero_subtitle": "Provoquer le changement",
     "hero_cta": "Découvrir"
-  }
+  },
+  "Loader": {
+  "line1": "Bouger les lignes",
+  "line2": "Provoquer le changement"
+}
 }
