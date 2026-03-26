@@ -16,7 +16,7 @@
     "hero_cta": "Discover"
   },
   "Loader": {
-  "line1": "The Shift",
-  "line2": "Makers"
-}
+    "line1": "The Shift",
+    "line2": "<orange>Makers</orange>"
+  }
 }

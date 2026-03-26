@@ -16,7 +16,7 @@
     "hero_cta": "Découvrir"
   },
   "Loader": {
-  "line1": "Bouger les lignes",
-  "line2": "Provoquer le changement"
-}
+    "line1": "Bouger les <orange>lignes</orange>",
+    "line2": "Provoquer le <orange>changement</orange>"
+  }
 }

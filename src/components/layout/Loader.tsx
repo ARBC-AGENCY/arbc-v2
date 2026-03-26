@@ -31,6 +31,18 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     if (!mounted) return;
 
+    gsap.fromTo(
+      logoRef.current,
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" },
+    );
+
+    gsap.fromTo(
+      text1Ref.current,
+      { y: 28, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" },
+    );
+
     const imageUrls = [
       "/images/Background-dark.webp",
       "/images/Background-white.webp",
@@ -109,7 +121,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   };
 
   const strokeOffset = CIRCUMFERENCE - (CIRCUMFERENCE * progress) / 100;
-  const letterColor = isDark ? "#cccccc" : "#2B2A29";
+  const letterColor = isDark ? "#ffffff" : "#2B2A29";
   const morphFill = isDark ? "#ffffff" : "#2B2A29";
   const bgColor = isDark ? "#191919" : "#cccccc";
   const trackColor = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
@@ -123,7 +135,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       style={{ backgroundColor: bgColor }}
     >
       {/* ── Logo ───────────────────────────────────── */}
-      <div ref={logoRef} className="w-48">
+      <div ref={logoRef} className="w-48" style={{ opacity: 0 }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 18132.48 4731.65"
@@ -212,6 +224,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           ref={text1Ref}
           className="absolute text-center whitespace-nowrap"
           style={{
+            opacity: 0,
             fontFamily: "var(--font-body)",
             fontSize: "var(--text-sm)",
             letterSpacing: "0.25em",
@@ -219,7 +232,11 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             color: textColor,
           }}
         >
-          {t("line1")}
+          {t.rich("line1", {
+            orange: (chunks) => (
+              <span style={{ color: "#e7501e" }}>{chunks}</span>
+            ),
+          })}
         </div>
         <div
           ref={text2Ref}
@@ -232,7 +249,11 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             color: textColor,
           }}
         >
-          {t("line2")}
+          {t.rich("line2", {
+            orange: (chunks) => (
+              <span style={{ color: "#e7501e" }}>{chunks}</span>
+            ),
+          })}
         </div>
       </div>
     </div>
