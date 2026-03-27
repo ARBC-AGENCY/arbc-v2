@@ -15,7 +15,16 @@
     "hero_subtitle": "Provoquer le changement",
     "hero_cta": "Découvrir",
     "annotation_line1": "L'agence en",
-    "annotation_line2": "quelques lignes"
+    "annotation_line2": "quelques lignes",
+    "b1_p1": "ARBC AGENCY accompagne les organisations qui refusent le statu quo.",
+    "b1_p2": "En combinant",
+    "b1_p3": "Vision stratégique & Agilité opérationnelle,",
+    "b2_prefix": "Nous",
+    "b2_main": "Bougeons les lignes de votre marché",
+    "b2_sub": "pour créer des trajectoires de croissance inédites.",
+    "b3_prefix": "Nous orchestrons le",
+    "b3_main": "Shift",
+    "b3_sub": "qui propulse votre organisation vers de nouveaux sommets."
   },
   "Loader": {
     "line1": "Bouger les <orange>lignes</orange>",

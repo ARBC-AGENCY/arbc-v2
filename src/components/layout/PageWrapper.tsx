@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Loader from "./Loader";
+import { PageReadyContext } from "@/context/page-ready";
 
 export default function PageWrapper({
   children,
@@ -11,7 +12,7 @@ export default function PageWrapper({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <>
+    <PageReadyContext.Provider value={loaded}>
       {!loaded && <Loader onComplete={() => setLoaded(true)} />}
       <div
         style={{
@@ -21,6 +22,6 @@ export default function PageWrapper({
       >
         {children}
       </div>
-    </>
+    </PageReadyContext.Provider>
   );
 }
