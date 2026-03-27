@@ -225,7 +225,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           className="absolute text-center whitespace-nowrap"
           style={{
             opacity: 0,
-            fontFamily: "var(--font-body)",
+            fontFamily: "var(--font-title)",
             fontSize: "var(--text-sm)",
             letterSpacing: "0.25em",
             textTransform: "uppercase",
@@ -242,7 +242,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           ref={text2Ref}
           className="absolute text-center whitespace-nowrap opacity-0"
           style={{
-            fontFamily: "var(--font-body)",
+            fontFamily: "var(--font-title)",
             fontSize: "var(--text-sm)",
             letterSpacing: "0.25em",
             textTransform: "uppercase",

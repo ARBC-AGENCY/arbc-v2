@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import PageWrapper from "@/components/layout/PageWrapper";
+import BackgroundSpotlight from "@/components/layout/BackgroundSpotlight";
 import "../globals.css";
 
 export async function generateMetadata({
@@ -41,6 +42,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Providers>
+            <BackgroundSpotlight />
             <PageWrapper>{children}</PageWrapper>
           </Providers>
         </NextIntlClientProvider>
