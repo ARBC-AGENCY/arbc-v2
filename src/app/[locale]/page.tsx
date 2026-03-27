@@ -1,12 +1,15 @@
 import { useTranslations } from "next-intl";
+import PageAnnotation from "@/components/layout/PageAnnotation";
 
 export default function HomePage() {
   const t = useTranslations("Home");
 
   return (
     <main>
-      <h1>{t("hero_title")}</h1>
-      <p>{t("hero_subtitle")}</p>
+      <PageAnnotation
+        line1={t("annotation_line1")}
+        line2={t("annotation_line2")}
+      />
     </main>
   );
 }

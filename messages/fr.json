@@ -13,7 +13,9 @@
   "Home": {
     "hero_title": "Bouger les lignes",
     "hero_subtitle": "Provoquer le changement",
-    "hero_cta": "Découvrir"
+    "hero_cta": "Découvrir",
+    "annotation_line1": "L'agence en",
+    "annotation_line2": "quelques lignes"
   },
   "Loader": {
     "line1": "Bouger les <orange>lignes</orange>",

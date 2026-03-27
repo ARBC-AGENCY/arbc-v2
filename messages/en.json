@@ -13,7 +13,9 @@
   "Home": {
     "hero_title": "Moving the lines",
     "hero_subtitle": "Provoking change",
-    "hero_cta": "Discover"
+    "hero_cta": "Discover",
+    "annotation_line1": "The agency in",
+    "annotation_line2": "a few words"
   },
   "Loader": {
     "line1": "The Shift",
