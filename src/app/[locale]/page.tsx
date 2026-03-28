@@ -17,6 +17,7 @@ export default function HomePage() {
         b3prefix={t("b3_prefix")}
         b3main={t("b3_main")}
         b3sub={t("b3_sub")}
+        ctaLabel={t("hero_cta")}
       />
       <PageAnnotation
         line1={t("annotation_line1")}

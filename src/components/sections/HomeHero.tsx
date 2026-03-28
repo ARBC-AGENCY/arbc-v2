@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
+import { gsap } from "@/lib/gsap";
+import { Link } from "@/i18n/navigation";
 import TextType from "@/components/ui/TextType";
 import { usePageReady } from "@/context/page-ready";
 
@@ -15,6 +17,7 @@ interface Props {
   b3prefix: string;
   b3main: string;
   b3sub: string;
+  ctaLabel: string;
 }
 
 /**
@@ -113,6 +116,157 @@ function HighlightTextType({
   );
 }
 
+/**
+ * Pill CTA button with:
+ * - Orange fill that wipes up from below on hover (matching the referenced GSAP pattern)
+ * - Text turns white on fill, resets on leave
+ * - Dual-strength magnetic: button at STRENGTH, inner text at TEXT_STRENGTH
+ * - Elastic spring-back on mouseleave
+ */
+function MagneticCTA({
+  label,
+  animate,
+  textColor,
+}: {
+  label: string;
+  animate: boolean;
+  textColor: string;
+}) {
+  const outerRef = useRef<HTMLDivElement>(null);
+  const fillRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  // Ref so the leave handler always reads the latest textColor without re-binding events
+  const textColorRef = useRef(textColor);
+  textColorRef.current = textColor;
+
+  const STRENGTH = 40;
+  const TEXT_STRENGTH = 16;
+
+  // Entrance: slide up + fade in when sequence reaches phase 10
+  useEffect(() => {
+    if (!animate || !outerRef.current) return;
+    gsap.fromTo(
+      outerRef.current,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+    );
+  }, [animate]);
+
+  // Magnetic + fill
+  useEffect(() => {
+    const el = outerRef.current;
+    if (!el) return;
+
+    const onMove = (e: MouseEvent) => {
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const x = ((e.clientX - left) / width - 0.5) * STRENGTH;
+      const y = ((e.clientY - top) / height - 0.5) * STRENGTH;
+      gsap.to(el, { x, y, duration: 1.5, ease: "power4.out" });
+      gsap.to(textRef.current, {
+        x: (x / STRENGTH) * TEXT_STRENGTH,
+        y: (y / STRENGTH) * TEXT_STRENGTH,
+        duration: 1.5,
+        ease: "power4.out",
+      });
+    };
+
+    // Fill wipes up from bottom; text turns white
+    const onEnter = () => {
+      gsap.fromTo(
+        fillRef.current,
+        { y: "76%" },
+        { y: "0%", duration: 0.6, ease: "power2.inOut" }
+      );
+      gsap.to(textRef.current, { color: "#ffffff", duration: 0.3, ease: "power3.in" });
+    };
+
+    // Fill retreats upward; text resets (delayed so fill leaves first)
+    const onLeave = () => {
+      gsap.to(el, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+      gsap.to(textRef.current, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+      gsap.to(fillRef.current, { y: "-76%", duration: 0.6, ease: "power2.inOut" });
+      gsap.to(textRef.current, {
+        color: textColorRef.current,
+        duration: 0.3,
+        ease: "power3.out",
+        delay: 0.3,
+      });
+    };
+
+    el.addEventListener("mousemove", onMove);
+    el.addEventListener("mouseenter", onEnter);
+    el.addEventListener("mouseleave", onLeave);
+    return () => {
+      el.removeEventListener("mousemove", onMove);
+      el.removeEventListener("mouseenter", onEnter);
+      el.removeEventListener("mouseleave", onLeave);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <div
+      ref={outerRef}
+      style={{
+        display: "inline-block",
+        opacity: 0,
+        cursor: "pointer",
+        // inset box-shadow = visible border that is NOT clipped by overflow:hidden
+        boxShadow: `inset 0 0 0 1.5px ${textColor}`,
+        borderRadius: "2.125em",
+        height: "4.25em",
+        overflow: "hidden",
+        position: "relative",
+        willChange: "transform",
+      }}
+    >
+      <Link
+        href="/about"
+        style={{
+          display: "flex",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {/* Orange fill — oval that starts below, wipes up on hover */}
+        <div
+          ref={fillRef}
+          style={{
+            background: "#e7501e",
+            position: "absolute",
+            width: "150%",
+            height: "200%",
+            borderRadius: "50%",
+            top: "-50%",
+            left: "-25%",
+            transform: "translate3d(0, -76%, 0)",
+            willChange: "transform",
+            pointerEvents: "none",
+          }}
+        />
+        {/* Label — moves at TEXT_STRENGTH for parallax-within-magnet feel */}
+        <span
+          ref={textRef}
+          style={{
+            display: "block",
+            fontFamily: "var(--font-body)",
+            fontWeight: 700,
+            fontSize: "var(--text-md)",
+            color: textColor,
+            whiteSpace: "nowrap",
+            padding: "0 2.5em",
+            zIndex: 2,
+            position: "relative",
+            pointerEvents: "none",
+          }}
+        >
+          {label}
+        </span>
+      </Link>
+    </div>
+  );
+}
+
 export default function HomeHero({
   b1p1,
   b1p2,
@@ -123,6 +277,7 @@ export default function HomeHero({
   b3prefix,
   b3main,
   b3sub,
+  ctaLabel,
 }: Props) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -130,16 +285,17 @@ export default function HomeHero({
 
   /**
    * Phases — strict sequential chain:
-   *  0 — idle
-   *  1 — b1p1 (TextType)
-   *  2 — b1p2 (TextType)
-   *  3 — b1p3 (TextType, "Strategic"/"stratégique" highlighted)
-   *  4 — b2prefix (TextType)
-   *  5 — b2main (TextType, "lines"/"lignes" highlighted)
-   *  6 — b2sub (TextType)
-   *  7 — b3prefix (TextType)
-   *  8 — b3main (TextType, orange highlight)
-   *  9 — b3sub (TextType) — end of sequence
+   *  0  — idle
+   *  1  — b1p1
+   *  2  — b1p2
+   *  3  — b1p3 ("Strategic"/"stratégique" highlighted)
+   *  4  — b2prefix
+   *  5  — b2main ("lines"/"lignes" highlighted)
+   *  6  — b2sub
+   *  7  — b3prefix
+   *  8  — b3main (full orange highlight)
+   *  9  — b3sub
+   *  10 — CTA button (slide up + fade in)
    */
   const [phase, setPhase] = useState(0);
 
@@ -305,7 +461,7 @@ export default function HomeHero({
             onComplete={() => pause(8, 50)}
           />
 
-          {/* Phase 8 — TextType with full orange highlight */}
+          {/* Phase 8 — full orange highlight */}
           <TextType
             text={b3main}
             animate={phase >= 8}
@@ -322,6 +478,7 @@ export default function HomeHero({
             onComplete={() => pause(9, 50)}
           />
 
+          {/* Phase 9 */}
           <TextType
             text={b3sub}
             animate={phase >= 9}
@@ -334,8 +491,18 @@ export default function HomeHero({
               lineHeight: 1.55,
               marginLeft: "0.3em",
             }}
+            onComplete={() => pause(10, 600)}
           />
         </div>
+      </div>
+
+      {/* ── Phase 10 — CTA button, centered at bottom ── */}
+      <div className="absolute bottom-[6%] left-1/2 -translate-x-1/2">
+        <MagneticCTA
+          label={ctaLabel}
+          animate={phase >= 10}
+          textColor={emphasis}
+        />
       </div>
     </section>
   );

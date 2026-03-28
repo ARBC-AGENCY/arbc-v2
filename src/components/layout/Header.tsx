@@ -6,7 +6,6 @@ import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import Magnet from "@/components/ui/Magnet";
 
 export default function Header() {
   const { resolvedTheme } = useTheme();
@@ -14,12 +13,14 @@ export default function Header() {
   const t = useTranslations("Nav");
 
   const logoRef = useRef<HTMLDivElement>(null);
-  // Wrapper for entrance animation — keeps GSAP x-translate separate from Magnet's transform
   const ctaWrapperRef = useRef<HTMLDivElement>(null);
+  const magnetRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => setMounted(true), []);
 
+  // Entrance animations + initial underline state
   useEffect(() => {
     if (!mounted) return;
 
@@ -37,11 +38,46 @@ export default function Header() {
     );
   }, [mounted]);
 
-  const handleMouseEnter = () =>
-    gsap.to(underlineRef.current, { scaleX: 1, duration: 0.3, ease: "power2.out" });
+  // Dual-strength magnetic: magnetRef moves at STRENGTH, textRef at TEXT_STRENGTH
+  useEffect(() => {
+    const el = magnetRef.current;
+    if (!el) return;
 
-  const handleMouseLeave = () =>
-    gsap.to(underlineRef.current, { scaleX: 0, duration: 0.3, ease: "power2.in" });
+    const STRENGTH = 30;
+    const TEXT_STRENGTH = 13;
+
+    const onMove = (e: MouseEvent) => {
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const x = ((e.clientX - left) / width - 0.5) * STRENGTH;
+      const y = ((e.clientY - top) / height - 0.5) * STRENGTH;
+      gsap.to(el, { x, y, duration: 1.5, ease: "power4.out" });
+      gsap.to(textRef.current, {
+        x: (x / STRENGTH) * TEXT_STRENGTH,
+        y: (y / STRENGTH) * TEXT_STRENGTH,
+        duration: 1.5,
+        ease: "power4.out",
+      });
+    };
+
+    const onEnter = () => {
+      gsap.to(underlineRef.current, { scaleX: 1, duration: 0.3, ease: "power2.out" });
+    };
+
+    const onLeave = () => {
+      gsap.to(el, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+      gsap.to(textRef.current, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+      gsap.to(underlineRef.current, { scaleX: 0, duration: 0.3, ease: "power2.in" });
+    };
+
+    el.addEventListener("mousemove", onMove);
+    el.addEventListener("mouseenter", onEnter);
+    el.addEventListener("mouseleave", onLeave);
+    return () => {
+      el.removeEventListener("mousemove", onMove);
+      el.removeEventListener("mouseenter", onEnter);
+      el.removeEventListener("mouseleave", onLeave);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const isDark = !mounted || resolvedTheme === "dark";
   const logoSrc = isDark ? "/images/ARBC-white.svg" : "/images/ARBC-dark.svg";
@@ -63,35 +99,41 @@ export default function Header() {
         </Link>
       </div>
 
-      {/* About CTA */}
+      {/* About CTA — dual-strength magnetic */}
       <div ref={ctaWrapperRef} style={{ opacity: 0 }}>
-        <Magnet padding={60} magnetStrength={4}>
-          <button
-            className="relative cursor-pointer"
-            style={{
-              color: textColor,
-              fontFamily: "var(--font-body)",
-              fontSize: "var(--text-md)",
-              fontWeight: 700,
-            }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Link href="/about">{t("about")}</Link>
+        <div
+          ref={magnetRef}
+          style={{ display: "inline-block", position: "relative", cursor: "pointer" }}
+        >
+          <Link href="/about">
+            <span
+              ref={textRef}
+              style={{
+                display: "block",
+                color: textColor,
+                fontFamily: "var(--font-body)",
+                fontSize: "var(--text-md)",
+                fontWeight: 700,
+                position: "relative",
+                zIndex: 2,
+              }}
+            >
+              {t("about")}
+            </span>
+          </Link>
 
-            {/* Static grey underline */}
-            <div
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
-              style={{ backgroundColor: "#747474" }}
-            />
-            {/* Animated orange underline */}
-            <div
-              ref={underlineRef}
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
-              style={{ backgroundColor: "#e7501e" }}
-            />
-          </button>
-        </Magnet>
+          {/* Static grey underline */}
+          <div
+            className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
+            style={{ backgroundColor: "#747474" }}
+          />
+          {/* Animated orange underline */}
+          <div
+            ref={underlineRef}
+            className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
+            style={{ backgroundColor: "#e7501e" }}
+          />
+        </div>
       </div>
     </header>
   );
