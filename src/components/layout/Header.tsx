@@ -4,8 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { gsap } from "@/lib/gsap";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import TransitionLink from "@/components/ui/TransitionLink";
 
 export default function Header() {
   const { resolvedTheme } = useTheme();
@@ -87,7 +87,7 @@ export default function Header() {
     <header className="fixed top-6 left-12 right-12 z-50 flex justify-between items-center px-6 lg:px-12 py-6">
       {/* Logo */}
       <div ref={logoRef} style={{ opacity: 0 }}>
-        <Link href="/" aria-label="ARBC — Home">
+        <TransitionLink href="/" label="Home" aria-label="ARBC — Home">
           <Image
             src={logoSrc}
             alt="ARBC"
@@ -96,7 +96,7 @@ export default function Header() {
             className="w-20 lg:w-24 h-auto cursor-pointer"
             priority
           />
-        </Link>
+        </TransitionLink>
       </div>
 
       {/* About CTA — dual-strength magnetic */}
@@ -105,7 +105,7 @@ export default function Header() {
           ref={magnetRef}
           style={{ display: "inline-block", position: "relative", cursor: "pointer" }}
         >
-          <Link href="/about">
+          <TransitionLink href="/about" label="About">
             <span
               ref={textRef}
               style={{
@@ -120,7 +120,7 @@ export default function Header() {
             >
               {t("about")}
             </span>
-          </Link>
+          </TransitionLink>
 
           {/* Static grey underline */}
           <div

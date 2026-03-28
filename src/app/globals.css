@@ -230,3 +230,105 @@ small {
   background: var(--color-orange);
   color: #ffffff;
 }
+
+/* ── PAGE TRANSITIONS ──────────────────────────── */
+/*
+  Overlay color: dark panel in light mode, light panel in dark mode.
+  next-themes adds class="dark" to <html>, so html.dark selectors work.
+*/
+:root {
+  --overlay-color: #242424;
+  --overlay-text: #ffffff;
+}
+
+html.dark {
+  --overlay-color: #cccccc;
+  --overlay-text: #242424;
+}
+
+/* Fixed container — always present, invisible when overlay is off-screen */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 800;
+  overflow: hidden;
+  pointer-events: none; /* GSAP toggles this to 'auto' during animation */
+}
+
+/* The sliding panel */
+.loading-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 100%; /* starts off-screen below; GSAP animates this */
+  will-change: top;
+  background: var(--overlay-color);
+}
+
+/* Wrapper divs that carry the curved-edge illusion */
+.rounded-div-wrap {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  will-change: height;
+}
+
+.rounded-div-wrap.top {
+  top: 0;
+  height: 0;
+}
+
+.rounded-div-wrap.bottom {
+  bottom: 0;
+  height: 0;
+}
+
+.rounded-div-wrap .rounded-div {
+  height: 200%;
+  width: 100%;
+  border-radius: 35%;
+  background: var(--overlay-color);
+  position: absolute;
+}
+.rounded-div-wrap.top .rounded-div {
+  bottom: 0; /* anchor to bottom */
+}
+.rounded-div-wrap.bottom .rounded-div {
+  top: 0; /* anchor to top */
+}
+
+/* Destination page name */
+.loading-words {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+  width: max-content;
+  text-align: center;
+}
+
+.loading-words h2 {
+  margin: 0;
+  padding: 0;
+  color: var(--overlay-text);
+  font-family: var(--font-title);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  display: none;
+}
+
+.loading-words h2.active {
+  display: block;
+}
+
+.once-in {
+  will-change: transform;
+}

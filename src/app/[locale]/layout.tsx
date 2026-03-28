@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Providers } from "@/components/providers";
+import { TransitionProvider } from "@/context/TransitionContext";
+import PageTransition from "@/components/layout/PageTransition";
 import PageWrapper from "@/components/layout/PageWrapper";
 import BackgroundSpotlight from "@/components/layout/BackgroundSpotlight";
 import Header from "@/components/layout/Header";
@@ -43,9 +45,12 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <BackgroundSpotlight />
-            <Header />
-            <PageWrapper>{children}</PageWrapper>
+            <TransitionProvider>
+              <PageTransition />
+              <BackgroundSpotlight />
+              <Header />
+              <PageWrapper>{children}</PageWrapper>
+            </TransitionProvider>
           </Providers>
         </NextIntlClientProvider>
       </body>
