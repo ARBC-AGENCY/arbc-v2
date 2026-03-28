@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /d/arbc-v2/src -type f -name *.json)"
+    ]
+  }
+}

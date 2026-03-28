@@ -6,6 +6,7 @@ import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import Magnet from "@/components/ui/Magnet";
 
 export default function Header() {
   const { resolvedTheme } = useTheme();
@@ -13,7 +14,8 @@ export default function Header() {
   const t = useTranslations("Nav");
 
   const logoRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  // Wrapper for entrance animation — keeps GSAP x-translate separate from Magnet's transform
+  const ctaWrapperRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => setMounted(true), []);
@@ -23,16 +25,15 @@ export default function Header() {
 
     gsap.set(underlineRef.current, { scaleX: 0, transformOrigin: "left center" });
 
-    // Entrance — runs after PageWrapper has faded the content in
     gsap.fromTo(
       logoRef.current,
       { opacity: 0, x: -40 },
-      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 },
+      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 }
     );
     gsap.fromTo(
-      buttonRef.current,
+      ctaWrapperRef.current,
       { opacity: 0, x: 40 },
-      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 },
+      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 }
     );
   }, [mounted]);
 
@@ -63,33 +64,35 @@ export default function Header() {
       </div>
 
       {/* About CTA */}
-      <button
-        ref={buttonRef}
-        className="relative cursor-pointer"
-        style={{
-          opacity: 0,
-          color: textColor,
-          fontFamily: "var(--font-body)",
-          fontSize: "var(--text-md)",
-          fontWeight: 700,
-        }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <Link href="/about">{t("about")}</Link>
+      <div ref={ctaWrapperRef} style={{ opacity: 0 }}>
+        <Magnet padding={60} magnetStrength={4}>
+          <button
+            className="relative cursor-pointer"
+            style={{
+              color: textColor,
+              fontFamily: "var(--font-body)",
+              fontSize: "var(--text-md)",
+              fontWeight: 700,
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link href="/about">{t("about")}</Link>
 
-        {/* Static grey underline */}
-        <div
-          className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
-          style={{ backgroundColor: "#747474" }}
-        />
-        {/* Animated orange underline */}
-        <div
-          ref={underlineRef}
-          className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
-          style={{ backgroundColor: "#e7501e" }}
-        />
-      </button>
+            {/* Static grey underline */}
+            <div
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
+              style={{ backgroundColor: "#747474" }}
+            />
+            {/* Animated orange underline */}
+            <div
+              ref={underlineRef}
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
+              style={{ backgroundColor: "#e7501e" }}
+            />
+          </button>
+        </Magnet>
+      </div>
     </header>
   );
 }
