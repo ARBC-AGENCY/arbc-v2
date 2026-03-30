@@ -5,6 +5,8 @@ import { flushSync } from "react-dom";
 import Loader from "./Loader";
 import { PageReadyContext } from "@/context/page-ready";
 import { firstLoadTransition } from "@/lib/pageTransitions";
+import { hasSeenIntroRecently } from "@/lib/introGate";
+import { useRouter } from "@/i18n/navigation";
 
 export default function PageWrapper({
   children,
@@ -12,6 +14,7 @@ export default function PageWrapper({
   children: React.ReactNode;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const router = useRouter();
 
   // Lock scroll on mount so the browser's scrollbar gutter never shows
   // while the ARBC splash loader is covering the viewport.
@@ -24,20 +27,22 @@ export default function PageWrapper({
   }, []);
 
   const handleLoaderComplete = () => {
-    // The page name is readable even before setLoaded(true) because the
-    // <main data-page-name="…"> element is already in the DOM — it's just
-    // hidden via visibility:hidden on the wrapper below.
     const pageName =
       document.querySelector<HTMLElement>("main[data-page-name]")?.dataset
         .pageName ?? "Home";
 
-    // firstLoadTransition runs the full cinematic arc (same as a page
-    // transition): overlay sweeps in from below → shows page name → sweeps
-    // out above while .once-in springs up.
-    //
-    // It calls revealPage() at the moment the overlay fully covers the
-    // screen, which is the safe window to unmount the ARBC loader and
-    // make the page content visible.
+    // If the user is landing on the home page but has already seen the intro
+    // recently, run the transition as if heading to Explore and push the route.
+    const isHome = pageName === "Home";
+    if (isHome && hasSeenIntroRecently()) {
+      firstLoadTransition("Explore", () => {
+        flushSync(() => setLoaded(true));
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        router.push("/explore" as any);
+      });
+      return;
+    }
+
     firstLoadTransition(pageName, () => {
       flushSync(() => setLoaded(true));
     });

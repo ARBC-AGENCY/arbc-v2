@@ -148,7 +148,7 @@ function MagneticCTA({
     gsap.fromTo(
       outerRef.current,
       { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
     );
   }, [animate]);
 
@@ -175,16 +175,29 @@ function MagneticCTA({
       gsap.fromTo(
         fillRef.current,
         { y: "76%" },
-        { y: "0%", duration: 0.6, ease: "power2.inOut" }
+        { y: "0%", duration: 0.6, ease: "power2.inOut" },
       );
-      gsap.to(textRef.current, { color: "#ffffff", duration: 0.3, ease: "power3.in" });
+      gsap.to(textRef.current, {
+        color: "#ffffff",
+        duration: 0.3,
+        ease: "power3.in",
+      });
     };
 
     // Fill retreats upward; text resets (delayed so fill leaves first)
     const onLeave = () => {
       gsap.to(el, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
-      gsap.to(textRef.current, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
-      gsap.to(fillRef.current, { y: "-76%", duration: 0.6, ease: "power2.inOut" });
+      gsap.to(textRef.current, {
+        x: 0,
+        y: 0,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.3)",
+      });
+      gsap.to(fillRef.current, {
+        y: "-76%",
+        duration: 0.6,
+        ease: "power2.inOut",
+      });
       gsap.to(textRef.current, {
         color: textColorRef.current,
         duration: 0.3,
@@ -333,7 +346,7 @@ export default function HomeHero({
         <TextType
           text={b1p1}
           animate={phase >= 1}
-          typingSpeed={75}
+          typingSpeed={45}
           showCursor
           cursorCharacter="_"
           className="mb-5"
@@ -351,7 +364,7 @@ export default function HomeHero({
           <TextType
             text={b1p2}
             animate={phase >= 2}
-            typingSpeed={75}
+            typingSpeed={45}
             showCursor={false}
             style={{
               ...base,
@@ -367,13 +380,13 @@ export default function HomeHero({
           text={b1p3}
           highlightWords={["Strategic", "stratégique"]}
           animate={phase >= 3}
-          typingSpeed={75}
+          typingSpeed={45}
           showCursor
           cursorCharacter="_"
           style={{
             ...base,
             fontSize: "var(--text-lg)",
-            color: "#cccccc",
+            color: isDark ? "rgba(204, 204, 204)" : "rgba(0,0,0,0.38)",
             fontWeight: 700,
             lineHeight: 1.15,
           }}
@@ -396,7 +409,7 @@ export default function HomeHero({
           <TextType
             text={b2prefix}
             animate={phase >= 4}
-            typingSpeed={75}
+            typingSpeed={45}
             showCursor={false}
             style={{
               color: muted,
@@ -411,11 +424,11 @@ export default function HomeHero({
             text={b2main}
             highlightWords={["lines", "lignes"]}
             animate={phase >= 5}
-            typingSpeed={75}
+            typingSpeed={45}
             showCursor
             cursorCharacter="_"
             style={{
-              color: "#cccccc",
+              color: isDark ? "rgba(204, 204, 204)" : "rgba(0,0,0,0.38)",
               fontStyle: "normal",
               fontWeight: 700,
             }}
@@ -427,7 +440,7 @@ export default function HomeHero({
           <TextType
             text={b2sub}
             animate={phase >= 6}
-            typingSpeed={75}
+            typingSpeed={45}
             showCursor={false}
             style={{
               ...base,
@@ -455,7 +468,7 @@ export default function HomeHero({
           <TextType
             text={b3prefix}
             animate={phase >= 7}
-            typingSpeed={75}
+            typingSpeed={45}
             showCursor={false}
             style={{ color: muted, marginRight: "0.3em" }}
             onComplete={() => pause(8, 50)}
@@ -465,7 +478,7 @@ export default function HomeHero({
           <TextType
             text={b3main}
             animate={phase >= 8}
-            typingSpeed={120}
+            typingSpeed={45}
             showCursor
             cursorCharacter="_"
             style={{
@@ -482,7 +495,7 @@ export default function HomeHero({
           <TextType
             text={b3sub}
             animate={phase >= 9}
-            typingSpeed={75}
+            typingSpeed={45}
             showCursor={false}
             style={{
               ...base,
