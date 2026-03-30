@@ -111,13 +111,9 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
         transformOrigin: "center center",
         duration: 1,
         ease: "power4.out",
-      })
-      .to(containerRef.current, {
-        scale: 1.06,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power2.inOut",
       });
+    // The container fade-out is intentionally removed — onComplete hands
+    // control to the cinematic loading-screen overlay in PageWrapper.
   };
 
   const strokeOffset = CIRCUMFERENCE - (CIRCUMFERENCE * progress) / 100;

@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { useRouter, usePathname } from "@/i18n/navigation";
-import { pageTransitionIn, pageTransitionOut } from "@/lib/pageTransitions";
+import { pageTransitionIn } from "@/lib/pageTransitions";
 
 interface TransitionContextValue {
   navigate: (href: string, label: string) => void;
@@ -34,15 +34,14 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     const tl = pageTransitionIn(label);
 
     // Push the route ~550 ms in — the overlay has covered the screen by then
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       router.push(href as any);
     }, 550);
 
-    // After the full animation completes (~2 s), spring in the new page content
+    // once-in spring is fired inside the timeline via tl.call() — no separate
+    // pageTransitionOut needed here. Just reset the lock when done.
     tl.then(() => {
-      clearTimeout(timer); // safety — shouldn't fire after tl ends
-      pageTransitionOut();
       isNavigating.current = false;
     });
   };
