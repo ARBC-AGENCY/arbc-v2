@@ -116,7 +116,7 @@ export default function AboutPage() {
         </TransitionLink>
 
         <TransitionLink
-          href="/explore"
+          href="/projects"
           label="projects"
           style={{
             fontFamily: "var(--font-body)",

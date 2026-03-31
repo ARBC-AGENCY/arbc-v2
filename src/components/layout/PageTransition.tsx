@@ -21,6 +21,8 @@ export default function PageTransition() {
           <h2 data-key="home">{t("home")}</h2>
           <h2 data-key="about">{t("about")}</h2>
           <h2 data-key="projects">{t("projects")}</h2>
+          {/* Dynamic slot — text set at runtime for project names etc. */}
+          <h2 data-key="__dynamic__"></h2>
         </div>
 
         <div className="rounded-div-wrap bottom">

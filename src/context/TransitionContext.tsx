@@ -33,7 +33,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     let targetHref = href;
     let targetLabel = label;
     if (href === "/" && hasSeenIntroRecently()) {
-      targetHref = "/explore";
+      targetHref = "/projects";
       targetLabel = "projects";
     }
 

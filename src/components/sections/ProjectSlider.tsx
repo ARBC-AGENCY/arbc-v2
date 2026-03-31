@@ -4,8 +4,11 @@ import { useEffect, useRef, useState, useContext } from "react";
 import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
+import { useRouter, usePathname } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 import { gsap, SplitText, Draggable } from "@/lib/gsap";
 import { PageReadyContext } from "@/context/page-ready";
+import { useTransitionContext } from "@/context/TransitionContext";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -19,11 +22,12 @@ interface CardPosition {
 
 /** Static (non-translatable) project data. All text lives in messages/*.json. */
 interface ProjectStatic {
-  id: string; // "01" … "06"
-  image: string; // large background image URL
-  thumb: string; // thumbnail URL
-  accentColor: string; // thumbnail dark bg tint
-  href: string;
+  id: string;          // "01" … "06"
+  slug: string;        // URL slug e.g. "betmomo" → /projects/betmomo
+  name: string;        // Display name for page transition overlay e.g. "BETMOMO"
+  image: string;
+  thumb: string;
+  accentColor: string;
   /** Where the text card is anchored on the image rectangle. */
   card: CardPosition;
 }
@@ -35,51 +39,57 @@ interface ProjectStatic {
 const PROJECTS: ProjectStatic[] = [
   {
     id: "01",
+    slug: "betmomo",
+    name: "BETMOMO",
     image: "https://picsum.photos/seed/arbc01/1600/900",
     thumb: "https://picsum.photos/seed/arbc01/400/260",
     accentColor: "#2d1a4a",
-    href: "#",
-    card: { top: "-1.5rem", left: "1.75rem" }, // overflows top-left
+    card: { top: "-1.5rem", left: "1.75rem" },
   },
   {
     id: "02",
+    slug: "woodm",
+    name: "WOODM",
     image: "https://picsum.photos/seed/arbc02/1600/900",
     thumb: "https://picsum.photos/seed/arbc02/400/260",
     accentColor: "#0e2233",
-    href: "#",
-    card: { top: "-1.5rem", right: "1.75rem" }, // overflows top-right
+    card: { top: "-1.5rem", right: "1.75rem" },
   },
   {
     id: "03",
+    slug: "le-lagon",
+    name: "LE LAGON",
     image: "https://picsum.photos/seed/arbc03/1600/900",
     thumb: "https://picsum.photos/seed/arbc03/400/260",
     accentColor: "#1a100a",
-    href: "#",
-    card: { top: "28%", left: "1.75rem" }, // mid-height left
+    card: { top: "28%", left: "1.75rem" },
   },
   {
     id: "04",
+    slug: "arbc-annual",
+    name: "ARBC ANNUAL",
     image: "https://picsum.photos/seed/arbc04/1600/900",
     thumb: "https://picsum.photos/seed/arbc04/400/260",
     accentColor: "#0a1f12",
-    href: "#",
-    card: { bottom: "5.5rem", left: "1.75rem" }, // lower-left (above rail)
+    card: { bottom: "5.5rem", left: "1.75rem" },
   },
   {
     id: "05",
+    slug: "yango",
+    name: "YANGO",
     image: "https://picsum.photos/seed/arbc05/1600/900",
     thumb: "https://picsum.photos/seed/arbc05/400/260",
     accentColor: "#1e0f28",
-    href: "#",
-    card: { top: "18%", right: "1.75rem" }, // upper-right
+    card: { top: "18%", right: "1.75rem" },
   },
   {
     id: "06",
+    slug: "orange-rdc",
+    name: "ORANGE RDC",
     image: "https://picsum.photos/seed/arbc06/1600/900",
     thumb: "https://picsum.photos/seed/arbc06/400/260",
     accentColor: "#0f1e12",
-    href: "#",
-    card: { bottom: "-1.5rem", left: "1.75rem" }, // overflows bottom-left
+    card: { bottom: "-1.5rem", left: "1.75rem" },
   },
 ];
 
@@ -103,9 +113,43 @@ function targetX(index: number): number {
 
 export default function ProjectSlider() {
   const t = useTranslations("Projects");
+  const { navigate } = useTransitionContext();
   const isPageReady = useContext(PageReadyContext);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Derive initial index — URL param wins (refresh/back), sessionStorage is
+  // the fallback for explicit CTA navigation that loses the ?p= param.
+  const initialIndex = (() => {
+    // 1. URL param (?p=slug) — set by refresh or browser back
+    const urlSlug = searchParams.get("p");
+    if (urlSlug) {
+      const i = PROJECTS.findIndex((p) => p.slug === urlSlug);
+      if (i >= 0) return i;
+    }
+    // 2. sessionStorage — set every time the active project changes
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("arbc_active_project");
+      if (stored) {
+        const i = PROJECTS.findIndex((p) => p.slug === stored);
+        if (i >= 0) return i;
+      }
+    }
+    return 0;
+  })();
+
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
   const isTransitioning = useRef(false);
+
+  // Sync ?p=slug into the URL (no history entry) AND sessionStorage
+  const syncUrl = (index: number) => {
+    const slug = PROJECTS[index].slug;
+    sessionStorage.setItem("arbc_active_project", slug);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("p", slug);
+    router.replace(`${pathname}?${params.toString()}` as any, { scroll: false });
+  };
 
   // Theme — use mounted guard to avoid hydration mismatch
   const { resolvedTheme } = useTheme();
@@ -133,7 +177,7 @@ export default function ProjectSlider() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const descBlockRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLDivElement>(null);
-  const cursorBtnRef = useRef<HTMLDivElement>(null);
+  const cursorBtnRef = useRef<HTMLButtonElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const draggableRef = useRef<Draggable | null>(null);
   // Pre-compiled quickTo functions for aesthetic cursor lag
@@ -151,7 +195,7 @@ export default function ProjectSlider() {
   // ── Draggable setup ────────────────────────────────────────────────────────
   useEffect(() => {
     if (!trackRef.current) return;
-    gsap.set(trackRef.current, { x: targetX(0) });
+    gsap.set(trackRef.current, { x: targetX(initialIndex) });
 
     const [d] = Draggable.create(trackRef.current, {
       type: "x",
@@ -168,7 +212,9 @@ export default function ProjectSlider() {
       onThrowComplete: function (this: Draggable) {
         const x = gsap.getProperty(trackRef.current!, "x") as number;
         const raw = Math.round((CENTER_OFFSET - x) / STEP);
-        setActiveIndex(((raw % N) + N) % N);
+        const idx = ((raw % N) + N) % N;
+        setActiveIndex(idx);
+        syncUrl(idx);
       },
     });
 
@@ -258,6 +304,7 @@ export default function ProjectSlider() {
     const tl = gsap.timeline({
       onComplete: () => {
         flushSync(() => setActiveIndex(idx));
+        syncUrl(idx);
         runEntrance();
       },
     });
@@ -417,8 +464,12 @@ export default function ProjectSlider() {
             zIndex: 8,
           }}
         >
-          <div
+          <button
             ref={cursorBtnRef}
+            onClick={() => {
+              const p = PROJECTS[activeIndex];
+              navigate(`/projects/${p.slug}`, p.name);
+            }}
             style={{
               width: "108px",
               height: "108px",
@@ -438,10 +489,13 @@ export default function ProjectSlider() {
               userSelect: "none",
               lineHeight: 1.3,
               padding: "0 1rem",
+              border: "none",
+              cursor: "pointer",
+              pointerEvents: "auto",
             }}
           >
             {t("viewProject")}
-          </div>
+          </button>
         </div>
 
         {/* ── Text card — position varies per project ───────────────────── */}

@@ -3,9 +3,23 @@ import gsap from "gsap";
 // ── Helpers ────────────────────────────────────────────────────────────────
 
 function setActiveWord(key: string): void {
-  document.querySelectorAll(".loading-words h2").forEach((el) => {
-    el.classList.toggle("active", (el as HTMLElement).dataset.key === key);
+  const els = document.querySelectorAll<HTMLElement>(".loading-words h2");
+  let matched = false;
+  els.forEach((el) => {
+    const isMatch = el.dataset.key === key;
+    el.classList.toggle("active", isMatch);
+    if (isMatch) matched = true;
   });
+  // Fallback: for dynamic labels (project names etc.) use the __dynamic__ slot
+  if (!matched) {
+    const dynamic = document.querySelector<HTMLElement>(
+      '.loading-words h2[data-key="__dynamic__"]'
+    );
+    if (dynamic) {
+      dynamic.textContent = key;
+      dynamic.classList.add("active");
+    }
+  }
 }
 
 function lockScroll(): void {

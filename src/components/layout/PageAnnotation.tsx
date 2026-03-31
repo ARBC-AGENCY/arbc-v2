@@ -2,7 +2,7 @@
 
 interface PageAnnotationProps {
   line1: string;
-  line2: string;
+  line2?: string;
 }
 
 export default function PageAnnotation({ line1, line2 }: PageAnnotationProps) {
@@ -23,17 +23,19 @@ export default function PageAnnotation({ line1, line2 }: PageAnnotationProps) {
           lineHeight: 1,
         }}
       >
-        <p className="uppercase mb-1">{line1}</p>
-        <p
-          className="uppercase"
-          style={{
-            backgroundColor: "#e7501e",
-            color: "#ffffff",
-            padding: "1px 4px",
-          }}
-        >
-          {line2}
-        </p>
+        <p className={line2 ? "uppercase mb-1" : "uppercase"}>{line1}</p>
+        {line2 && (
+          <p
+            className="uppercase"
+            style={{
+              backgroundColor: "#e7501e",
+              color: "#ffffff",
+              padding: "1px 4px",
+            }}
+          >
+            {line2}
+          </p>
+        )}
       </div>
     </div>
   );

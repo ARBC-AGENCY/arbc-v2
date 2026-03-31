@@ -38,7 +38,7 @@ export default function PageWrapper({
       firstLoadTransition("projects", () => {
         flushSync(() => setLoaded(true));
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        router.push("/explore" as any);
+        router.push("/projects" as any);
       });
       return;
     }
