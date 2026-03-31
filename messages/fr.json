@@ -29,5 +29,75 @@
   "Loader": {
     "line1": "Bouger les <orange>lignes</orange>",
     "line2": "Provoquer le <orange>changement</orange>"
+  },
+  "Projects": {
+    "viewProject": "Voir le projet →",
+    "next": "Suivant",
+    "p01": {
+      "title": "À l'ère du digital, tout le monde parle. Mais qui est vraiment écouté ?",
+      "category": "Stratégie & Branding",
+      "descriptions": [
+        "Les frontières ont disparu, et sur les marchés africains comme ailleurs, la concurrence est devenue globale, intense et immédiate.",
+        "Vos clients sont noyés sous des milliers d'offres chaque jour. La question n'est plus d'exister, mais d'être choisi."
+      ],
+      "taglines": [
+        "La visibilité est le nouveau stade de l'invisibilité."
+      ]
+    },
+    "p02": {
+      "title": "La créativité au service de la performance commerciale.",
+      "category": "Motion & Digital",
+      "descriptions": [
+        "Des campagnes qui captent l'attention, engagent les audiences et génèrent des résultats mesurables dans un marché saturé d'images et de messages."
+      ],
+      "taglines": [
+        "Créer, c'est convaincre avant de parler.",
+        "Le mouvement, c'est la preuve de la vie."
+      ]
+    },
+    "p03": {
+      "title": "Une expérience utilisateur qui convertit dès le premier regard.",
+      "category": "Web & Produit",
+      "descriptions": [
+        "Du design au développement, des interfaces pensées pour guider, retenir et transformer chaque visiteur en client fidèle.",
+        "Chaque interaction est une opportunité. Chaque friction est une perte."
+      ],
+      "taglines": [
+        "L'UX est la promesse tenue à votre client."
+      ]
+    },
+    "p04": {
+      "title": "Des rapports annuels qui racontent une histoire, pas des chiffres.",
+      "category": "Print & Éditorial",
+      "descriptions": [
+        "Transformer des données complexes en narration visuelle convaincante — un outil de communication autant qu'un document légal."
+      ],
+      "taglines": [
+        "Un rapport, une réputation.",
+        "Les chiffres parlent. Le design convainc."
+      ]
+    },
+    "p05": {
+      "title": "Une application mobile pensée pour l'Afrique d'aujourd'hui.",
+      "category": "Produit Mobile",
+      "descriptions": [
+        "Concevoir pour des connexions instables, des écrans variés et des usages réels — l'innovation qui part du terrain.",
+        "Parce que le bon produit est celui qui fonctionne là où vivent vos utilisateurs."
+      ],
+      "taglines": [
+        "Le bon produit, au bon endroit."
+      ]
+    },
+    "p06": {
+      "title": "Plonger le public dans une expérience immersive mémorable.",
+      "category": "Immersif & Événementiel",
+      "descriptions": [
+        "Espaces scénographiés, installations interactives — créer des moments qui ancrent la marque dans la mémoire collective."
+      ],
+      "taglines": [
+        "L'espace devient message.",
+        "Le vécu surpasse le vu."
+      ]
+    }
   }
 }

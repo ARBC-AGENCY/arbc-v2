@@ -29,5 +29,75 @@
   "Loader": {
     "line1": "The Shift",
     "line2": "<orange>Makers</orange>"
+  },
+  "Projects": {
+    "viewProject": "View project →",
+    "next": "Next",
+    "p01": {
+      "title": "In the digital age, everyone speaks. But who is truly heard?",
+      "category": "Strategy & Branding",
+      "descriptions": [
+        "Borders have vanished. In African markets and beyond, competition has become global, intense and immediate.",
+        "Your customers are drowning in thousands of offers every day. The question is no longer whether you exist — but whether you are chosen."
+      ],
+      "taglines": [
+        "Visibility is the new stage of invisibility."
+      ]
+    },
+    "p02": {
+      "title": "Creativity in service of commercial performance.",
+      "category": "Motion & Digital",
+      "descriptions": [
+        "Campaigns that capture attention, engage audiences and generate measurable results in a market saturated with images and messages."
+      ],
+      "taglines": [
+        "To create is to convince before speaking.",
+        "Movement is proof of life."
+      ]
+    },
+    "p03": {
+      "title": "A user experience that converts from the very first glance.",
+      "category": "Web & Product",
+      "descriptions": [
+        "From design to development, interfaces crafted to guide, retain and transform every visitor into a loyal customer.",
+        "Every interaction is an opportunity. Every friction is a loss."
+      ],
+      "taglines": [
+        "UX is the promise kept to your customer."
+      ]
+    },
+    "p04": {
+      "title": "Annual reports that tell a story, not just numbers.",
+      "category": "Print & Editorial",
+      "descriptions": [
+        "Transforming complex data into compelling visual narrative — a communication tool as much as a legal document."
+      ],
+      "taglines": [
+        "One report, one reputation.",
+        "Numbers speak. Design convinces."
+      ]
+    },
+    "p05": {
+      "title": "A mobile app built for the Africa of today.",
+      "category": "Mobile Product",
+      "descriptions": [
+        "Designing for unstable connections, varied screens and real-world usage — innovation that starts from the ground.",
+        "Because the right product is the one that works where your users actually live."
+      ],
+      "taglines": [
+        "The right product, in the right place."
+      ]
+    },
+    "p06": {
+      "title": "Immersing the audience in an unforgettable experience.",
+      "category": "Immersive & Events",
+      "descriptions": [
+        "Scenographied spaces, interactive installations — creating moments that anchor the brand in collective memory."
+      ],
+      "taglines": [
+        "Space becomes message.",
+        "The lived surpasses the seen."
+      ]
+    }
   }
 }

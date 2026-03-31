@@ -4,13 +4,17 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { Draggable } from "gsap/Draggable";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
 
 gsap.registerPlugin(
   ScrollTrigger,
   ScrollSmoother,
   SplitText,
   MorphSVGPlugin,
-  DrawSVGPlugin
+  DrawSVGPlugin,
+  Draggable,
+  InertiaPlugin
 );
 
 export {
@@ -20,4 +24,6 @@ export {
   SplitText,
   MorphSVGPlugin,
   DrawSVGPlugin,
+  Draggable,
+  InertiaPlugin,
 };
