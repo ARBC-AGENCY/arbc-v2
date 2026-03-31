@@ -2,9 +2,9 @@ import gsap from "gsap";
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
-function setActiveWord(label: string): void {
+function setActiveWord(key: string): void {
   document.querySelectorAll(".loading-words h2").forEach((el) => {
-    el.classList.toggle("active", el.textContent?.trim() === label);
+    el.classList.toggle("active", (el as HTMLElement).dataset.key === key);
   });
 }
 

@@ -30,9 +30,16 @@
     "line1": "The Shift",
     "line2": "<orange>Makers</orange>"
   },
+  "PageTransition": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects"
+  },
   "Projects": {
     "viewProject": "View project →",
     "next": "Next",
+    "annotation_line1": "Our",
+    "annotation_line2": "Projects",
     "p01": {
       "title": "In the digital age, everyone speaks. But who is truly heard?",
       "category": "Strategy & Branding",

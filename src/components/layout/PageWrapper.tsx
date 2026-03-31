@@ -29,13 +29,13 @@ export default function PageWrapper({
   const handleLoaderComplete = () => {
     const pageName =
       document.querySelector<HTMLElement>("main[data-page-name]")?.dataset
-        .pageName ?? "Home";
+        .pageName ?? "home";
 
     // If the user is landing on the home page but has already seen the intro
-    // recently, run the transition as if heading to Explore and push the route.
-    const isHome = pageName === "Home";
+    // recently, run the transition as if heading to Projects and push the route.
+    const isHome = pageName === "home";
     if (isHome && hasSeenIntroRecently()) {
-      firstLoadTransition("Explore", () => {
+      firstLoadTransition("projects", () => {
         flushSync(() => setLoaded(true));
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         router.push("/explore" as any);

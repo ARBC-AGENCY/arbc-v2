@@ -6,7 +6,7 @@ export default function HomePage() {
   const t = useTranslations("Home");
 
   return (
-    <main data-page-name="Home">
+    <main data-page-name="home">
       <div className="once-in">
         <HomeHero
           b1p1={t("b1_p1")}

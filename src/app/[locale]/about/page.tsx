@@ -2,7 +2,7 @@ import TransitionLink from "@/components/ui/TransitionLink";
 
 export default function AboutPage() {
   return (
-    <main data-page-name="About">
+    <main data-page-name="about">
       {/* ── Hero ──────────────────────────────────── */}
       <section
         className="once-in"
@@ -103,7 +103,7 @@ export default function AboutPage() {
       >
         <TransitionLink
           href="/"
-          label="Home"
+          label="home"
           style={{
             fontFamily: "var(--font-body)",
             fontSize: "var(--text-md)",
@@ -117,7 +117,7 @@ export default function AboutPage() {
 
         <TransitionLink
           href="/explore"
-          label="Explore"
+          label="projects"
           style={{
             fontFamily: "var(--font-body)",
             fontSize: "var(--text-md)",

@@ -30,9 +30,16 @@
     "line1": "Bouger les <orange>lignes</orange>",
     "line2": "Provoquer le <orange>changement</orange>"
   },
+  "PageTransition": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets"
+  },
   "Projects": {
     "viewProject": "Voir le projet →",
     "next": "Suivant",
+    "annotation_line1": "Nos",
+    "annotation_line2": "Projets",
     "p01": {
       "title": "À l'ère du digital, tout le monde parle. Mais qui est vraiment écouté ?",
       "category": "Stratégie & Branding",

@@ -558,11 +558,11 @@ export default function ProjectSlider() {
               padding: "1rem",
             }}
           >
-            {/* Rail window — exact RAIL_W × THUMB_H, no padding, no background */}
+            {/* Rail window — height includes button + 3px gap + 3px indicator bar */}
             <div
               style={{
                 width: `${RAIL_W}px`,
-                height: `${THUMB_H}px`,
+                height: `${THUMB_H + 6}px`,
                 overflow: "hidden",
                 cursor: "grab",
               }}
@@ -582,53 +582,89 @@ export default function ProjectSlider() {
                 const realIndex = i % N;
                 const isActive = realIndex === activeIndex;
                 return (
-                  <button
+                  /* Wrapper: button on top, indicator bar below */
+                  <div
                     key={`${p.id}-${i}`}
-                    onClick={() => switchProject(realIndex)}
-                    aria-label={`${p.id} — ${t(`p${p.id}.category`)}`}
                     style={{
                       flexShrink: 0,
                       width: `${THUMB_W}px`,
-                      height: `${THUMB_H}px`,
-                      border: "none",
-                      padding: 0,
-                      overflow: "hidden",
-                      position: "relative",
-                      cursor: "pointer",
-                      background: p.accentColor,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "3px",
                     }}
                   >
-                    {/* Thumbnail image */}
-                    <img
-                      src={p.thumb}
-                      alt=""
-                      draggable={false}
+                    <button
+                      onClick={() => switchProject(realIndex)}
+                      aria-label={`${p.id} — ${t(`p${p.id}.category`)}`}
                       style={{
-                        position: "absolute",
-                        inset: 0,
                         width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        opacity: isActive ? 0.88 : 0.48,
-                        transition: "opacity 0.32s ease",
-                        pointerEvents: "none",
+                        height: `${THUMB_H}px`,
+                        border: "none",
+                        padding: 0,
+                        overflow: "hidden",
+                        position: "relative",
+                        cursor: "pointer",
+                        background: p.accentColor,
+                        flexShrink: 0,
                       }}
-                    />
+                    >
+                      {/* Thumbnail image */}
+                      <img
+                        src={p.thumb}
+                        alt=""
+                        draggable={false}
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          opacity: isActive ? 0.88 : 0.48,
+                          transition: "opacity 0.32s ease",
+                          pointerEvents: "none",
+                        }}
+                      />
+                      {/* Number label */}
+                      <span
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          justifyContent: "flex-end",
+                          padding: "0.4rem 0.5rem",
+                          background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)",
+                          pointerEvents: "none",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "0.6rem",
+                            letterSpacing: "0.1em",
+                            textTransform: "uppercase",
+                            color: "rgba(255,255,255,0.72)",
+                            lineHeight: 1,
+                          }}
+                        >
+                          {p.id}
+                        </span>
+                      </span>
+                    </button>
 
-                    {/* Active indicator — bottom underline only (no border) */}
+                    {/* Active indicator — sits below the button, outside it */}
                     <span
                       style={{
-                        position: "absolute",
-                        bottom: 0,
-                        left: 0,
-                        right: "50%",
+                        display: "block",
                         height: "3px",
                         backgroundColor: "#e7501e",
+                        borderRadius: "2px",
                         opacity: isActive ? 1 : 0,
                         transition: "opacity 0.32s ease",
                       }}
                     />
-                  </button>
+                  </div>
                 );
               })}
             </div>

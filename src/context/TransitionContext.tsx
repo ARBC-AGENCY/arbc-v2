@@ -34,7 +34,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     let targetLabel = label;
     if (href === "/" && hasSeenIntroRecently()) {
       targetHref = "/explore";
-      targetLabel = "Explore";
+      targetLabel = "projects";
     }
 
     // Prevent same-page transitions

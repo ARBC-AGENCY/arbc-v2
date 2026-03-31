@@ -87,7 +87,7 @@ export default function Header() {
     <header className="fixed top-6 left-12 right-12 z-50 flex justify-between items-center px-6 lg:px-12 py-6">
       {/* Logo */}
       <div ref={logoRef} style={{ opacity: 0 }}>
-        <TransitionLink href="/" label="Home" aria-label="ARBC — Home">
+        <TransitionLink href="/" label="home" aria-label="ARBC — Home">
           <Image
             src={logoSrc}
             alt="ARBC"
@@ -105,7 +105,7 @@ export default function Header() {
           ref={magnetRef}
           style={{ display: "inline-block", position: "relative", cursor: "pointer" }}
         >
-          <TransitionLink href="/about" label="About">
+          <TransitionLink href="/about" label="about">
             <span
               ref={textRef}
               style={{
