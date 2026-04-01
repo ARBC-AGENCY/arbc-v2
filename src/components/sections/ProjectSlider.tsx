@@ -10,6 +10,18 @@ import { gsap, SplitText, Draggable } from "@/lib/gsap";
 import { PageReadyContext } from "@/context/page-ready";
 import { useTransitionContext } from "@/context/TransitionContext";
 
+// ── Asset imports ──────────────────────────────────────────────────────────
+import logoBetmomo    from "@/assets/images/logos/betmomo-logo.svg";
+import logoWoodin     from "@/assets/images/logos/Woodin-logo.svg";
+import logoLagon      from "@/assets/images/logos/LagonClub-Logo.svg";
+import logoHChoice    from "@/assets/images/logos/H-choice-logo.svg";
+import logoSpicy      from "@/assets/images/logos/Spicy-logo.svg";
+import logoAccent     from "@/assets/images/logos/AccentMedia-Logo.svg";
+import logoCimencam   from "@/assets/images/logos/cimencam-logo.svg";
+import imgBetmomo     from "@/assets/images/logos/projectSliderImage/BETMOMO.webp";
+import imgLagon       from "@/assets/images/logos/projectSliderImage/LagonClub.webp";
+import imgWoodin      from "@/assets/images/logos/projectSliderImage/Woodin.webp";
+
 // ── Types ──────────────────────────────────────────────────────────────────
 
 /** Per-project position of the text card (CSS absolute values). */
@@ -22,13 +34,12 @@ interface CardPosition {
 
 /** Static (non-translatable) project data. All text lives in messages/*.json. */
 interface ProjectStatic {
-  id: string;          // "01" … "06"
-  slug: string;        // URL slug e.g. "betmomo" → /projects/betmomo
-  name: string;        // Display name for page transition overlay e.g. "BETMOMO"
-  image: string;
-  thumb: string;
-  accentColor: string;
-  /** Where the text card is anchored on the image rectangle. */
+  id: string;
+  slug: string;
+  name: string;
+  image: string;       // large background for the main view
+  logo: string;        // SVG/image URL centred in the thumbnail
+  accentColor: string; // thumbnail background colour
   card: CardPosition;
 }
 
@@ -41,55 +52,64 @@ const PROJECTS: ProjectStatic[] = [
     id: "01",
     slug: "betmomo",
     name: "BETMOMO",
-    image: "https://picsum.photos/seed/arbc01/1600/900",
-    thumb: "https://picsum.photos/seed/arbc01/400/260",
-    accentColor: "#2d1a4a",
+    image: imgBetmomo.src,
+    logo: logoBetmomo.src,
+    accentColor: "#000000",
     card: { top: "-1.5rem", left: "1.75rem" },
   },
   {
     id: "02",
-    slug: "woodm",
-    name: "WOODM",
-    image: "https://picsum.photos/seed/arbc02/1600/900",
-    thumb: "https://picsum.photos/seed/arbc02/400/260",
-    accentColor: "#0e2233",
+    slug: "woodin",
+    name: "WOODIN",
+    image: imgWoodin.src,
+    logo: logoWoodin.src,
+    accentColor: "#531e0e",
     card: { top: "-1.5rem", right: "1.75rem" },
   },
   {
     id: "03",
     slug: "le-lagon",
     name: "LE LAGON",
-    image: "https://picsum.photos/seed/arbc03/1600/900",
-    thumb: "https://picsum.photos/seed/arbc03/400/260",
-    accentColor: "#1a100a",
+    image: imgLagon.src,
+    logo: logoLagon.src,
+    accentColor: "#2e3643",
     card: { top: "28%", left: "1.75rem" },
   },
   {
     id: "04",
-    slug: "arbc-annual",
-    name: "ARBC ANNUAL",
+    slug: "h-choice",
+    name: "H-CHOICE",
     image: "https://picsum.photos/seed/arbc04/1600/900",
-    thumb: "https://picsum.photos/seed/arbc04/400/260",
-    accentColor: "#0a1f12",
+    logo: logoHChoice.src,
+    accentColor: "#1c3932",
     card: { bottom: "5.5rem", left: "1.75rem" },
   },
   {
     id: "05",
-    slug: "yango",
-    name: "YANGO",
+    slug: "spicy",
+    name: "SPICY",
     image: "https://picsum.photos/seed/arbc05/1600/900",
-    thumb: "https://picsum.photos/seed/arbc05/400/260",
-    accentColor: "#1e0f28",
+    logo: logoSpicy.src,
+    accentColor: "#003756",
     card: { top: "18%", right: "1.75rem" },
   },
   {
     id: "06",
-    slug: "orange-rdc",
-    name: "ORANGE RDC",
+    slug: "accent-media",
+    name: "ACCENT MEDIA",
     image: "https://picsum.photos/seed/arbc06/1600/900",
-    thumb: "https://picsum.photos/seed/arbc06/400/260",
-    accentColor: "#0f1e12",
+    logo: logoAccent.src,
+    accentColor: "#ec6537",
     card: { bottom: "-1.5rem", left: "1.75rem" },
+  },
+  {
+    id: "07",
+    slug: "cimencam",
+    name: "CIMENCAM",
+    image: "https://picsum.photos/seed/arbc07/1600/900",
+    logo: logoCimencam.src,
+    accentColor: "#ffffff",
+    card: { top: "-1.5rem", left: "1.75rem" },
   },
 ];
 
@@ -662,49 +682,25 @@ export default function ProjectSlider() {
                         flexShrink: 0,
                       }}
                     >
-                      {/* Thumbnail image */}
+                      {/* Project logo — centred, contained, no crop */}
                       <img
-                        src={p.thumb}
-                        alt=""
+                        src={p.logo}
+                        alt={p.name}
                         draggable={false}
                         style={{
                           position: "absolute",
                           inset: 0,
                           width: "100%",
                           height: "100%",
-                          objectFit: "cover",
-                          opacity: isActive ? 0.88 : 0.48,
+                          objectFit: "contain",
+                          padding: "16px",
+                          opacity: isActive ? 1 : 0.55,
                           transition: "opacity 0.32s ease",
                           pointerEvents: "none",
+                          boxSizing: "border-box",
                         }}
                       />
-                      {/* Number label */}
-                      <span
-                        style={{
-                          position: "absolute",
-                          inset: 0,
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "flex-start",
-                          justifyContent: "flex-end",
-                          padding: "0.4rem 0.5rem",
-                          background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)",
-                          pointerEvents: "none",
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            fontSize: "0.6rem",
-                            letterSpacing: "0.1em",
-                            textTransform: "uppercase",
-                            color: "rgba(255,255,255,0.72)",
-                            lineHeight: 1,
-                          }}
-                        >
-                          {p.id}
-                        </span>
-                      </span>
+
                     </button>
 
                     {/* Active indicator — sits below the button, outside it */}

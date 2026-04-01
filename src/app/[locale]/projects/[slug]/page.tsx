@@ -6,11 +6,12 @@ import TransitionLink from "@/components/ui/TransitionLink";
 export function generateStaticParams() {
   return [
     { slug: "betmomo" },
-    { slug: "woodm" },
+    { slug: "woodin" },
     { slug: "le-lagon" },
-    { slug: "arbc-annual" },
-    { slug: "yango" },
-    { slug: "orange-rdc" },
+    { slug: "h-choice" },
+    { slug: "spicy" },
+    { slug: "accent-media" },
+    { slug: "cimencam" },
   ];
 }
 

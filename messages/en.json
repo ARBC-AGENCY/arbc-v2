@@ -41,69 +41,82 @@
     "annotation_line1": "Our",
     "annotation_line2": "Projects",
     "p01": {
-      "title": "In the digital age, everyone speaks. But who is truly heard?",
+      "title": "BetMomo — when every bet becomes an experience.",
       "category": "Strategy & Branding",
       "descriptions": [
-        "Borders have vanished. In African markets and beyond, competition has become global, intense and immediate.",
-        "Your customers are drowning in thousands of offers every day. The question is no longer whether you exist — but whether you are chosen."
+        "Repositioning BetMomo as the reference for sports betting in Central Africa, with a strong, memorable and culturally grounded identity.",
+        "From brand strategy to content creation, every touchpoint tells the same story: controlled adrenaline."
       ],
       "taglines": [
         "Visibility is the new stage of invisibility."
       ]
     },
     "p02": {
-      "title": "Creativity in service of commercial performance.",
+      "title": "Woodin — weaving digital into the DNA of an iconic brand.",
       "category": "Motion & Digital",
       "descriptions": [
-        "Campaigns that capture attention, engage audiences and generate measurable results in a market saturated with images and messages."
+        "Woodin has embodied African elegance for decades. Our mission: extend that excellence into the digital space without betraying its heritage.",
+        "Social campaigns, motion design and brand experiences built for a modern audience that proudly claims its roots."
       ],
       "taglines": [
-        "To create is to convince before speaking.",
-        "Movement is proof of life."
+        "The fabric is the identity.",
+        "The digital is the future."
       ]
     },
     "p03": {
-      "title": "A user experience that converts from the very first glance.",
-      "category": "Web & Product",
+      "title": "Le Lagon Club — a premium experience, from first glance to last sip.",
+      "category": "Branding & Events",
       "descriptions": [
-        "From design to development, interfaces crafted to guide, retain and transform every visitor into a loyal customer.",
-        "Every interaction is an opportunity. Every friction is a loss."
+        "Building the visual universe of a high-end club means translating a luxury promise into every pixel, every print, every moment.",
+        "Visual identity, communication materials and content strategy for a discerning clientele."
       ],
       "taglines": [
-        "UX is the promise kept to your customer."
+        "Exclusivity is lived, not explained."
       ]
     },
     "p04": {
-      "title": "Annual reports that tell a story, not just numbers.",
-      "category": "Print & Editorial",
+      "title": "H-Choice — guiding every choice toward the right decision.",
+      "category": "Web & Product",
       "descriptions": [
-        "Transforming complex data into compelling visual narrative — a communication tool as much as a legal document."
+        "A guidance platform designed to simplify complex decisions in a market saturated with options.",
+        "User-centred UX design, clear information architecture and optimised conversion flows."
       ],
       "taglines": [
-        "One report, one reputation.",
-        "Numbers speak. Design convinces."
+        "Choose better, live better."
       ]
     },
     "p05": {
-      "title": "A mobile app built for the Africa of today.",
-      "category": "Mobile Product",
+      "title": "Spicy — the flavour of a brand that dares.",
+      "category": "Strategy & Branding",
       "descriptions": [
-        "Designing for unstable connections, varied screens and real-world usage — innovation that starts from the ground.",
-        "Because the right product is the one that works where your users actually live."
+        "Spicy claims the difference. Our work: build a brand identity as punchy as its name — bold, consistent, unforgettable.",
+        "From naming to design system, through to digital editorial strategy."
       ],
       "taglines": [
-        "The right product, in the right place."
+        "To spice things up is to stand out."
       ]
     },
     "p06": {
-      "title": "Immersing the audience in an unforgettable experience.",
-      "category": "Immersive & Events",
+      "title": "Accent Media — amplifying every message, reaching every audience.",
+      "category": "Media & Communication",
       "descriptions": [
-        "Scenographied spaces, interactive installations — creating moments that anchor the brand in collective memory."
+        "Supporting a media agency through its digital transformation with communication tools that reflect its premium positioning.",
+        "Content strategy, editorial redesign and high-definition commercial production."
       ],
       "taglines": [
-        "Space becomes message.",
-        "The lived surpasses the seen."
+        "The right message, at the right time.",
+        "Impact is a science."
+      ]
+    },
+    "p07": {
+      "title": "Cimencam — building trust as much as structures.",
+      "category": "Institutional & Print",
+      "descriptions": [
+        "For a major player in the construction sector, institutional communication must inspire as much as it informs.",
+        "Annual reports, corporate materials and B2B campaigns designed to reinforce the credibility of an industrial leader."
+      ],
+      "taglines": [
+        "To build is also to tell a story."
       ]
     }
   }
