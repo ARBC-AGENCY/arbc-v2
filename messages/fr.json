@@ -41,26 +41,22 @@
     "annotation_line1": "Nos",
     "annotation_line2": "Projets",
     "p01": {
-      "title": "BetMomo — quand chaque mise devient une expérience.",
+      "title": "À l’ère du digital, tout le monde parle. Mais qui est vraiment écouté ?",
       "category": "Stratégie & Branding",
       "descriptions": [
-        "Repositionner BetMomo comme la référence des paris sportifs en Afrique centrale, avec une identité forte, mémorable et culturellement ancrée.",
-        "De la stratégie de marque à la création de contenu, chaque touchpoint raconte la même histoire : l'adrénaline maîtrisée."
+        "Les frontières ont disparu, et sur les marchés africains comme ailleurs, la concurrence est devenue globale, intense et immédiate. Vos clients sont noyés sous des milliers d’o res chaque jour :"
       ],
-      "taglines": [
-        "La visibilité est le nouveau stade de l'invisibilité."
-      ]
+      "taglines": ["La visibilité est le nouveau ", "stade de l'invisibilité."]
     },
     "p02": {
       "title": "Woodin — tisser le digital dans l'ADN d'une marque iconique.",
       "category": "Motion & Digital",
       "descriptions": [
-        "Woodin incarne l'élégance africaine depuis des décennies. Notre mission : prolonger cette excellence dans l'univers digital sans trahir son héritage.",
-        "Campagnes sociales, motion design et expériences de marque pensées pour une audience moderne qui revendique ses racines."
+        "Ce qui fait la différence aujourd’hui, ce n'est pas le volume… <i><b><span style=\"font-size: var(--text-md);\">mais la capacité à comprendre son marché, anticiper ses dynamiques et y répondre avec créativité et précision.</i></b></span>"
       ],
       "taglines": [
-        "Le tissu, c'est l'identité.",
-        "Le digital, c'est l'avenir."
+        "<span style=\"font-size: var(--text-sm); font-style: normal; font-weight: 400;\">Ceux qui émergent ne crient pas plus fort.</span>",
+        "<span style=\"font-size: var(--text-md); line-height: 1;\">Ils changent la donne et prennent une longueur d’avance</span>"
       ]
     },
     "p03": {
@@ -71,7 +67,8 @@
         "Identité visuelle, supports de communication et stratégie de contenu pour une clientèle exigeante."
       ],
       "taglines": [
-        "L'exclusivité se vit, elle ne s'explique pas."
+        "Pour vous, nous créons des idées qui bousculent <b><span style=\"font-size: var(--text-md); line-height: 1; font-style: italic;\">les codes, captivent les audiences et résonnent avec les réalités africaines.",
+        "Parce qu'aujourd'hui, communiquer ne suffit plus. Il faut impacter<b><span style=\"font-size: var(--text-sm); line-height: 1; font-style: italic;\"> durablement."
       ]
     },
     "p04": {
@@ -81,9 +78,7 @@
         "Une plateforme de conseil et d'orientation pensée pour simplifier des décisions complexes dans un marché saturé d'options.",
         "Design UX centré utilisateur, architecture de l'information claire et parcours de conversion optimisés."
       ],
-      "taglines": [
-        "Choisir mieux, vivre mieux."
-      ]
+      "taglines": ["Choisir mieux, vivre mieux."]
     },
     "p05": {
       "title": "Spicy — la saveur d'une marque qui ose.",
@@ -92,9 +87,7 @@
         "Spicy revendique la différence. Notre travail : construire une identité de marque aussi percutante que son nom — audacieuse, cohérente, inoubliable.",
         "Du naming au design system, en passant par la stratégie éditoriale digitale."
       ],
-      "taglines": [
-        "Pimenter, c'est se distinguer."
-      ]
+      "taglines": ["Pimenter, c'est se distinguer."]
     },
     "p06": {
       "title": "Accent Média — amplifier chaque message, toucher chaque audience.",
@@ -115,9 +108,7 @@
         "Pour un acteur majeur du secteur de la construction, la communication institutionnelle doit inspirer autant qu'informer.",
         "Rapports annuels, supports corporate et campagnes B2B pensés pour renforcer la crédibilité d'un leader industriel."
       ],
-      "taglines": [
-        "Construire, c'est aussi raconter."
-      ]
+      "taglines": ["Construire, c'est aussi raconter."]
     }
   }
 }

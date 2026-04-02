@@ -41,26 +41,22 @@
     "annotation_line1": "Our",
     "annotation_line2": "Projects",
     "p01": {
-      "title": "BetMomo — when every bet becomes an experience.",
+      "title": "In the digital age, everyone talks. But who is really being listened to?",
       "category": "Strategy & Branding",
       "descriptions": [
-        "Repositioning BetMomo as the reference for sports betting in Central Africa, with a strong, memorable and culturally grounded identity.",
-        "From brand strategy to content creation, every touchpoint tells the same story: controlled adrenaline."
+        "Borders have disappeared, and in African markets, as elsewhere, competition has become global, intense, and immediate. Your customers are overwhelmed by thousands of offers every day."
       ],
-      "taglines": [
-        "Visibility is the new stage of invisibility."
-      ]
+      "taglines": ["Visibility is the new", "stage of invisibility."]
     },
     "p02": {
       "title": "Woodin — weaving digital into the DNA of an iconic brand.",
       "category": "Motion & Digital",
       "descriptions": [
-        "Woodin has embodied African elegance for decades. Our mission: extend that excellence into the digital space without betraying its heritage.",
-        "Social campaigns, motion design and brand experiences built for a modern audience that proudly claims its roots."
+        "What makes the difference today is not volume… <i><b><span style=\"font-size: var(--text-md);\">but the ability to understand your market, anticipate its dynamics and respond to them with creativity and precision.</i></b> "
       ],
       "taglines": [
-        "The fabric is the identity.",
-        "The digital is the future."
+        "<span style=\"font-weight: 700;\">Those who emerge don't shout any louder.</span>",
+        "They are changing the game and gaining a significant advantage."
       ]
     },
     "p03": {
@@ -71,7 +67,8 @@
         "Visual identity, communication materials and content strategy for a discerning clientele."
       ],
       "taglines": [
-        "Exclusivity is lived, not explained."
+        "For you, we create ideas that challenges <b><span style=\"font-size: var(--text-md); line-height: 1; font-style: italic;\"> conventions, captivate audiences, and resonate with African realities.",
+        "Because today, communication is no longer enough. We need to have a <b><span style=\"font-size: var(--text-sm); line-height: 1; font-style: italic;\"> lasting impact."
       ]
     },
     "p04": {
@@ -81,9 +78,7 @@
         "A guidance platform designed to simplify complex decisions in a market saturated with options.",
         "User-centred UX design, clear information architecture and optimised conversion flows."
       ],
-      "taglines": [
-        "Choose better, live better."
-      ]
+      "taglines": ["Choose better, live better."]
     },
     "p05": {
       "title": "Spicy — the flavour of a brand that dares.",
@@ -92,9 +87,7 @@
         "Spicy claims the difference. Our work: build a brand identity as punchy as its name — bold, consistent, unforgettable.",
         "From naming to design system, through to digital editorial strategy."
       ],
-      "taglines": [
-        "To spice things up is to stand out."
-      ]
+      "taglines": ["To spice things up is to stand out."]
     },
     "p06": {
       "title": "Accent Media — amplifying every message, reaching every audience.",
@@ -115,9 +108,7 @@
         "For a major player in the construction sector, institutional communication must inspire as much as it informs.",
         "Annual reports, corporate materials and B2B campaigns designed to reinforce the credibility of an industrial leader."
       ],
-      "taglines": [
-        "To build is also to tell a story."
-      ]
+      "taglines": ["To build is also to tell a story."]
     }
   }
 }
