@@ -20,7 +20,9 @@ export default function PageTransition() {
         <div className="loading-words">
           <h2 data-key="home">{t("home")}</h2>
           <h2 data-key="about">{t("about")}</h2>
+          <h2 data-key="services">{t("services")}</h2>
           <h2 data-key="projects">{t("projects")}</h2>
+          <h2 data-key="portfolio">{t("portfolio")}</h2>
           {/* Dynamic slot — text set at runtime for project names etc. */}
           <h2 data-key="__dynamic__"></h2>
         </div>

@@ -7,6 +7,7 @@ import PageTransition from "@/components/layout/PageTransition";
 import PageWrapper from "@/components/layout/PageWrapper";
 import BackgroundSpotlight from "@/components/layout/BackgroundSpotlight";
 import Header from "@/components/layout/Header";
+import Nav from "@/components/layout/Nav";
 import "../globals.css";
 
 export async function generateMetadata({
@@ -49,7 +50,7 @@ export default async function LocaleLayout({
               <PageTransition />
               <BackgroundSpotlight />
               <Header />
-              <PageWrapper>{children}</PageWrapper>
+              <PageWrapper overlay={<Nav />}>{children}</PageWrapper>
             </TransitionProvider>
           </Providers>
         </NextIntlClientProvider>

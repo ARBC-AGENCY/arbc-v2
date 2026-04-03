@@ -233,7 +233,7 @@ function MagneticCTA({
       }}
     >
       <Link
-        href="/about"
+        href="/projects"
         style={{
           display: "flex",
           height: "100%",

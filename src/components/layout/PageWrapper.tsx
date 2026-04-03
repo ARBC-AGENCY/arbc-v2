@@ -10,8 +10,11 @@ import { useRouter } from "@/i18n/navigation";
 
 export default function PageWrapper({
   children,
+  overlay,
 }: {
   children: React.ReactNode;
+  /** Fixed-position UI (e.g. Nav) that needs to read PageReadyContext. */
+  overlay?: React.ReactNode;
 }) {
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
@@ -51,6 +54,7 @@ export default function PageWrapper({
   return (
     <PageReadyContext.Provider value={loaded}>
       {!loaded && <Loader onComplete={handleLoaderComplete} />}
+      {overlay}
       {/* visibility (not opacity) keeps .once-in elements in the layout and
           targetable by GSAP before the loader finishes */}
       <div style={{ visibility: loaded ? "visible" : "hidden" }}>

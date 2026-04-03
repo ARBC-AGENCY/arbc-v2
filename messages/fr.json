@@ -8,6 +8,7 @@
     "about": "À propos",
     "services": "Services",
     "projects": "Projets",
+    "portfolio": "Portfolio",
     "contact": "Contact"
   },
   "Home": {
@@ -33,7 +34,9 @@
   "PageTransition": {
     "home": "Accueil",
     "about": "À propos",
-    "projects": "Projets"
+    "services": "Services",
+    "projects": "Projets",
+    "portfolio": "Portfolio"
   },
   "Projects": {
     "viewProject": "Voir le projet →",
