@@ -1,12 +1,14 @@
 import { useTranslations } from "next-intl";
 import PageAnnotation from "@/components/layout/PageAnnotation";
 import HomeHero from "@/components/sections/HomeHero";
+import IntroGate from "@/components/layout/IntroGate";
 
 export default function HomePage() {
   const t = useTranslations("Home");
 
   return (
     <main data-page-name="home">
+      <IntroGate />
       <div className="once-in">
         <HomeHero
           b1p1={t("b1_p1")}

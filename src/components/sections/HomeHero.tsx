@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import { gsap } from "@/lib/gsap";
-import { Link } from "@/i18n/navigation";
+import { useTransitionContext } from "@/context/TransitionContext";
 import TextType from "@/components/ui/TextType";
 import { usePageReady } from "@/context/page-ready";
 
@@ -132,6 +132,7 @@ function MagneticCTA({
   animate: boolean;
   textColor: string;
 }) {
+  const { navigate } = useTransitionContext();
   const outerRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
@@ -232,13 +233,18 @@ function MagneticCTA({
         willChange: "transform",
       }}
     >
-      <Link
-        href="/projects"
+      <button
+        onClick={() => navigate("/projects", "projects")}
         style={{
           display: "flex",
+          width: "100%",
           height: "100%",
           alignItems: "center",
           justifyContent: "center",
+          background: "none",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
         }}
       >
         {/* Orange fill — oval that starts below, wipes up on hover */}
@@ -275,7 +281,7 @@ function MagneticCTA({
         >
           {label}
         </span>
-      </Link>
+      </button>
     </div>
   );
 }
