@@ -8,6 +8,56 @@ import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import ProjectSectionNav from "@/components/layout/ProjectSectionNav";
 import PageAnnotation from "@/components/layout/PageAnnotation";
+import ArrowDecor from "@/components/ui/ArrowDecor";
+
+// ── Text rendering helpers ────────────────────────────────────────────────────
+
+/** Renders any single string field with full HTML support (<span>, <br>, etc.) */
+function Html({
+  as: Tag = "span",
+  html,
+  style,
+  className,
+}: {
+  as?: React.ElementType;
+  html: string;
+  style?: React.CSSProperties;
+  className?: string;
+}) {
+  return (
+    <Tag
+      dangerouslySetInnerHTML={{ __html: html }}
+      style={style}
+      className={className}
+    />
+  );
+}
+
+/**
+ * Renders a body field as one or more paragraphs.
+ * Pass `t.raw("key") as string[]` — each array element becomes a <p> with HTML support.
+ * A plain string is also accepted and treated as a single paragraph.
+ */
+function BodyParagraphs({
+  content,
+  style,
+}: {
+  content: string | string[];
+  style?: React.CSSProperties;
+}) {
+  const paras = Array.isArray(content) ? content : [content];
+  return (
+    <>
+      {paras.map((p, i) => (
+        <p
+          key={i}
+          dangerouslySetInnerHTML={{ __html: p }}
+          style={{ ...style, marginTop: i > 0 ? "0.85em" : 0 }}
+        />
+      ))}
+    </>
+  );
+}
 
 // ── Image assets ────────────────────────────────────────────────────────────
 import acm00 from "@/assets/images/acm/ACM-00.webp";
@@ -15,10 +65,10 @@ import acm01 from "@/assets/images/acm/ACM-01.webp";
 import acm02 from "@/assets/images/acm/ACM-02.webp";
 import acm03 from "@/assets/images/acm/ACM-03.webp";
 import acm04 from "@/assets/images/acm/ACM-04.webp";
-import billboard from "@/assets/images/acm/Billboard.webp";
 import sem1 from "@/assets/images/acm/Sem1.webp";
 import sem2 from "@/assets/images/acm/Sem2.webp";
 import sem3 from "@/assets/images/acm/Sem3.webp";
+import billboard from "@/assets/images/acm/Billboard.webp";
 
 const NUM_SECTIONS = 4;
 const ORANGE = "#e7501e";
@@ -52,10 +102,27 @@ const body = (color = "rgba(255,255,255,0.72)"): React.CSSProperties => ({
 });
 
 // ── Section 1 — Brand Presentation ──────────────────────────────────────────
-function Section1({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentMedia">>; isDark: boolean }) {
+function Section1({
+  t,
+  isDark,
+}: {
+  t: ReturnType<typeof useTranslations<"AccentMedia">>;
+  isDark: boolean;
+}) {
   const bg = isDark ? "#0f0f0f" : "#f5f0eb";
   const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
-  const textMuted   = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
+  const textMuted = isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.40)";
+  const cardBorder = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)";
+
+  const entities = [
+    {
+      name: t("s1.e1_name"),
+      desc: t("s1.e1_desc"),
+      tag: "AMTech",
+      logo: acm01,
+    },
+    { name: t("s1.e2_name"), desc: t("s1.e2_desc"), tag: "AMP", logo: acm02 },
+  ];
 
   return (
     <section
@@ -63,113 +130,184 @@ function Section1({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
         width: "100vw",
         height: "100vh",
         flexShrink: 0,
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gridTemplateRows: "1fr",
+        display: "flex",
+        flexDirection: "row",
         backgroundColor: bg,
         overflow: "hidden",
       }}
     >
-      {/* Left — text card */}
+      {/* ① Arrow decor — far left edge */}
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "8rem 5rem 6rem",
+          alignItems: "center",
+          padding: "0 1.25rem 0 1.75rem",
+          marginLeft: "4rem",
+          marginRight: "2rem",
+          flexShrink: 0,
         }}
       >
-        <p style={label(textMuted)}>{t("s1.label")}</p>
-        <h1 style={{ ...heading(textPrimary), fontSize: "clamp(1.8rem, 3.5vw, 3.2rem)", marginBottom: "2rem" }}>
-          {t("s1.title")}
-        </h1>
-        <p style={body(isDark ? "rgba(255,255,255,0.65)" : "rgba(0,0,0,0.6)")}>{t("s1.body")}</p>
-        <p
+        <ArrowDecor direction="down" size={14} />
+      </div>
+
+      {/* Orange text card */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          width: "35%",
+          flexShrink: 0,
+          padding: "10rem 0",
+        }}
+      >
+        <div
           style={{
-            ...body(isDark ? "rgba(255,255,255,0.40)" : "rgba(0,0,0,0.38)"),
-            marginTop: "1.5rem",
-            fontSize: "0.78rem",
-            borderLeft: `2px solid ${ORANGE}`,
-            paddingLeft: "1rem",
+            backgroundColor: ORANGE,
+            padding: "3rem 5rem",
+            height: "72%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          {t("s1.sub")}
-        </p>
-
-        {/* Entity tags */}
-        <div style={{ display: "flex", gap: "0.75rem", marginTop: "2.5rem" }}>
-          {["AMTech", "AMP"].map((name) => (
-            <span
-              key={name}
-              style={{
-                display: "inline-block",
-                padding: "0.35rem 1rem",
-                borderRadius: "9999px",
-                border: `1px solid ${isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)"}`,
-                fontFamily: "var(--font-body)",
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                color: textPrimary,
-              }}
-            >
-              {name}
-            </span>
-          ))}
+          <Html
+            as="h1"
+            html={t("s1.title")}
+            style={{
+              fontFamily: "var(--font-title)",
+              fontSize: "clamp(1.4rem, 2.6vw, 2.6rem)",
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+              color: "rgba(0,0,0,0.92)",
+              marginBottom: "1.5rem",
+            }}
+          />
+          <BodyParagraphs
+            content={t.raw("s1.body") as string | string[]}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "var(--text-sm)",
+              lineHeight: 1.55,
+              fontWeight: 600,
+              color: "rgba(0,0,0,0.75)",
+            }}
+          />
         </div>
       </div>
 
-      {/* Right — billboard hero image */}
-      <div style={{ position: "relative", overflow: "hidden" }}>
+      {/* Central kiosk image — portrait, centred, bleeds top & bottom */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "end",
+          justifyContent: "center",
+          overflow: "hidden",
+          height: "100%",
+          marginLeft: "-15rem",
+        }}
+      >
         <Image
-          src={billboard}
-          alt="Accent Media billboard"
-          fill
-          style={{ objectFit: "cover", objectPosition: "center" }}
-          sizes="50vw"
-          priority
-        />
-        {/* Orange tint overlay */}
-        <div
+          src={acm00}
+          alt="Accent Media kiosk"
           style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(135deg, rgba(231,80,30,0.18) 0%, transparent 60%)",
-            pointerEvents: "none",
+            width: "auto",
+            maxHeight: "100%",
+            maxWidth: "100%",
+            objectFit: "contain",
+            aspectRatio: 2449 / 3327,
           }}
         />
-        {/* ACM-00 inset photo — bottom left corner */}
-        <div
+      </div>
+
+      {/* ④ Right — intro text + entity cards */}
+      <div
+        style={{
+          width: "30%",
+          flexShrink: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "4rem 4rem 4rem 0rem",
+          gap: "1.5rem",
+        }}
+      >
+        {/* Intro sentence */}
+        <p
           style={{
-            position: "absolute",
-            bottom: "2rem",
-            left: "2rem",
-            width: "28%",
-            aspectRatio: "1 / 1",
-            borderRadius: "0.75rem",
-            overflow: "hidden",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.40)",
-            border: "2px solid rgba(255,255,255,0.12)",
+            fontFamily: "var(--font-body)",
+            fontSize: "var(--text-sm)",
+            lineHeight: 1.6,
+            color: textMuted,
           }}
         >
-          <Image
-            src={acm00}
-            alt="Accent Media brand"
-            fill
-            style={{ objectFit: "cover" }}
-            sizes="14vw"
-          />
-        </div>
+          {t("s1.entities_intro")}
+        </p>
+
+        {/* Entity rows */}
+        {entities.map((e) => (
+          <div
+            key={e.tag}
+            style={{
+              display: "flex",
+              position: "relative",
+              alignItems: "center",
+              gap: "1.25rem",
+              padding: "1.25rem 1.5rem",
+              border: `1px solid ${cardBorder}`,
+            }}
+          >
+            {/* Text */}
+            <div style={{ flex: 1 }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  color: textPrimary,
+                  marginBottom: "0.35rem",
+                }}
+              >
+                {e.name}
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.9rem",
+                  lineHeight: 1.55,
+                  color: textMuted,
+                }}
+              >
+                {e.desc}
+              </p>
+            </div>
+            {/* Logo image */}
+            <Image
+              src={e.logo}
+              alt={e.tag}
+              width={100}
+              style={{ objectFit: "contain", flexShrink: 0 }}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
 // ── Section 2 — The Challenge ────────────────────────────────────────────────
-function Section2({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentMedia">>; isDark: boolean }) {
-  const bg = isDark ? "#141414" : "#faf8f6";
+function Section2({
+  t,
+  isDark,
+}: {
+  t: ReturnType<typeof useTranslations<"AccentMedia">>;
+  isDark: boolean;
+}) {
+  const bg = isDark ? "#0f0f0f" : "#f5f0eb";
   const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
-  const textMuted   = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
+  const textMuted = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
 
   const stats = [
     { value: t("s2.stat1_value"), lbl: t("s2.stat1_label") },
@@ -184,28 +322,40 @@ function Section2({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
         height: "100vh",
         flexShrink: 0,
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns: "1fr 0.6fr",
         backgroundColor: bg,
         overflow: "hidden",
+        padding: "5rem",
       }}
     >
       {/* Left — large image */}
-      <div style={{ position: "relative", overflow: "hidden" }}>
+      <div
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <Image
-          src={acm01}
+          src={billboard}
           alt="Accent Media context"
           fill
-          style={{ objectFit: "cover", objectPosition: "center top" }}
-          sizes="50vw"
+          style={{ objectFit: "contain", objectPosition: "center" }}
+          sizes="60vw"
         />
       </div>
 
       {/* Right — two stacked cards */}
       <div
         style={{
-          display: "grid",
-          gridTemplateRows: "1fr 1fr",
-          gap: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          height: "100%",
+          gap: "6rem",
         }}
       >
         {/* Top — orange challenge card */}
@@ -216,53 +366,38 @@ function Section2({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
             flexDirection: "column",
             justifyContent: "center",
             padding: "3rem 3.5rem",
+            width: "70%",
+            marginLeft: "-4rem",
+            zIndex: 1,
           }}
         >
-          <p style={label("rgba(255,255,255,0.65)")}>{t("s2.label")}</p>
-          <h2 style={{ ...heading("#ffffff"), fontSize: "clamp(1.2rem, 2.2vw, 2rem)" }}>
-            {t("s2.title")}
-          </h2>
-          {/* Stats row */}
-          <div style={{ display: "flex", gap: "2.5rem", marginTop: "1.5rem" }}>
-            {stats.map((s) => (
-              <div key={s.lbl}>
-                <p
-                  style={{
-                    fontFamily: "var(--font-title)",
-                    fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)",
-                    fontWeight: 700,
-                    color: "#ffffff",
-                    lineHeight: 1,
-                  }}
-                >
-                  {s.value}
-                </p>
-                <p style={{ ...label("rgba(255,255,255,0.70)"), marginBottom: 0, marginTop: "0.3rem" }}>
-                  {s.lbl}
-                </p>
-              </div>
-            ))}
-          </div>
+          <Html
+            as="h2"
+            html={t("s2.title")}
+            style={{
+              ...heading("#ffffff"),
+              fontSize: "clamp(1.2rem, 2.2vw, 2rem)",
+            }}
+          />
+
+          <BodyParagraphs
+            content={t.raw("s2.body") as string | string[]}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "var(--text-sm)",
+              lineHeight: 1.55,
+              fontWeight: 600,
+              color: "rgba(0,0,0,0.75)",
+            }}
+          />
         </div>
 
         {/* Bottom — image */}
         <div style={{ position: "relative", overflow: "hidden" }}>
           <Image
-            src={acm02}
+            src={acm03}
             alt="Accent Media team"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            sizes="50vw"
-          />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: isDark
-                ? "linear-gradient(to top, rgba(20,20,20,0.5) 0%, transparent 50%)"
-                : "linear-gradient(to top, rgba(250,248,246,0.4) 0%, transparent 50%)",
-              pointerEvents: "none",
-            }}
+            style={{ objectFit: "contain", objectPosition: "center", height: "25rem" }}
           />
         </div>
       </div>
@@ -271,15 +406,33 @@ function Section2({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
 }
 
 // ── Section 3 — Agency Response ──────────────────────────────────────────────
-function Section3({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentMedia">>; isDark: boolean }) {
+function Section3({
+  t,
+  isDark,
+}: {
+  t: ReturnType<typeof useTranslations<"AccentMedia">>;
+  isDark: boolean;
+}) {
   const bg = isDark ? "#0a0a0a" : "#f0ede8";
   const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
-  const textMuted   = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
+  const textMuted = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
 
   const cols = [
-    { title: t("s3.col1_title"), body: t("s3.col1_body"), img: acm03 },
-    { title: t("s3.col2_title"), body: t("s3.col2_body"), img: acm04 },
-    { title: t("s3.col3_title"), body: t("s3.col3_body"), img: sem1  },
+    {
+      title: t("s3.col1_title"),
+      body: t.raw("s3.col1_body") as string | string[],
+      img: acm03,
+    },
+    {
+      title: t("s3.col2_title"),
+      body: t.raw("s3.col2_body") as string | string[],
+      img: acm04,
+    },
+    {
+      title: t("s3.col3_title"),
+      body: t.raw("s3.col3_body") as string | string[],
+      img: sem1,
+    },
   ];
 
   return (
@@ -296,7 +449,7 @@ function Section3({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
     >
       {/* Top label */}
       <div style={{ padding: "5rem 5rem 0" }}>
-        <p style={label(textMuted)}>{t("s3.label")}</p>
+        <Html as="p" html={t("s3.label")} style={label(textMuted)} />
       </div>
 
       {/* 3-column grid */}
@@ -316,32 +469,36 @@ function Section3({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
             style={{
               display: "flex",
               flexDirection: "column",
-              borderLeft: i > 0 ? `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}` : undefined,
+              borderLeft:
+                i > 0
+                  ? `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`
+                  : undefined,
               paddingLeft: i > 0 ? "2.5rem" : 0,
               paddingRight: i < 2 ? "2.5rem" : 0,
             }}
           >
             {/* Arrow + title */}
             <div style={{ marginBottom: "1.5rem" }}>
-              <svg
-                viewBox="0 0 24 24"
-                width="28"
-                height="28"
-                fill="none"
-                stroke={ORANGE}
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <ArrowDecor
+                direction="right"
+                size={20}
                 style={{ marginBottom: "1rem" }}
-              >
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-              <h3 style={{ ...heading(textPrimary), fontSize: "clamp(1rem, 1.8vw, 1.5rem)", marginBottom: "0.75rem" }}>
-                {col.title}
-              </h3>
-              <p style={body(isDark ? "rgba(255,255,255,0.58)" : "rgba(0,0,0,0.55)")}>
-                {col.body}
-              </p>
+              />
+              <Html
+                as="h3"
+                html={col.title}
+                style={{
+                  ...heading(textPrimary),
+                  fontSize: "clamp(1rem, 1.8vw, 1.5rem)",
+                  marginBottom: "0.75rem",
+                }}
+              />
+              <BodyParagraphs
+                content={col.body}
+                style={body(
+                  isDark ? "rgba(255,255,255,0.58)" : "rgba(0,0,0,0.55)",
+                )}
+              />
             </div>
 
             {/* Column image */}
@@ -370,15 +527,33 @@ function Section3({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
 }
 
 // ── Section 4 — Results ──────────────────────────────────────────────────────
-function Section4({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentMedia">>; isDark: boolean }) {
+function Section4({
+  t,
+  isDark,
+}: {
+  t: ReturnType<typeof useTranslations<"AccentMedia">>;
+  isDark: boolean;
+}) {
   const bg = isDark ? "#111111" : "#f7f5f2";
   const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
-  const textMuted   = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
+  const textMuted = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
 
   const results = [
-    { title: t("s4.r1_title"), body: t("s4.r1_body"), img: sem1 },
-    { title: t("s4.r2_title"), body: t("s4.r2_body"), img: sem2 },
-    { title: t("s4.r3_title"), body: t("s4.r3_body"), img: sem3 },
+    {
+      title: t("s4.r1_title"),
+      body: t.raw("s4.r1_body") as string | string[],
+      img: sem1,
+    },
+    {
+      title: t("s4.r2_title"),
+      body: t.raw("s4.r2_body") as string | string[],
+      img: sem2,
+    },
+    {
+      title: t("s4.r3_title"),
+      body: t.raw("s4.r3_body") as string | string[],
+      img: sem3,
+    },
   ];
 
   return (
@@ -394,7 +569,11 @@ function Section4({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
         padding: "5rem",
       }}
     >
-      <p style={{ ...label(textMuted), marginBottom: "3rem" }}>{t("s4.label")}</p>
+      <Html
+        as="p"
+        html={t("s4.label")}
+        style={{ ...label(textMuted), marginBottom: "3rem" }}
+      />
 
       <div
         style={{
@@ -414,11 +593,19 @@ function Section4({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
               borderRadius: "1rem",
               overflow: "hidden",
               border: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
-              backgroundColor: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
+              backgroundColor: isDark
+                ? "rgba(255,255,255,0.03)"
+                : "rgba(0,0,0,0.02)",
             }}
           >
             {/* Image */}
-            <div style={{ position: "relative", height: "55%", overflow: "hidden" }}>
+            <div
+              style={{
+                position: "relative",
+                height: "55%",
+                overflow: "hidden",
+              }}
+            >
               <Image
                 src={r.img}
                 alt={r.title}
@@ -439,8 +626,18 @@ function Section4({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
               />
             </div>
             {/* Text */}
-            <div style={{ padding: "1.75rem", flex: 1, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              <h3
+            <div
+              style={{
+                padding: "1.75rem",
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
+              <Html
+                as="h3"
+                html={r.title}
                 style={{
                   fontFamily: "var(--font-title)",
                   fontSize: "clamp(1rem, 1.5vw, 1.3rem)",
@@ -448,12 +645,13 @@ function Section4({ t, isDark }: { t: ReturnType<typeof useTranslations<"AccentM
                   color: textPrimary,
                   lineHeight: 1.2,
                 }}
-              >
-                {r.title}
-              </h3>
-              <p style={body(isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)")}>
-                {r.body}
-              </p>
+              />
+              <BodyParagraphs
+                content={r.body}
+                style={body(
+                  isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)",
+                )}
+              />
             </div>
           </div>
         ))}
@@ -476,12 +674,7 @@ export default function AccentMedia() {
 
   const isDark = mounted ? resolvedTheme === "dark" : true;
 
-  const sectionLabels = [
-    t("nav.s1"),
-    t("nav.s2"),
-    t("nav.s3"),
-    t("nav.s4"),
-  ];
+  const sectionLabels = [t("nav.s1"), t("nav.s2"), t("nav.s3"), t("nav.s4")];
 
   // Horizontal scroll via GSAP ScrollTrigger pin
   useEffect(() => {
@@ -499,7 +692,7 @@ export default function AccentMedia() {
         onUpdate: (self) => {
           const idx = Math.min(
             Math.floor(self.progress * NUM_SECTIONS),
-            NUM_SECTIONS - 1
+            NUM_SECTIONS - 1,
           );
           setActiveSection(idx);
         },
@@ -522,7 +715,9 @@ export default function AccentMedia() {
   const handleNavSelect = (index: number) => {
     const outer = outerRef.current;
     if (!outer) return;
-    const triggers = ScrollTrigger.getAll().filter((st) => st.vars.trigger === outer);
+    const triggers = ScrollTrigger.getAll().filter(
+      (st) => st.vars.trigger === outer,
+    );
     if (!triggers.length) return;
     const st = triggers[0];
     const targetProgress = index / Math.max(NUM_SECTIONS - 1, 1);
@@ -552,18 +747,20 @@ export default function AccentMedia() {
       </div>
 
       {/* Section nav + page annotation — portalled to body so position:fixed
-          isn't broken by ScrollSmoother's transform on #smooth-content */}
-      {typeof document !== "undefined" && createPortal(
-        <>
-          <ProjectSectionNav
-            sections={sectionLabels}
-            activeIndex={activeSection}
-            onSelect={handleNavSelect}
-          />
-          <PageAnnotation line1="Accent" line2="Media" />
-        </>,
-        document.body
-      )}
+          isn't broken by ScrollSmoother's transform on #smooth-content.
+          Only rendered after hydration (mounted) to avoid SSR/client mismatch. */}
+      {mounted &&
+        createPortal(
+          <>
+            <ProjectSectionNav
+              sections={sectionLabels}
+              activeIndex={activeSection}
+              onSelect={handleNavSelect}
+            />
+            <PageAnnotation line1="Accent" line2="Media" />
+          </>,
+          document.body,
+        )}
     </main>
   );
 }

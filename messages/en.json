@@ -48,14 +48,26 @@
     "close": "Close",
     "s1": {
       "label": "01 — Brand Presentation",
-      "title": "Accent Media — amplifying every message, reaching every audience.",
-      "body": "Accent Media is a leading media agency specialising in outdoor advertising, digital media, and integrated communication campaigns across Cameroon and Central Africa.",
-      "sub": "Two entities, one vision: AMTech handles the technical infrastructure while AMP drives the media strategy."
+      "title": "Brand Presentation",
+      "body": [
+        "Established in Central Africa since 2016, Accent Media Group has established itself as a key player in the digital transformation on the continent.",
+        "Initially recognized for its expertise in advertising sales, the group has undergone a strategic transformation to meet the new challenges of the market."
+      ],
+      "sub": [
+        "Two entities, one vision: <strong>AMTech</strong> handles the technical infrastructure while <strong>AMP</strong> drives the media strategy."
+      ],
+      "entities_intro": "This mutation led to the creation of two distinct and specialised entities:",
+      "e1_name": "Accent Media and Technology (AMT)",
+      "e1_desc": "Specialist in digital transformation for businesses.",
+      "e2_name": "Accent Media Projet (AMP)",
+      "e2_desc": "Focused on urban space development through the deployment of merchant kiosks."
     },
     "s2": {
       "label": "02 — The Challenge",
-      "title": "How do you position a media agency in a market that underestimates its own value?",
-      "body": "Accent Media had the reach, the network, and the expertise — but its visual communication did not reflect its premium standing. The agency needed tools that could speak to top-tier clients and convert attention into partnership.",
+      "title": "The agency's challenge",
+      "body": [
+        "Officially announce the internal restructuring of ACCENT MEDIA and its split into two separate entities, while promoting the specific service offering of each new structure to its respective customer segments."
+      ],
       "stat1_value": "3",
       "stat1_label": "Markets served",
       "stat2_value": "200+",
@@ -66,20 +78,34 @@
     "s3": {
       "label": "03 — Our Response",
       "col1_title": "Visual Identity",
-      "col1_body": "A refined visual system built on authority and clarity — monogram, type hierarchy, and a brand palette that stands out in every format.",
+      "col1_body": [
+        "A refined visual system built on authority and clarity — monogram, type hierarchy, and a brand palette that stands out in every format."
+      ],
       "col2_title": "Offer Pedagogy",
-      "col2_body": "We structured the agency's offer into clear, client-facing tiers: from single placements to fully integrated campaigns. Simple language, powerful positioning.",
+      "col2_body": [
+        "We structured the agency's offer into clear, client-facing tiers: from single placements to fully integrated campaigns.",
+        "Simple language, powerful positioning."
+      ],
       "col3_title": "Content Marketing",
-      "col3_body": "A content strategy designed to showcase the agency's reach and impact — case studies, social media playbooks, and high-definition commercial materials."
+      "col3_body": [
+        "A content strategy designed to showcase the agency's reach and impact — case studies, social media playbooks, and high-definition commercial materials."
+      ]
     },
     "s4": {
       "label": "04 — Results",
       "r1_title": "Brand Clarity",
-      "r1_body": "A consistent, premium visual identity applied across all touchpoints — pitch decks, signage, digital and print.",
+      "r1_body": [
+        "A consistent, premium visual identity applied across all touchpoints — pitch decks, signage, digital and print."
+      ],
       "r2_title": "Offer Accessibility",
-      "r2_body": "Clients now understand exactly what they're buying — and why it's worth it. Conversion rates on key accounts improved significantly.",
+      "r2_body": [
+        "Clients now understand exactly what they're buying — and why it's worth it.",
+        "Conversion rates on key accounts improved significantly."
+      ],
       "r3_title": "Social Media Impact",
-      "r3_body": "A structured content programme delivered a measurable uptick in engagement and brand recall across target markets."
+      "r3_body": [
+        "A structured content programme delivered a measurable uptick in engagement and brand recall across target markets."
+      ]
     }
   },
   "Projects": {
