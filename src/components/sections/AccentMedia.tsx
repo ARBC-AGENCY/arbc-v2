@@ -112,7 +112,7 @@ function Section1({
   const bg = isDark ? "#0f0f0f" : "#f5f0eb";
   const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
   const textMuted = isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.40)";
-  const cardBorder = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)";
+  const cardBorder = isDark ? "rgba(231, 80, 30,0.7)" : "rgba(0,0,0,0.07)";
 
   const entities = [
     {
@@ -525,6 +525,56 @@ function Section3({
 }
 
 // ── Section 4 — Results ──────────────────────────────────────────────────────
+// Text card shared across all three result items
+function ResultCard({
+  title,
+  bodyContent,
+}: {
+  title: string;
+  bodyContent: string | string[];
+}) {
+  return (
+    <div
+      style={{
+        backgroundColor: "#242424",
+        padding: "1.5rem 1.75rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.75rem",
+      }}
+    >
+      {/* Arrow + title row */}
+      <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+        <ArrowDecor direction="right" size={14} style={{ marginTop: "0.2rem", flexShrink: 0 }} />
+        <Html
+          as="h3"
+          html={title}
+          style={{
+            fontFamily: "var(--font-title)",
+            fontSize: "clamp(0.95rem, 1.5vw, 1.25rem)",
+            fontWeight: 700,
+            color: "#ffffff",
+            lineHeight: 1.2,
+            fontStyle: "italic",
+          }}
+        />
+      </div>
+      {/* Body with orange left bar */}
+      <div style={{ borderLeft: `2px solid ${ORANGE}`, paddingLeft: "0.9rem" }}>
+        <BodyParagraphs
+          content={bodyContent}
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "var(--text-sm)",
+            lineHeight: 1.6,
+            color: "rgba(255,255,255,0.58)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function Section4({
   t,
   isDark,
@@ -532,26 +582,12 @@ function Section4({
   t: ReturnType<typeof useTranslations<"AccentMedia">>;
   isDark: boolean;
 }) {
-  const bg = isDark ? "#111111" : "#f7f5f2";
-  const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
-  const textMuted = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
+  const bg = isDark ? "#0f0f0f" : "#f5f0eb";
 
   const results = [
-    {
-      title: t("s4.r1_title"),
-      body: t.raw("s4.r1_body") as string | string[],
-      img: sem1,
-    },
-    {
-      title: t("s4.r2_title"),
-      body: t.raw("s4.r2_body") as string | string[],
-      img: sem2,
-    },
-    {
-      title: t("s4.r3_title"),
-      body: t.raw("s4.r3_body") as string | string[],
-      img: sem3,
-    },
+    { title: t("s4.r1_title"), body: t.raw("s4.r1_body") as string | string[], img: sem1, textPos: "top"    },
+    { title: t("s4.r2_title"), body: t.raw("s4.r2_body") as string | string[], img: sem2, textPos: "bottom" },
+    { title: t("s4.r3_title"), body: t.raw("s4.r3_body") as string | string[], img: sem3, textPos: "top"    },
   ];
 
   return (
@@ -564,22 +600,29 @@ function Section4({
         flexDirection: "column",
         backgroundColor: bg,
         overflow: "hidden",
-        padding: "5rem",
       }}
     >
-      <Html
-        as="p"
-        html={t("s4.label")}
-        style={{ ...label(textMuted), marginBottom: "3rem" }}
-      />
+      {/* ── Header row: arrow + orange label pill ── */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+          padding: "5rem 5rem 2.5rem",
+          flexShrink: 0,
+        }}
+      >
+      </div>
 
+      {/* ── 3-column image + text grid ── */}
       <div
         style={{
           flex: 1,
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr",
-          gap: "2rem",
-          alignItems: "stretch",
+          gap: "3rem",
+          padding: "0 5rem 3.5rem",
+          minHeight: 0,
         }}
       >
         {results.map((r, i) => (
@@ -588,69 +631,31 @@ function Section4({
             style={{
               display: "flex",
               flexDirection: "column",
-              borderRadius: "1rem",
+              justifyContent: r.textPos === "bottom" ? "flex-end" : "flex-start",
+              gap: 0,
+              height: "100%",
               overflow: "hidden",
-              border: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
-              backgroundColor: isDark
-                ? "rgba(255,255,255,0.03)"
-                : "rgba(0,0,0,0.02)",
             }}
           >
-            {/* Image */}
-            <div
-              style={{
-                position: "relative",
-                height: "55%",
-                overflow: "hidden",
-              }}
-            >
+            {/* Text card — top or bottom depending on textPos */}
+            {r.textPos === "top" && (
+              <ResultCard title={r.title} bodyContent={r.body} />
+            )}
+
+            {/* Image — fills remaining space, keeps aspect ratio */}
+            <div style={{ position: "relative", flex: 1, minHeight: 0, overflow: "hidden" }}>
               <Image
                 src={r.img}
                 alt={r.title}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain", objectPosition: r.textPos === "top" ? "bottom" : "top" }}
                 sizes="30vw"
               />
-              {/* Orange top bar */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: "3px",
-                  backgroundColor: ORANGE,
-                }}
-              />
             </div>
-            {/* Text */}
-            <div
-              style={{
-                padding: "1.75rem",
-                flex: 1,
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-              }}
-            >
-              <Html
-                as="h3"
-                html={r.title}
-                style={{
-                  fontFamily: "var(--font-title)",
-                  fontSize: "clamp(1rem, 1.5vw, 1.3rem)",
-                  fontWeight: 700,
-                  color: textPrimary,
-                  lineHeight: 1.2,
-                }}
-              />
-              <BodyParagraphs
-                content={r.body}
-                style={body(
-                  isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)",
-                )}
-              />
-            </div>
+
+            {r.textPos === "bottom" && (
+              <ResultCard title={r.title} bodyContent={r.body} />
+            )}
           </div>
         ))}
       </div>
