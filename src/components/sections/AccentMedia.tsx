@@ -397,7 +397,11 @@ function Section2({
           <Image
             src={acm03}
             alt="Accent Media team"
-            style={{ objectFit: "contain", objectPosition: "center", height: "25rem" }}
+            style={{
+              objectFit: "contain",
+              objectPosition: "center",
+              height: "25rem",
+            }}
           />
         </div>
       </div>
@@ -413,25 +417,23 @@ function Section3({
   t: ReturnType<typeof useTranslations<"AccentMedia">>;
   isDark: boolean;
 }) {
-  const bg = isDark ? "#0a0a0a" : "#f0ede8";
+  const bg = isDark ? "#0f0f0f" : "#f5f0eb";
   const textPrimary = isDark ? "#ffffff" : "#1a1a1a";
-  const textMuted = isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)";
+  const textMuted = isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.40)";
+  const bodyColor = isDark ? "rgba(255,255,255,0.58)" : "rgba(0,0,0,0.55)";
 
   const cols = [
     {
       title: t("s3.col1_title"),
       body: t.raw("s3.col1_body") as string | string[],
-      img: acm03,
     },
     {
       title: t("s3.col2_title"),
       body: t.raw("s3.col2_body") as string | string[],
-      img: acm04,
     },
     {
       title: t("s3.col3_title"),
       body: t.raw("s3.col3_body") as string | string[],
-      img: sem1,
     },
   ];
 
@@ -447,80 +449,76 @@ function Section3({
         overflow: "hidden",
       }}
     >
-      {/* Top label */}
-      <div style={{ padding: "5rem 5rem 0" }}>
-        <Html as="p" html={t("s3.label")} style={label(textMuted)} />
-      </div>
+      {/* ── Top: label + 3 columns ── */}
+      <div style={{ padding: "4rem 5rem 2.5rem" }}>
+        <div
+          style={{ ...label(textMuted), marginBottom: "3rem" }}
+        />
 
-      {/* 3-column grid */}
-      <div
-        style={{
-          flex: 1,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gap: 0,
-          padding: "2rem 5rem 5rem",
-          alignItems: "stretch",
-        }}
-      >
-        {cols.map((col, i) => (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              borderLeft:
-                i > 0
-                  ? `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`
-                  : undefined,
-              paddingLeft: i > 0 ? "2.5rem" : 0,
-              paddingRight: i < 2 ? "2.5rem" : 0,
-            }}
-          >
-            {/* Arrow + title */}
-            <div style={{ marginBottom: "1.5rem" }}>
-              <ArrowDecor
-                direction="right"
-                size={20}
-                style={{ marginBottom: "1rem" }}
-              />
-              <Html
-                as="h3"
-                html={col.title}
-                style={{
-                  ...heading(textPrimary),
-                  fontSize: "clamp(1rem, 1.8vw, 1.5rem)",
-                  marginBottom: "0.75rem",
-                }}
-              />
-              <BodyParagraphs
-                content={col.body}
-                style={body(
-                  isDark ? "rgba(255,255,255,0.58)" : "rgba(0,0,0,0.55)",
-                )}
-              />
-            </div>
-
-            {/* Column image */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: 0,
+          }}
+        >
+          {cols.map((col, i) => (
             <div
+              key={i}
               style={{
-                flex: 1,
-                position: "relative",
-                borderRadius: "0.75rem",
-                overflow: "hidden",
-                minHeight: "160px",
+                paddingLeft: i > 0 ? "2.5rem" : 0,
+                paddingRight: i < 2 ? "2.5rem" : 0,
+                borderLeft:
+                  i > 0
+                    ? `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`
+                    : undefined,
               }}
             >
-              <Image
-                src={col.img}
-                alt={col.title}
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="33vw"
-              />
+              <div style={{
+                display: "flex",
+                flexDirection:"row",
+                gap:"1rem"
+              }}>
+                {/* Arrow + title */}
+                <ArrowDecor
+                  direction="right"
+                  size={15}
+                  style={{ marginBottom: "0.75rem" }}
+                />
+                <Html
+                  as="h3"
+                  html={col.title}
+                  style={{
+                    ...heading(textPrimary),
+                    fontSize: "clamp(0.95rem, 1.6vw, 1.4rem)",
+                    marginBottom: "1rem",
+                  }}
+                />
+              </div>
+
+              {/* Body — orange left bar */}
+              <div
+                style={{
+                  borderLeft: `2px solid ${ORANGE}`,
+                  paddingLeft: "0.9rem",
+                }}
+              >
+                <BodyParagraphs content={col.body} style={body(bodyColor)} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      {/* ── Bottom: full-width acm04 image, flush to screen bottom ── */}
+      <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+        <Image
+          src={acm04}
+          alt="Accent Media kiosks"
+          fill
+          style={{ objectFit: "contain", objectPosition: "bottom center" }}
+          sizes="100vw"
+        />
       </div>
     </section>
   );
