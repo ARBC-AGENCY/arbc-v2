@@ -60,24 +60,9 @@ export function useProjectSlider(): ProjectSliderState {
   const searchParams = useSearchParams();
   const { navigate: _navigate } = useTransitionContext(); // eslint-disable-line @typescript-eslint/no-unused-vars
 
-  // ── Initial index (URL param > sessionStorage > 0) ──────────────────────
-  const initialIndex = (() => {
-    const urlSlug = searchParams.get("p");
-    if (urlSlug) {
-      const i = PROJECTS.findIndex((p) => p.slug === urlSlug);
-      if (i >= 0) return i;
-    }
-    if (typeof window !== "undefined") {
-      const stored = sessionStorage.getItem("arbc_active_project");
-      if (stored) {
-        const i = PROJECTS.findIndex((p) => p.slug === stored);
-        if (i >= 0) return i;
-      }
-    }
-    return 0;
-  })();
-
-  const [activeIndex, setActiveIndex] = useState(initialIndex);
+  // ── Initial index — always 0 on SSR/first render to avoid hydration mismatch.
+  // After mount we apply URL param > sessionStorage priority in a useEffect.
+  const [activeIndex, setActiveIndex] = useState(0);
   const isTransitioning = useRef(false);
 
   // ── URL / session sync ───────────────────────────────────────────────────
@@ -119,10 +104,31 @@ export function useProjectSlider(): ProjectSliderState {
     yQuickRef.current = gsap.quickTo(cursorBtnRef.current, "y", { duration: 0.7, ease: "power3.out" });
   }, []);
 
+  // ── Restore saved index after hydration (URL param > sessionStorage) ──────
+  useEffect(() => {
+    const urlSlug = searchParams.get("p");
+    if (urlSlug) {
+      const i = PROJECTS.findIndex((p) => p.slug === urlSlug);
+      if (i >= 0 && i !== 0) {
+        setActiveIndex(i);
+        if (trackRef.current) gsap.set(trackRef.current, { x: targetX(i) });
+      }
+      return;
+    }
+    const stored = sessionStorage.getItem("arbc_active_project");
+    if (stored) {
+      const i = PROJECTS.findIndex((p) => p.slug === stored);
+      if (i >= 0 && i !== 0) {
+        setActiveIndex(i);
+        if (trackRef.current) gsap.set(trackRef.current, { x: targetX(i) });
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // ── Draggable setup ──────────────────────────────────────────────────────
   useEffect(() => {
     if (!trackRef.current) return;
-    gsap.set(trackRef.current, { x: targetX(initialIndex) });
+    gsap.set(trackRef.current, { x: targetX(0) });
 
     const [d] = Draggable.create(trackRef.current, {
       type: "x",

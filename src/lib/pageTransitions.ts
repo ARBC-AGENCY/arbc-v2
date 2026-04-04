@@ -146,7 +146,7 @@ export function pageTransitionIn(
   const tl = gsap.timeline();
 
   // ── Initial state ──────────────────────────────────────────────────────
-  tl.set(".loading-container", { pointerEvents: "auto" });
+  tl.set(".loading-container", { pointerEvents: "auto", zIndex: 10000 });
   tl.set(".loading-screen", { top: "100%" });
   tl.set(".loading-words", { opacity: 0, y: 0 });
   tl.set(".loading-screen .rounded-div-wrap.bottom", {

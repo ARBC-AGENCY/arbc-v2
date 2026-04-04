@@ -38,6 +38,50 @@
     "projects": "Projets",
     "portfolio": "Portfolio"
   },
+  "AccentMedia": {
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le défi",
+      "s3": "Notre réponse",
+      "s4": "Résultats"
+    },
+    "close": "Fermer",
+    "s1": {
+      "label": "01 — Présentation de la marque",
+      "title": "Accent Média — amplifier chaque message, toucher chaque audience.",
+      "body": "Accent Média est une régie publicitaire de premier plan spécialisée dans l'affichage extérieur, les médias digitaux et les campagnes de communication intégrées au Cameroun et en Afrique centrale.",
+      "sub": "Deux entités, une vision : AMTech gère l'infrastructure technique, AMP pilote la stratégie media."
+    },
+    "s2": {
+      "label": "02 — Le défi de l'agence",
+      "title": "Comment positionner une régie média dans un marché qui sous-estime sa propre valeur ?",
+      "body": "Accent Média disposait de la portée, du réseau et de l'expertise — mais sa communication visuelle ne reflétait pas son positionnement premium. L'agence avait besoin d'outils capables de séduire des clients haut de gamme et de convertir l'attention en partenariat.",
+      "stat1_value": "3",
+      "stat1_label": "Marchés desservis",
+      "stat2_value": "200+",
+      "stat2_label": "Espaces médias actifs",
+      "stat3_value": "12",
+      "stat3_label": "Ans d'expertise"
+    },
+    "s3": {
+      "label": "03 — La réponse de l'agence",
+      "col1_title": "Identité Visuelle",
+      "col1_body": "Un système visuel raffiné construit sur l'autorité et la clarté — monogramme, hiérarchie typographique et palette de marque qui s'impose dans tous les formats.",
+      "col2_title": "Pédagogie de l'offre",
+      "col2_body": "Nous avons structuré l'offre de l'agence en niveaux clairs orientés clients : du placement unique aux campagnes pleinement intégrées. Langage simple, positionnement puissant.",
+      "col3_title": "Content Marketing",
+      "col3_body": "Une stratégie de contenu conçue pour mettre en valeur la portée et l'impact de l'agence — études de cas, playbooks réseaux sociaux et supports commerciaux haute définition."
+    },
+    "s4": {
+      "label": "04 — Résultats",
+      "r1_title": "Clarté de Marque",
+      "r1_body": "Une identité visuelle cohérente et premium, appliquée sur tous les points de contact — decks, signalétique, digital et print.",
+      "r2_title": "Accessibilité de l'Offre",
+      "r2_body": "Les clients comprennent désormais exactement ce qu'ils achètent — et pourquoi cela en vaut la peine. Les taux de conversion sur les comptes clés se sont nettement améliorés.",
+      "r3_title": "Impact Social Media",
+      "r3_body": "Un programme de contenu structuré a généré une hausse mesurable de l'engagement et de la mémorisation de la marque sur les marchés cibles."
+    }
+  },
   "Projects": {
     "viewProject": "Voir le projet →",
     "next": "Suivant",

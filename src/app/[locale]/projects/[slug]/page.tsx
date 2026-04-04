@@ -1,6 +1,6 @@
-import { useTranslations } from "next-intl";
-import PageAnnotation from "@/components/layout/PageAnnotation";
 import TransitionLink from "@/components/ui/TransitionLink";
+import PageAnnotation from "@/components/layout/PageAnnotation";
+import AccentMedia from "@/components/sections/AccentMedia";
 
 // All valid slugs — Next.js uses this for static generation.
 export function generateStaticParams() {
@@ -22,15 +22,19 @@ interface Props {
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
 
-  // Display name derived from slug — replace with per-project data later
+  // ── Accent Media — full case study page ─────────────────────────────────
+  if (slug === "accent-media") {
+    return <AccentMedia />;
+  }
+
+  // ── Generic placeholder for all other projects ───────────────────────────
   const displayName = slug
     .split("-")
-    .map((w) => w.toUpperCase())
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 
   return (
     <main data-page-name={displayName}>
-      {/* ── Hero placeholder ─────────────────────────────────────── */}
       <section
         className="once-in"
         style={{
@@ -83,7 +87,6 @@ export default async function ProjectPage({ params }: Props) {
         </TransitionLink>
       </section>
 
-      {/* ── Page annotation ──────────────────────────────────────── */}
       <div className="once-in">
         <PageAnnotation line1={displayName} />
       </div>

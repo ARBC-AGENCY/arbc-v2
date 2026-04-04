@@ -54,8 +54,9 @@ export default function Nav() {
     { key: "portfolio", labelKey: "portfolio", href: "/portfolio", icon: <PortfolioIcon /> },
   ];
 
-  // Nav is hidden on the homepage — the hero handles navigation from there.
+  // Nav is hidden on the homepage and on project detail pages.
   const isHomePage = pathname === "/";
+  const isProjectDetail = /^\/projects\/[^/]+$/.test(pathname);
 
   // Derive active index from pathname.
   // Home is active on "/" AND "/projects" — because after the intro gate fires,
@@ -164,7 +165,7 @@ export default function Nav() {
   const tooltipBg   = isDark ? "rgba(30,30,30,0.90)"     : "rgba(220,220,220,0.92)";
   const tooltipC    = isDark ? "#ffffff"                  : "#2B2A29";
 
-  if (isHomePage) return null;
+  if (isHomePage || isProjectDetail) return null;
 
   return (
     <nav

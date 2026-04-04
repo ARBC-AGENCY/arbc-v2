@@ -5,12 +5,19 @@ import { useTheme } from "next-themes";
 import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
+import { useTransitionContext } from "@/context/TransitionContext";
 import TransitionLink from "@/components/ui/TransitionLink";
 
 export default function Header() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("Nav");
+  const pathname = usePathname();
+  const { navigate } = useTransitionContext();
+
+  // True when on a project detail page (e.g. /projects/accent-media)
+  const isProjectDetail = /^\/projects\/[^/]+$/.test(pathname);
 
   const logoRef = useRef<HTMLDivElement>(null);
   const ctaWrapperRef = useRef<HTMLDivElement>(null);
@@ -99,41 +106,76 @@ export default function Header() {
         </TransitionLink>
       </div>
 
-      {/* About CTA — dual-strength magnetic */}
+      {/* Right-side CTA — X button on project detail pages, About link otherwise */}
       <div ref={ctaWrapperRef} style={{ opacity: 0 }}>
-        <div
-          ref={magnetRef}
-          style={{ display: "inline-block", position: "relative", cursor: "pointer" }}
-        >
-          <TransitionLink href="/about" label="about">
-            <span
-              ref={textRef}
-              style={{
-                display: "block",
-                color: textColor,
-                fontFamily: "var(--font-body)",
-                fontSize: "var(--text-md)",
-                fontWeight: 700,
-                position: "relative",
-                zIndex: 2,
-              }}
+        {isProjectDetail ? (
+          /* ── X close button ── */
+          <button
+            onClick={() => navigate("/projects", "projects")}
+            aria-label="Close project"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "2.5rem",
+              height: "2.5rem",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: textColor,
+              padding: 0,
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
             >
-              {t("about")}
-            </span>
-          </TransitionLink>
+              <line x1="4" y1="4" x2="20" y2="20" />
+              <line x1="20" y1="4" x2="4" y2="20" />
+            </svg>
+          </button>
+        ) : (
+          /* ── About CTA — dual-strength magnetic ── */
+          <div
+            ref={magnetRef}
+            style={{ display: "inline-block", position: "relative", cursor: "pointer" }}
+          >
+            <TransitionLink href="/about" label="about">
+              <span
+                ref={textRef}
+                style={{
+                  display: "block",
+                  color: textColor,
+                  fontFamily: "var(--font-body)",
+                  fontSize: "var(--text-md)",
+                  fontWeight: 700,
+                  position: "relative",
+                  zIndex: 2,
+                }}
+              >
+                {t("about")}
+              </span>
+            </TransitionLink>
 
-          {/* Static grey underline */}
-          <div
-            className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
-            style={{ backgroundColor: "#747474" }}
-          />
-          {/* Animated orange underline */}
-          <div
-            ref={underlineRef}
-            className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
-            style={{ backgroundColor: "#e7501e" }}
-          />
-        </div>
+            {/* Static grey underline */}
+            <div
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
+              style={{ backgroundColor: "#747474" }}
+            />
+            {/* Animated orange underline */}
+            <div
+              ref={underlineRef}
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1.5 rounded-full"
+              style={{ backgroundColor: "#e7501e" }}
+            />
+          </div>
+        )}
       </div>
     </header>
   );
