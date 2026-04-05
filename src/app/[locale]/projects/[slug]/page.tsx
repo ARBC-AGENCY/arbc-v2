@@ -1,6 +1,7 @@
 import TransitionLink from "@/components/ui/TransitionLink";
 import PageAnnotation from "@/components/layout/PageAnnotation";
 import AccentMedia from "@/components/sections/AccentMedia";
+import BetMomo from "@/components/sections/BetMomo";
 
 // All valid slugs — Next.js uses this for static generation.
 export function generateStaticParams() {
@@ -25,6 +26,10 @@ export default async function ProjectPage({ params }: Props) {
   // ── Accent Media — full case study page ─────────────────────────────────
   if (slug === "accent-media") {
     return <AccentMedia />;
+  }
+
+  if (slug === "betmomo") {
+    return <BetMomo />;
   }
 
   // ── Generic placeholder for all other projects ───────────────────────────

@@ -38,6 +38,56 @@
     "projects": "Projects",
     "portfolio": "Portfolio"
   },
+  "BetMomo": {
+    "nav": {
+      "s1": "Brand Presentation",
+      "s2": "The Challenge",
+      "s3": "Our Response",
+      "s4": "Results"
+    },
+    "s1": {
+      "label": "01 — Brand Presentation",
+      "title": "Presentation<br/>De la marque",
+      "body": [
+        "<strong>BETMOMO</strong> is a pan-African digital entertainment player, specialising in online sports betting.",
+        "Present across several African countries, the brand has established itself as a reference through a secure platform and a fluid user experience."
+      ],
+      "body2": [
+        "<strong>BETMOMO</strong> offers its community total gaming flexibility through a complete digital ecosystem: a high-performance web portal and a mobile application optimised for iOS and Android."
+      ]
+    },
+    "s2": {
+      "label": "02 — The Challenge",
+      "title": "The Agency's<br/>Challenge",
+      "body": [
+        "Supporting the deployment of <strong>BETMOMO</strong> across the African market, with a focus on Côte d'Ivoire and Cameroon. The primary objective was to go beyond simple communication and anchor the brand as a lasting reference in the sports betting sector."
+      ],
+      "stat1_value": "5+",
+      "stat1_label": "African markets",
+      "stat2_value": "100K+",
+      "stat2_label": "Active users",
+      "stat3_value": "24/7",
+      "stat3_label": "Live betting"
+    },
+    "s3": {
+      "label": "03 — Our Response",
+      "col1_title": "Proximity Marketing &amp; Field Activations",
+      "col1_body": ["Deployment of street marketing campaigns (in-store and street activations) to drive direct recruitment of new bettors and build grassroots brand awareness in popular neighbourhoods across Cameroon and Côte d'Ivoire."],
+      "col2_title": "Audiovisual Production",
+      "col2_body": ["Supervision of the graphic pipeline and production of visuals and advertising spots (TV/Radio/Digital). The objective was to build a strong, memorable visual identity capable of adapting to local cultural codes while respecting BetMomo's brand image."],
+      "col3_title": "Strategic Events",
+      "col3_body": ["Organisation of key brand moments (launch evenings, bettor tournaments, sponsorship events) aimed at building an active community around the brand and establishing trust with local partners."]
+    },
+    "s4": {
+      "label": "Results",
+      "r1_title": "Acquisition Peak",
+      "r1_body": ["A significant increase in new users and app downloads."],
+      "r2_title": "Strengthened Brand Awareness",
+      "r2_body": ["The broadcast of advertising spots generated an immediate impact, significantly increasing brand recognition among the betting community."],
+      "r3_title": "Field Engagement",
+      "r3_body": ["Thousands of direct contacts established through brand ambassadors, fostering increased user loyalty."]
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Brand Presentation",

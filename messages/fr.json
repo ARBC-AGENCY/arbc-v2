@@ -38,6 +38,56 @@
     "projects": "Projets",
     "portfolio": "Portfolio"
   },
+  "BetMomo": {
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le défi",
+      "s3": "Notre réponse",
+      "s4": "Résultats"
+    },
+    "s1": {
+      "label": "01 — Présentation de la marque",
+      "title": "Presentation<br/>De la marque",
+      "body": [
+        "<strong>BETMOMO</strong> est un acteur panafricain du divertissement numérique, spécialisé dans les paris sportifs en ligne.",
+        "Présent dans plusieurs pays d'Afrique, la marque s'est imposée comme une référence grâce à une plateforme sécurisée et une expérience utilisateur fluide."
+      ],
+      "body2": [
+        "<strong>BETMOMO</strong> offre à sa communauté une flexibilité totale de jeu via un écosystème digital complet : un portail web haute performance et une application mobile optimisée, compatible avec l'ensemble des systèmes iOS et Android."
+      ]
+    },
+    "s2": {
+      "label": "02 — Le défi de l'agence",
+      "title": "Le défi de<br/>L'agence",
+      "body": [
+        "Accompagner le déploiement de <strong>BETMOMO</strong> sur le marché africain, avec une priorité sur la Côte d'Ivoire et le Cameroun. L'objectif majeur consistait à transcender la simple communication pour ancrer durablement la marque comme un acteur de référence du secteur des paris sportifs."
+      ],
+      "stat1_value": "5+",
+      "stat1_label": "Marchés africains",
+      "stat2_value": "100K+",
+      "stat2_label": "Utilisateurs actifs",
+      "stat3_value": "24/7",
+      "stat3_label": "Paris en direct"
+    },
+    "s3": {
+      "label": "03 — La réponse de l'agence",
+      "col1_title": "Marketing de proximité &amp; Activations Terrain",
+      "col1_body": ["Déploiement de campagnes de street marketing (animations en points de vente ou dans les rues) pour favoriser le recrutement direct de nouveaux parieurs et renforcer la notoriété de proximité dans les quartiers populaires du Cameroun et de Côte d'Ivoire."],
+      "col2_title": "Production Audiovisuelle",
+      "col2_body": ["Supervision de la chaîne graphique et production de visuels et spots publicitaires (TV/Radio/Digital). L'objectif était de construire une identité visuelle forte et mémorable, capable de s'adapter aux codes culturels locaux tout en respectant l'image de marque de Betmomo."],
+      "col3_title": "Évènementiel Stratégique",
+      "col3_body": ["Organisation de temps forts (soirées de lancement, tournois de parieurs, évènements de sponsoring) visant à fédérer une communauté active autour de la marque et à instaurer une relation de confiance avec les partenaires locaux."]
+    },
+    "s4": {
+      "label": "Résultats",
+      "r1_title": "Pic d'Acquisition",
+      "r1_body": ["Une augmentation significative du nombre de nouveaux utilisateurs et de téléchargements de l'application."],
+      "r2_title": "Notoriété Renforcée",
+      "r2_body": ["La diffusion des spots publicitaires a généré un impact immédiat, augmentant significativement la reconnaissance de la marque auprès de la communauté des parieurs."],
+      "r3_title": "Engagement Terrain",
+      "r3_body": ["Des milliers de contacts directs établis grâce aux ambassadeurs, favorisant une fidélisation accrue des utilisateurs."]
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Présentation de la marque",
