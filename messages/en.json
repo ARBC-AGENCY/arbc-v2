@@ -158,6 +158,57 @@
       "r3_body": ["Thousands of direct contacts established through brand ambassadors, fostering increased user loyalty."]
     }
   },
+  "HeartChoice": {
+    "annotation1": "Heart",
+    "annotation2": "Choice",
+    "nav": {
+      "s1": "Brand Presentation",
+      "s2": "Agency Challenge",
+      "s3": "Our Response",
+      "s4": "Results"
+    },
+    "s1": {
+      "title": "Brand<br>Presentation",
+      "body": [
+        "Specialised in functional medicine, Heart Choice supports patients in the fight against degenerative diseases.",
+        "Their expertise focuses particularly on the comprehensive management of complex conditions such as cancer, hepatitis, sickle cell disease and others."
+      ]
+    },
+    "s2": {
+      "title": "The Agency's<br>Challenge",
+      "body": [
+        "Build a strong and reassuring visual identity to establish Heart Choice's credibility with its audience.",
+        "At the same time, steer a brand awareness strategy aimed at expanding the brand's reach and acquiring new clients."
+      ]
+    },
+    "s3": {
+      "title": "Our<br>Response",
+      "col1_title": "Branding &amp; Graphic Identity",
+      "col1_points": [
+        "Creation of a minimalist and distinctive logo, designed to embody Heart Choice's values of reliability and professionalism.",
+        "3D architecture of the offices, providing a commercial projection for partners and clients.",
+        "Design and deployment of an optimised showcase website focused on user experience."
+      ],
+      "col2_title": "Digital Ecosystem Deployment",
+      "col2_points": [
+        "Social Media Strategy: Community activation and management on WhatsApp, Facebook, Instagram and TikTok, with an editorial line focused on functional medicine education and patient testimonials."
+      ]
+    },
+    "s4": {
+      "title": "Results",
+      "stats_intro": "After 5 months of digital deployment",
+      "stat1_label": "Followers",
+      "stat1_from": "10",
+      "stat1_to": "2,315",
+      "stat2_label": "Engagement",
+      "stat2_from": "7.01%",
+      "stat2_to": "+200%",
+      "stat3_label": "Total Views",
+      "stat3_from": "1,212",
+      "stat3_to": "+130,000",
+      "description": "These figures summarise the overall performance across 3 networks, over the first 05 months of deployment. Performance indicators show continuous organic growth, driven by the ongoing strategic deployment."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Brand Presentation",

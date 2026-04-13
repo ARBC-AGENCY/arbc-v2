@@ -158,6 +158,57 @@
       "r3_body": ["Des milliers de contacts directs établis grâce aux ambassadeurs, favorisant une fidélisation accrue des utilisateurs."]
     }
   },
+  "HeartChoice": {
+    "annotation1": "Heart",
+    "annotation2": "Choice",
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le défi de l'agence",
+      "s3": "La réponse",
+      "s4": "Résultats"
+    },
+    "s1": {
+      "title": "Présentation<br>de la marque",
+      "body": [
+        "Spécialisée en médecine fonctionnelle, Heart Choice accompagne les patients dans la lutte contre les maladies dégénératives.",
+        "Son expertise porte notamment sur la prise en charge globale de pathologies complexes comme le cancer, l'hépatite, la drépanocytose et autres."
+      ]
+    },
+    "s2": {
+      "title": "Le défi<br>de l'agence",
+      "body": [
+        "Construire une identité visuelle forte et rassurante pour asseoir la crédibilité de Heart Choice auprès de son audience.",
+        "Parallèlement, piloter une stratégie de notoriété visant l'expansion de la marque et l'acquisition de nouveaux clients."
+      ]
+    },
+    "s3": {
+      "title": "La réponse<br>de l'agence",
+      "col1_title": "Branding &amp; Identité Graphique",
+      "col1_points": [
+        "Création d'un logotype minimaliste et distinctif, conçu pour incarner les valeurs de fiabilité et de professionnalisme de Heart Choice.",
+        "Architecture 3D des bureaux, pour offrir une projection commerciale aux partenaires et clients.",
+        "Conception et déploiement d'un site vitrine optimisé pour l'expérience utilisateur."
+      ],
+      "col2_title": "Déploiement de l'écosystème digital",
+      "col2_points": [
+        "Stratégie Social Media : Activation et gestion des communautés sur WhatsApp, Facebook, Instagram et TikTok, avec une ligne éditoriale axée sur l'éducation à la médecine fonctionnelle et le témoignage."
+      ]
+    },
+    "s4": {
+      "title": "Résultats",
+      "stats_intro": "Après 5 mois de déploiement sur le digital",
+      "stat1_label": "Abonnés",
+      "stat1_from": "10",
+      "stat1_to": "2 315",
+      "stat2_label": "Engagement",
+      "stat2_from": "701%",
+      "stat2_to": "+200%",
+      "stat3_label": "Vues totales",
+      "stat3_from": "1 212",
+      "stat3_to": "+130 000",
+      "description": "Ces chiffres résument la performance globale sur les 3 réseaux, au cours des 05 premiers mois de déploiement. Les indicateurs de performance affichent une croissance organique continue, portée par le déploiement stratégique toujours en cours."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Présentation de la marque",
