@@ -25,12 +25,12 @@ export default function ProjectSectionNav({ sections, activeIndex, onSelect }: P
   const indicatorRef = useRef<HTMLDivElement>(null);
   const itemRefs     = useRef<(HTMLSpanElement | null)[]>([]);
 
-  // Entrance: slide up from below on mount
+  // Entrance: slide down from above on mount
   useEffect(() => {
     if (!pillRef.current) return;
     gsap.fromTo(
       pillRef.current,
-      { y: 24, opacity: 0 },
+      { y: -24, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.1, ease: "expo.out", delay: 0.4 }
     );
   }, []);
@@ -72,10 +72,10 @@ export default function ProjectSectionNav({ sections, activeIndex, onSelect }: P
     <nav
       style={{
         position: "fixed",
-        bottom: "2rem",
+        top: "1.5rem",
         left: "50%",
         transform: "translateX(-50%)",
-        zIndex: 2000,
+        zIndex: 2100,
         pointerEvents: "none",
       }}
     >

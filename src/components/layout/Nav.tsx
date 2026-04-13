@@ -54,9 +54,8 @@ export default function Nav() {
     { key: "portfolio", labelKey: "portfolio", href: "/portfolio", icon: <PortfolioIcon /> },
   ];
 
-  // Nav is hidden on the homepage and on project detail pages.
+  // Nav is hidden only on the homepage.
   const isHomePage = pathname === "/";
-  const isProjectDetail = /^\/projects\/[^/]+$/.test(pathname);
 
   // Derive active index from pathname.
   // Home is active on "/" AND "/projects" — because after the intro gate fires,
@@ -74,13 +73,16 @@ export default function Nav() {
   const itemRefs     = useRef<(HTMLDivElement | null)[]>([]);
   const iconRefs     = useRef<(HTMLDivElement | null)[]>([]);
 
-  // ── Entrance: wait for page ready, then slide up ─────────────────────────
+  // ── Entrance: slide up whenever the nav becomes visible ──────────────────
+  // isPageReady starts false and becomes true once (never resets).
+  // isHomePage changes on route changes. Adding both as deps ensures the
+  // animation fires when either: (a) page first loads, or (b) the nav
+  // re-appears after being hidden on the homepage.
   useEffect(() => {
-    if (!isPageReady || !pillRef.current) return;
+    if (isHomePage || !isPageReady || !pillRef.current) return;
 
-    // Set initial state (hidden below)
+    gsap.killTweensOf(pillRef.current);
     gsap.set(pillRef.current, { y: 24, opacity: 0 });
-
     gsap.to(pillRef.current, {
       y: 0,
       opacity: 1,
@@ -88,7 +90,6 @@ export default function Nav() {
       ease: "expo.out",
       delay: 0.2,
       onComplete: () => {
-        // Set indicator position immediately after pill is visible (no animation)
         const activeEl = itemRefs.current[safeActiveIdx];
         if (activeEl && indicatorRef.current) {
           gsap.set(indicatorRef.current, {
@@ -98,7 +99,7 @@ export default function Nav() {
         }
       },
     });
-  }, [isPageReady]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isPageReady, isHomePage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Slide indicator to active item on route change ───────────────────────
   useEffect(() => {
@@ -165,7 +166,7 @@ export default function Nav() {
   const tooltipBg   = isDark ? "rgba(30,30,30,0.90)"     : "rgba(220,220,220,0.92)";
   const tooltipC    = isDark ? "#ffffff"                  : "#2B2A29";
 
-  if (isHomePage || isProjectDetail) return null;
+  if (isHomePage) return null;
 
   return (
     <nav
