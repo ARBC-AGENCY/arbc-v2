@@ -38,6 +38,76 @@
     "projects": "Projects",
     "portfolio": "Portfolio"
   },
+  "Services": {
+    "annotation1": "Our",
+    "annotation2": "Services",
+    "tab_strategic": "Strategic",
+    "tab_creative": "Creative",
+    "conseil": {
+      "nav": "Marketing & Communication",
+      "title": "Marketing &amp;<br>Communication Consulting",
+      "body": [
+        "Analyse the market, spot trends, understand the real business challenges, and turn it all into an action plan tailored to your ambitions and resources.",
+        "No pointless talk or off-the-shelf strategy. Here, we dig, question, deconstruct… then rebuild. We guide you where it matters: where your products and solutions will translate into results. Because what matters today is knowing what to do, why, and how to do it better than anyone else."
+      ]
+    },
+    "gestion": {
+      "nav": "Project Mgmt",
+      "title": "Project<br>Management",
+      "body": [
+        "We never run short of ideas — but what makes all the difference is the art of executing them. And that's the playground of our project managers.",
+        "Plan, control, direct, adjust. Our teams pilot every mission with precision and a global vision. We manage deadlines, resources and the unexpected without losing sight of the final goal: delivering something concrete, quality-driven and fully controlled."
+      ]
+    },
+    "digital": {
+      "nav": "Digital Marketing",
+      "title": "Digital<br>Marketing",
+      "body": [
+        "At ARBC, digital is a powerful lever to connect, engage and amplify brands across the continent. In a hyper-connected Africa, where social networks have become spaces for exchange, culture and influence, we craft strategies that speak truth.",
+        "Our mission: capture attention, spark conversations and build communities around your brand. Social media, ad campaigns, engaging content, SEO, email marketing… We think strategy, speak human, act with impact."
+      ]
+    },
+    "street": {
+      "nav": "Street Marketing",
+      "title": "Street<br>Marketing",
+      "body": [
+        "In Africa, the human connection is king. Streets live, pulse and bring people together. At ARBC, we place this social warmth at the heart of our field campaigns.",
+        "Because nothing replaces a handshake, a smile, a face-to-face exchange, our street marketing creates direct, authentic and memorable experiences. Sampling, animations, events, targeted operations: we turn every interaction into a powerful moment, every contact into a lasting connection."
+      ]
+    },
+    "graphic": {
+      "nav": "Design 2D/3D",
+      "title": "Graphic Design<br>2D &amp; 3D",
+      "body": [
+        "At ARBC, our creatives don't just follow trends — they redraw them, with boldness and a resolutely African signature.",
+        "Our visuals draw from the textures, colours, rhythms and symbols of the continent to create designs that vibrate with originality and authenticity. In 2D and 3D alike, every creation tells a story, embodies an identity, and leaves a mark. Whether for a brand, a product or a campaign, we fuse art and technique to bring your ideas to life with power and character."
+      ]
+    },
+    "video": {
+      "nav": "Production",
+      "title": "Video Production &amp;<br>Advertising Spot",
+      "body": [
+        "Today, video is queen — it sits at the heart of popular culture, bringing millions together, moving them and shaping influence across the continent.",
+        "At ARBC, we harness this power to create videos and advertising spots that capture attention from the very first second. From concept to final cut, through editing and sound design, we produce content for every screen: television, social media, digital platforms — to make your brand live where it truly matters."
+      ]
+    },
+    "uiux": {
+      "nav": "UI/UX",
+      "title": "UI/UX<br>Design",
+      "body": [
+        "Today, a great digital experience makes all the difference between an interface you leave and one you adopt. At ARBC, we place the human at the centre of every design decision.",
+        "We create intuitive, elegant and efficient interfaces that naturally guide users through every interaction. Wireframes, prototypes, user testing, design systems: we build experiences that work and that people love."
+      ]
+    },
+    "webdev": {
+      "nav": "Development",
+      "title": "Web &amp; Mobile<br>Development",
+      "body": [
+        "In a world of constant digital evolution, your online presence is your most powerful showcase. At ARBC, we design custom, robust and scalable websites and mobile applications.",
+        "From concept to launch, our developers master modern technologies to deliver high-performance, secure digital solutions tailored to your specific needs. Showcase sites, e-commerce, business applications or digital platforms: we build tools that work for you, around the clock."
+      ]
+    }
+  },
   "BetMomo": {
     "nav": {
       "s1": "Brand Presentation",

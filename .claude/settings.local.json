@@ -3,7 +3,8 @@
     "allow": [
       "Bash(find /d/arbc-v2/src -type f -name *.json)",
       "Bash(ls d:/arbc-v2/src/app/[locale]/about/)",
-      "Bash(ls d:/arbc-v2/src/app/[locale]/explore/)"
+      "Bash(ls d:/arbc-v2/src/app/[locale]/explore/)",
+      "Bash(npx tsc:*)"
     ]
   }
 }
