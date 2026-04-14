@@ -209,6 +209,48 @@
       "description": "Ces chiffres résument la performance globale sur les 3 réseaux, au cours des 05 premiers mois de déploiement. Les indicateurs de performance affichent une croissance organique continue, portée par le déploiement stratégique toujours en cours."
     }
   },
+  "LagonClub": {
+    "annotation1": "Le Lagon",
+    "annotation2": "Club",
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le défi de l'agence",
+      "s3": "La réponse",
+      "s4": "Résultats"
+    },
+    "s1": {
+      "title": "Présentation<br>de la marque",
+      "body": [
+        "Le Lagon Club est un cercle privé d'exception conçu pour une communauté de visionnaires partageant des valeurs et des codes de haute exigence.",
+        "Véritable sanctuaire de l'influence, le club se distingue par une atmosphère ultra-sélective et une ambiance feutrée, offrant à ses membres un espace de convergence unique, loin de l'agitation conventionnelle. C'est le point de ralliement privilégié d'une élite en quête de rareté et de discrétion."
+      ]
+    },
+    "s2": {
+      "title": "Le défi<br>de l'agence",
+      "body": [
+        "Concevoir une identité visuelle et numérique capable de captiver une élite visionnaire tout en préservant le caractère confidentiel du club."
+      ]
+    },
+    "s3": {
+      "title": "La réponse<br>de l'agence",
+      "p1_title": "Identité visuelle",
+      "p1_sub": "(Logo & Charte)",
+      "p1_body": "Création d'un système graphique minimaliste et intemporel, ancrant la marque dans les codes de la haute distinction.",
+      "p2_title": "Expérience Digitale",
+      "p2_sub": "(Site Internet)",
+      "p2_body": "Développement d'une plateforme immersive conçue comme une porte dérobée, mêlant mystère et ergonomie haut de gamme.",
+      "p3_title": "Supports Éditoriaux",
+      "p3_sub": "(Brochures & Catalogues)",
+      "p3_body": "Conception de supports imprimés premium traduisant l'excellence et la rareté de l'univers du Lagon Club."
+    },
+    "s4": {
+      "title": "Résultats",
+      "r1_title": "Rayonnement Confidentiel",
+      "r1_body": "Des supports d'édition (brochures et catalogues) dont la haute facture a transformé chaque exemplaire en objet de collection, renforçant le sentiment d'appartenance à un cercle d'exception et la rareté de la marque.",
+      "r2_title": "Référence du Prestige",
+      "r2_body": "Une identité visuelle et une charte graphique si abouties qu'elles ont immédiatement imposé le club comme l'épicentre incontournable de l'influence, facilitant le ralliement spontané des personnalités les plus visionnaires."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Présentation de la marque",

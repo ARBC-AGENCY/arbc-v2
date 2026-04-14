@@ -209,6 +209,48 @@
       "description": "These figures summarise the overall performance across 3 networks, over the first 05 months of deployment. Performance indicators show continuous organic growth, driven by the ongoing strategic deployment."
     }
   },
+  "LagonClub": {
+    "annotation1": "Le Lagon",
+    "annotation2": "Club",
+    "nav": {
+      "s1": "Brand Presentation",
+      "s2": "Agency Challenge",
+      "s3": "Our Response",
+      "s4": "Results"
+    },
+    "s1": {
+      "title": "Brand<br>Presentation",
+      "body": [
+        "Le Lagon Club est un cercle privé d'exception conçu pour une communauté de visionnaires partageant des valeurs et des codes de haute exigence.",
+        "Véritable sanctuaire de l'influence, le club se distingue par une atmosphère ultra-sélective et une ambiance feutrée, offrant à ses membres un espace de convergence unique, loin de l'agitation conventionnelle. C'est le point de ralliement privilégié d'une élite en quête de rareté et de discrétion."
+      ]
+    },
+    "s2": {
+      "title": "The Agency's<br>Challenge",
+      "body": [
+        "Concevoir une identité visuelle et numérique capable de captiver une élite visionnaire tout en préservant le caractère confidentiel du club."
+      ]
+    },
+    "s3": {
+      "title": "Our<br>Response",
+      "p1_title": "Visual Identity",
+      "p1_sub": "(Logo & Brand Charter)",
+      "p1_body": "Creation of a minimalist and timeless graphic system, anchoring the brand within the codes of high distinction.",
+      "p2_title": "Digital Experience",
+      "p2_sub": "(Website)",
+      "p2_body": "Development of an immersive platform conceived as a hidden door, blending mystery and high-end ergonomics.",
+      "p3_title": "Editorial Supports",
+      "p3_sub": "(Brochures & Catalogues)",
+      "p3_body": "Design of premium printed materials translating the excellence and rarity of the Lagon Club universe."
+    },
+    "s4": {
+      "title": "Results",
+      "r1_title": "Confidential Reach",
+      "r1_body": "Editorial materials (brochures and catalogues) whose high production quality transformed every copy into a collector's item, reinforcing the sense of belonging to an exceptional circle and the brand's rarity.",
+      "r2_title": "Prestige Reference",
+      "r2_body": "A visual identity and brand charter so refined that they immediately established the club as the undisputed epicentre of influence, naturally attracting the most visionary personalities."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Brand Presentation",

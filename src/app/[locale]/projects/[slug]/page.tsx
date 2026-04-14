@@ -3,6 +3,7 @@ import PageAnnotation from "@/components/layout/PageAnnotation";
 import AccentMedia from "@/components/sections/AccentMedia";
 import BetMomo from "@/components/sections/BetMomo";
 import HeartChoice from "@/components/sections/HeartChoice";
+import LagonClub from "@/components/sections/LagonClub";
 
 // All valid slugs — Next.js uses this for static generation.
 export function generateStaticParams() {
@@ -35,6 +36,10 @@ export default async function ProjectPage({ params }: Props) {
 
   if (slug === "h-choice") {
     return <HeartChoice />;
+  }
+
+  if (slug === "le-lagon") {
+    return <LagonClub />;
   }
 
   // ── Generic placeholder for all other projects ───────────────────────────
