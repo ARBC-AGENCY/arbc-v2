@@ -144,7 +144,11 @@ export default function ProjectSlider() {
           position: "relative",
           width: "min(88vw, 1340px)",
           height: "clamp(400px, 62vh, 760px)",
+          cursor: "pointer",
         }}
+        onMouseEnter={s.handleMouseEnter}
+        onMouseLeave={s.handleMouseLeave}
+        onMouseMove={s.handleMouseMove}
       >
         {/* ── Background image ──────────────────────────────────────────── */}
         <div
@@ -153,11 +157,7 @@ export default function ProjectSlider() {
             position: "absolute",
             inset: 0,
             overflow: "hidden",
-            cursor: "pointer",
           }}
-          onMouseEnter={s.handleMouseEnter}
-          onMouseLeave={s.handleMouseLeave}
-          onMouseMove={s.handleMouseMove}
         >
           {/* Theme-aware backdrop — visible while clip-path wipe is in progress */}
           <div

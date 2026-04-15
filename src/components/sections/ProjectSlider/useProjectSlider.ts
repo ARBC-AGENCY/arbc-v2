@@ -104,28 +104,8 @@ export function useProjectSlider(): ProjectSliderState {
     yQuickRef.current = gsap.quickTo(cursorBtnRef.current, "y", { duration: 0.7, ease: "power3.out" });
   }, []);
 
-  // ── Restore saved index after hydration (URL param > sessionStorage) ──────
-  useEffect(() => {
-    const urlSlug = searchParams.get("p");
-    if (urlSlug) {
-      const i = PROJECTS.findIndex((p) => p.slug === urlSlug);
-      if (i >= 0 && i !== 0) {
-        setActiveIndex(i);
-        if (trackRef.current) gsap.set(trackRef.current, { x: targetX(i) });
-      }
-      return;
-    }
-    const stored = sessionStorage.getItem("arbc_active_project");
-    if (stored) {
-      const i = PROJECTS.findIndex((p) => p.slug === stored);
-      if (i >= 0 && i !== 0) {
-        setActiveIndex(i);
-        if (trackRef.current) gsap.set(trackRef.current, { x: targetX(i) });
-      }
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   // ── Draggable setup ──────────────────────────────────────────────────────
+  // Must run BEFORE the restore effect so restore can override the initial x.
   useEffect(() => {
     if (!trackRef.current) return;
     gsap.set(trackRef.current, { x: targetX(0) });
@@ -150,6 +130,30 @@ export function useProjectSlider(): ProjectSliderState {
     draggableRef.current = d;
     return () => { d.kill(); };
   }, []);
+
+  // ── Restore saved index after hydration (URL param > sessionStorage) ──────
+  // Runs after Draggable setup so it can override the initial x=targetX(0).
+  useEffect(() => {
+    const urlSlug = searchParams.get("p");
+    if (urlSlug) {
+      const i = PROJECTS.findIndex((p) => p.slug === urlSlug);
+      if (i >= 0 && i !== 0) {
+        setActiveIndex(i);
+        if (trackRef.current) gsap.set(trackRef.current, { x: targetX(i) });
+        draggableRef.current?.update();
+      }
+      return;
+    }
+    const stored = sessionStorage.getItem("arbc_active_project");
+    if (stored) {
+      const i = PROJECTS.findIndex((p) => p.slug === stored);
+      if (i >= 0 && i !== 0) {
+        setActiveIndex(i);
+        if (trackRef.current) gsap.set(trackRef.current, { x: targetX(i) });
+        draggableRef.current?.update();
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Page-ready entrance ──────────────────────────────────────────────────
   useEffect(() => {
