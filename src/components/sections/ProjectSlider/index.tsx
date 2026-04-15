@@ -186,6 +186,7 @@ export default function ProjectSlider() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
+                objectPosition: project.imagePosition ?? "center",
                 display: "block",
               }}
             />

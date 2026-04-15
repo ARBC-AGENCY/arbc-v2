@@ -7,7 +7,8 @@ import logoLagon from "@/assets/images/logos/LagonClub-Logo.svg";
 import logoHChoice from "@/assets/images/logos/H-choice-logo.svg";
 import logoSpicy from "@/assets/images/logos/Spicy-logo.svg";
 import logoAccent from "@/assets/images/logos/AccentMedia-Logo.svg";
-import logoCimencam from "@/assets/images/logos/cimencam-logo.svg";
+import logoJamalia from "@/assets/images/logos/jamalia-logo.svg";
+import imgJamalia from "@/assets/images/jamalia/MeloFamily.webp";
 import imgBetmomo from "@/assets/images/logos/projectSliderImage/BETMOMO.webp";
 import imgLagon from "@/assets/images/logos/projectSliderImage/LagonClub.webp";
 import imgWoodin from "@/assets/images/logos/projectSliderImage/Woodin.webp";
@@ -246,27 +247,34 @@ export const PROJECTS: ProjectStatic[] = [
   // 07 — Cimencam
   {
     id: "07",
-    slug: "cimencam",
-    name: "CIMENCAM",
-    image: "https://picsum.photos/seed/arbc07/1600/900",
-    logo: logoCimencam.src,
+    slug: "jamalia",
+    name: "JAMALIA",
+    imagePosition: "bottom" ,
+    image: imgJamalia.src,
+    logo: logoJamalia.src,
     accentColor: "#ffffff",
     blocks: [
       {
-        top: "-1.5rem",
-        right: "1.75rem",
+        top: "-3.5rem",
+        right: "-5rem",
         width: "min(380px, 42%)",
-        bg: "rgba(30, 30, 28, 0.86)",
+        bg: "#e7501e",
         color: "#ffffff",
         padding: "1.6rem 1.4rem",
-        borderRadius: "0.75rem",
         blur: true,
         border: "1px solid rgba(255,255,255,0.08)",
         segments: [
-          { type: "label" },
-          { type: "title" },
-          { type: "desc" },
-          { type: "tagline" },
+          {
+            type: "desc",
+            style: {
+              fontSize: "var(--text-sm)",
+              fontWeight: 700,
+              letterSpacing: "0.01em",
+              padding: 0,
+              color: "rgba(25, 25, 25, 1)",
+              lineHeight: 1.3
+            },
+          },
         ],
       },
     ],

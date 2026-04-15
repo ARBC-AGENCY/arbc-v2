@@ -142,20 +142,30 @@
     "s3": {
       "label": "03 — Our Response",
       "col1_title": "Proximity Marketing &amp; Field Activations",
-      "col1_body": ["Deployment of street marketing campaigns (in-store and street activations) to drive direct recruitment of new bettors and build grassroots brand awareness in popular neighbourhoods across Cameroon and Côte d'Ivoire."],
+      "col1_body": [
+        "Deployment of street marketing campaigns (in-store and street activations) to drive direct recruitment of new bettors and build grassroots brand awareness in popular neighbourhoods across Cameroon and Côte d'Ivoire."
+      ],
       "col2_title": "Audiovisual Production",
-      "col2_body": ["Supervision of the graphic pipeline and production of visuals and advertising spots (TV/Radio/Digital). The objective was to build a strong, memorable visual identity capable of adapting to local cultural codes while respecting BetMomo's brand image."],
+      "col2_body": [
+        "Supervision of the graphic pipeline and production of visuals and advertising spots (TV/Radio/Digital). The objective was to build a strong, memorable visual identity capable of adapting to local cultural codes while respecting BetMomo's brand image."
+      ],
       "col3_title": "Strategic Events",
-      "col3_body": ["Organisation of key brand moments (launch evenings, bettor tournaments, sponsorship events) aimed at building an active community around the brand and establishing trust with local partners."]
+      "col3_body": [
+        "Organisation of key brand moments (launch evenings, bettor tournaments, sponsorship events) aimed at building an active community around the brand and establishing trust with local partners."
+      ]
     },
     "s4": {
       "label": "Results",
       "r1_title": "Acquisition Peak",
       "r1_body": ["A significant increase in new users and app downloads."],
       "r2_title": "Strengthened Brand Awareness",
-      "r2_body": ["The broadcast of advertising spots generated an immediate impact, significantly increasing brand recognition among the betting community."],
+      "r2_body": [
+        "The broadcast of advertising spots generated an immediate impact, significantly increasing brand recognition among the betting community."
+      ],
       "r3_title": "Field Engagement",
-      "r3_body": ["Thousands of direct contacts established through brand ambassadors, fostering increased user loyalty."]
+      "r3_body": [
+        "Thousands of direct contacts established through brand ambassadors, fostering increased user loyalty."
+      ]
     }
   },
   "HeartChoice": {
@@ -251,6 +261,48 @@
       "r2_body": "A visual identity and brand charter so refined that they immediately established the club as the undisputed epicentre of influence, naturally attracting the most visionary personalities."
     }
   },
+  "Jamalia": {
+    "annotation1": "Jamalia",
+    "annotation2": "Group",
+    "nav": {
+      "s1": "Brand Presentation",
+      "s2": "Agency Mandate",
+      "s3": "Our Response",
+      "s4": "Results"
+    },
+    "s1": {
+      "body": [
+        "Jamalia Group est une entreprise agro-industrielle basée au Cameroun, créatrice de saveurs authentiques sous le label United Tastes of Africa.",
+        "Spécialisée dans les amuse-gueules premium (Caramelo, chipsmelo, peanuts, barres de sésame), l'entreprise transforme des matières premières locales (arachides, sésame, plantain) en produits d'exception destinés à une clientèle urbaine et exigeante, ainsi qu'au secteur du catering (compagnies aériennes, hôtels)."
+      ]
+    },
+    "s2": {
+      "body": [
+        "En partenariat avec l'agence Quantom, notre agence a été mandatée par le fonds d'investissement Investisseurs &amp; Partenaires (I&amp;P) pour piloter la stratégie marketing et communication de Jamalia.",
+        "Notre mission : concevoir et déployer un dispositif global visant à catalyser la croissance de l'entreprise et à structurer l'expansion de son réseau de distribution."
+      ]
+    },
+    "s4": {
+      "title": "Results",
+      "r1_title": "Market Validation & Agility",
+      "r1_body": "The success of the test deployment phase validated the alignment of the offer with consumer expectations."
+    },
+    "s3": {
+      "title": "Our<br>Response",
+      "p1_title": "Market Research & Consumer Analysis",
+      "p1_body": "Field immersion in Yaoundé, Douala and Pouyamba. Tasting sessions and surface research to map consumer preferences and habits.",
+      "p2_title": "Marketing Plan Development",
+      "p2_body": "Definition of a coherent strategic positioning, including targeting and optimisation of the 4Ps (Product, Price, Distribution, Promotion) with a strong focus on the client network.",
+      "p3_title": "Communication Strategy",
+      "p3_body": "Design of a targeted communication plan to support Jamalia's growth, through impactful messages and supports adapted to digital channels (social media, influencers) and offline.",
+      "p4_title": "Sales Force Coaching",
+      "p4_sub": "(Sales Training)",
+      "p4_body": "Professionalisation of the sales force through a targeted training programme: sales techniques, product arguments and customer relationship management.",
+      "p5_title": "Operational Deployment",
+      "p5_sub": "(In-store Field Activation)",
+      "p5_body": "Structured point-of-sale presence: merchandising, commercial animations and development of the local distribution network."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Brand Presentation",
@@ -306,9 +358,7 @@
     "s4": {
       "label": "Results",
       "r1_title": "Brand Clarity",
-      "r1_body": [
-        "Elimination of all confusion among prospects and partners."
-      ],
+      "r1_body": ["Elimination of all confusion among prospects and partners."],
       "r2_title": "Offer Accessibility",
       "r2_body": [
         "The clarification and targeted promotion strategy for each area of expertise improved public understanding of the offer. This drove growth in direct kiosk orders and a strong flow of digital transformation enquiries."
@@ -389,8 +439,7 @@
       "title": "Cimencam — building trust as much as structures.",
       "category": "Institutional & Print",
       "descriptions": [
-        "For a major player in the construction sector, institutional communication must inspire as much as it informs.",
-        "Annual reports, corporate materials and B2B campaigns designed to reinforce the credibility of an industrial leader."
+        "From raw materials, rare experiences are born. In a standardized world, those who transform the origin create value."
       ],
       "taglines": ["To build is also to tell a story."]
     }

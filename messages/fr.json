@@ -142,20 +142,32 @@
     "s3": {
       "label": "03 — La réponse de l'agence",
       "col1_title": "Marketing de proximité &amp; Activations Terrain",
-      "col1_body": ["Déploiement de campagnes de street marketing (animations en points de vente ou dans les rues) pour favoriser le recrutement direct de nouveaux parieurs et renforcer la notoriété de proximité dans les quartiers populaires du Cameroun et de Côte d'Ivoire."],
+      "col1_body": [
+        "Déploiement de campagnes de street marketing (animations en points de vente ou dans les rues) pour favoriser le recrutement direct de nouveaux parieurs et renforcer la notoriété de proximité dans les quartiers populaires du Cameroun et de Côte d'Ivoire."
+      ],
       "col2_title": "Production Audiovisuelle",
-      "col2_body": ["Supervision de la chaîne graphique et production de visuels et spots publicitaires (TV/Radio/Digital). L'objectif était de construire une identité visuelle forte et mémorable, capable de s'adapter aux codes culturels locaux tout en respectant l'image de marque de Betmomo."],
+      "col2_body": [
+        "Supervision de la chaîne graphique et production de visuels et spots publicitaires (TV/Radio/Digital). L'objectif était de construire une identité visuelle forte et mémorable, capable de s'adapter aux codes culturels locaux tout en respectant l'image de marque de Betmomo."
+      ],
       "col3_title": "Évènementiel Stratégique",
-      "col3_body": ["Organisation de temps forts (soirées de lancement, tournois de parieurs, évènements de sponsoring) visant à fédérer une communauté active autour de la marque et à instaurer une relation de confiance avec les partenaires locaux."]
+      "col3_body": [
+        "Organisation de temps forts (soirées de lancement, tournois de parieurs, évènements de sponsoring) visant à fédérer une communauté active autour de la marque et à instaurer une relation de confiance avec les partenaires locaux."
+      ]
     },
     "s4": {
       "label": "Résultats",
       "r1_title": "Pic d'Acquisition",
-      "r1_body": ["Une augmentation significative du nombre de nouveaux utilisateurs et de téléchargements de l'application."],
+      "r1_body": [
+        "Une augmentation significative du nombre de nouveaux utilisateurs et de téléchargements de l'application."
+      ],
       "r2_title": "Notoriété Renforcée",
-      "r2_body": ["La diffusion des spots publicitaires a généré un impact immédiat, augmentant significativement la reconnaissance de la marque auprès de la communauté des parieurs."],
+      "r2_body": [
+        "La diffusion des spots publicitaires a généré un impact immédiat, augmentant significativement la reconnaissance de la marque auprès de la communauté des parieurs."
+      ],
       "r3_title": "Engagement Terrain",
-      "r3_body": ["Des milliers de contacts directs établis grâce aux ambassadeurs, favorisant une fidélisation accrue des utilisateurs."]
+      "r3_body": [
+        "Des milliers de contacts directs établis grâce aux ambassadeurs, favorisant une fidélisation accrue des utilisateurs."
+      ]
     }
   },
   "HeartChoice": {
@@ -249,6 +261,48 @@
       "r1_body": "Des supports d'édition (brochures et catalogues) dont la haute facture a transformé chaque exemplaire en objet de collection, renforçant le sentiment d'appartenance à un cercle d'exception et la rareté de la marque.",
       "r2_title": "Référence du Prestige",
       "r2_body": "Une identité visuelle et une charte graphique si abouties qu'elles ont immédiatement imposé le club comme l'épicentre incontournable de l'influence, facilitant le ralliement spontané des personnalités les plus visionnaires."
+    }
+  },
+  "Jamalia": {
+    "annotation1": "Jamalia",
+    "annotation2": "Group",
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le mandat de l'agence",
+      "s3": "La réponse",
+      "s4": "Résultats"
+    },
+    "s1": {
+      "body": [
+        "Jamalia Group est une entreprise agro-industrielle basée au Cameroun, créatrice de saveurs authentiques sous le label United Tastes of Africa.",
+        "Spécialisée dans les amuse-gueules premium (Caramelo, chipsmelo, peanuts, barres de sésame), l'entreprise transforme des matières premières locales (arachides, sésame, plantain) en produits d'exception destinés à une clientèle urbaine et exigeante, ainsi qu'au secteur du catering (compagnies aériennes, hôtels)."
+      ]
+    },
+    "s2": {
+      "body": [
+        "En partenariat avec l'agence Quantom, notre agence a été mandatée par le fonds d'investissement Investisseurs &amp; Partenaires (I&amp;P) pour piloter la stratégie marketing et communication de Jamalia.",
+        "Notre mission : concevoir et déployer un dispositif global visant à catalyser la croissance de l'entreprise et à structurer l'expansion de son réseau de distribution."
+      ]
+    },
+    "s4": {
+      "title": "Résultats",
+      "r1_title": "Validation & Agilité Marché",
+      "r1_body": "Le succès de la phase de déploiement test a validé l'adéquation de l'offre avec les attentes des consommateurs."
+    },
+    "s3": {
+      "title": "La réponse<br>de l'agence",
+      "p1_title": "Étude de Marché & Analyse Consommateurs",
+      "p1_body": "Immersion terrain à Yaoundé, Douala et Pouyamba. Surface et sessions de dégustations tests pour cerner les préférences et habitudes de consommation.",
+      "p2_title": "Élaboration du Plan Marketing",
+      "p2_body": "Définition d'un positionnement stratégique cohérent, incluant un ciblage et l'optimisation des 4P (Produit, Prix, Distribution, Promotion) avec une grande focalisation de l'offre sur les réseaux en clientèle.",
+      "p3_title": "Stratégie de Communication",
+      "p3_body": "Conception d'un plan de communication ciblé à soutenir la croissance de Jamalia, à travers des messages impactants et des supports adaptés aux canaux digitaux (réseaux sociaux, influenceurs) et offline.",
+      "p4_title": "Coaching & Force de Vente",
+      "p4_sub": "(Formation des Commerciaux)",
+      "p4_body": "Professionnalisation de la force de vente à travers un programme de formation ciblée : techniques de vente, arguments produits et gestion de la relation client.",
+      "p5_title": "Déploiement Opérationnel",
+      "p5_sub": "(Terrain en Points de Vente)",
+      "p5_body": "Mise en place d'une présence structurée en points de vente : merchandising, animations commerciales et développement du réseau de distribution local."
     }
   },
   "AccentMedia": {
@@ -389,8 +443,7 @@
       "title": "Cimencam — bâtir la confiance autant que les structures.",
       "category": "Institutionnel & Print",
       "descriptions": [
-        "Pour un acteur majeur du secteur de la construction, la communication institutionnelle doit inspirer autant qu'informer.",
-        "Rapports annuels, supports corporate et campagnes B2B pensés pour renforcer la crédibilité d'un leader industriel."
+        "Des matières brutes, naissent des expériences rares. Dans un monde standardisé, ceux qui transforment l’origine créent la valeur."
       ],
       "taglines": ["Construire, c'est aussi raconter."]
     }

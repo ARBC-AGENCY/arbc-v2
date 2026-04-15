@@ -54,6 +54,8 @@ export interface ProjectStatic {
   name: string;
   /** Large background image URL for the main view. */
   image: string;
+  /** CSS object-position for the cover image. Defaults to "center". */
+  imagePosition?: string;
   /** SVG/image URL centred in the thumbnail. */
   logo: string;
   /** Thumbnail background colour. */
