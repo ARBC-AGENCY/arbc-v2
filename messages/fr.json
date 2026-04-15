@@ -338,6 +338,43 @@
       "r1_body": "La série de campagnes a généré une forte portée organique et a établi LIJI comme une voix reconnue dans la mode camerounaise — avec un contenu qui voyage sur toutes les plateformes."
     }
   },
+  "Eventify": {
+    "annotation1": "Eventify",
+    "annotation2": "Agency",
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le défi de l'agence",
+      "s3": "Notre réponse",
+      "s4": "Résultats"
+    },
+    "s1": {
+      "body": [
+        "Acteur historique de l'événementiel, Eventify a su faire évoluer son expertise pour devenir aujourd'hui une agence conseil en marketing et communication à 360°.",
+        "Riche de son expérience terrain, l'agence exploite désormais son plein potentiel stratégique pour accompagner les marques dans une vision globale et créative de leur communication. Elle est également porteuse de projet à fort impact tel que Woman king, Prix Ramsès."
+      ]
+    },
+    "s2": {
+      "title": "Le défi de l'agence",
+      "body": [
+        "Accompagner l'entreprise dans la structuration et la rédaction de ses supports stratégiques des projets dont ils sont auteurs (dossiers projets et dossiers partenaires).",
+        "Le second défi visait à lever le déficit de visibilité d'Eventify par la conception d'un écosystème web propriétaire."
+      ]
+    },
+    "s3": {
+      "section_title": "La réponse de l'agence",
+      "p1_title": "Conception de dossiers Partenaires premium",
+      "p1_body": "Création d'une structure narrative persuasive (Storytelling, chi res clés, bénéfices sponsors) avec un design épuré pour chaque projet",
+      "p2_title": "Mise en avant de l'expertise 360",
+      "p2_body": "Organisation du site par pôles de compétences pour prouver la maîtrise opérationnelle de l'agence. Un design qui reflète le dynamisme du secteur social allié à la rigueur du conseil en marketing"
+    },
+    "s4": {
+      "label": "Résultats",
+      "r1_title": "Efficacité commerciale",
+      "r1_body": "Grâce aux dossiers partenaires structurés, le temps de préparation des propositions a été réduit.",
+      "r2_title": "Vitrine 360 opérationnelle",
+      "r2_body": "Un site institutionnel qui génère désormais des demandes entrantes qualifiées grâce à une présentation claire de l'expertise."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Présentation de la marque",

@@ -336,6 +336,43 @@
       "r1_body": "The campaign series generated strong organic reach and established LIJI as a recognizable voice in Cameroonian fashion — with content that travels across platforms."
     }
   },
+  "Eventify": {
+    "annotation1": "Eventify",
+    "annotation2": "Agency",
+    "nav": {
+      "s1": "Brand Presentation",
+      "s2": "Agency Challenge",
+      "s3": "Our Response",
+      "s4": "Results"
+    },
+    "s1": {
+      "body": [
+        "A longstanding player in the events industry, Eventify has evolved its expertise to become a full-service 360° marketing and communication consultancy.",
+        "Drawing on its extensive field experience, the agency now harnesses its full strategic potential to support brands with a comprehensive and creative vision of their communication. It also leads high-impact projects such as Woman King and Prix Ramsès."
+      ]
+    },
+    "s2": {
+      "title": "The Agency's Challenge",
+      "body": [
+        "Support the company in structuring and writing its strategic project documents for which they are the authors (project files and partner files).",
+        "The second challenge aimed to address Eventify's lack of visibility by designing a proprietary web ecosystem."
+      ]
+    },
+    "s3": {
+      "section_title": "The agency's response",
+      "p1_title": "Design of premium partner files",
+      "p1_body": "Creation of a persuasive narrative structure (storytelling, key figures, sponsor benefits) with a clean design for each project",
+      "p2_title": "Showcasing 360-degree expertise",
+      "p2_body": "Organization of the website by areas of expertise to prove the agency's operational mastery. A design that reflects the dynamism of the social sector combined with the rigor of marketing consulting"
+    },
+    "s4": {
+      "label": "Results",
+      "r1_title": "Commercial Efficiency",
+      "r1_body": "Thanks to structured partner dossiers, the time spent preparing proposals was significantly reduced.",
+      "r2_title": "Operational 360° Showcase",
+      "r2_body": "An institutional website that now generates qualified inbound leads through a clear presentation of the agency's expertise."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Brand Presentation",
