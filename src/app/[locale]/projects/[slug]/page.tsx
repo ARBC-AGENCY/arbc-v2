@@ -5,6 +5,7 @@ import BetMomo from "@/components/sections/BetMomo";
 import HeartChoice from "@/components/sections/HeartChoice";
 import Jamalia from "@/components/sections/Jamalia";
 import LagonClub from "@/components/sections/LagonClub";
+import Liji from "@/components/sections/Liji";
 
 // All valid slugs — Next.js uses this for static generation.
 export function generateStaticParams() {
@@ -17,6 +18,7 @@ export function generateStaticParams() {
     { slug: "accent-media" },
     { slug: "cimencam" },
     { slug: "jamalia" },
+    { slug: "liji" },
   ];
 }
 
@@ -46,6 +48,10 @@ export default async function ProjectPage({ params }: Props) {
 
   if (slug === "jamalia") {
     return <Jamalia />;
+  }
+
+  if (slug === "liji") {
+    return <Liji />;
   }
 
   // ── Generic placeholder for all other projects ───────────────────────────

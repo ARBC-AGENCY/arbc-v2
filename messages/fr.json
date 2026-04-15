@@ -305,6 +305,39 @@
       "p5_body": "Mise en place d'une présence structurée en points de vente : merchandising, animations commerciales et développement du réseau de distribution local."
     }
   },
+  "Liji": {
+    "annotation1": "Liji",
+    "nav": {
+      "s1": "Présentation de la marque",
+      "s2": "Le défi de l'agence",
+      "s3": "Notre réponse",
+      "s4": "Résultats"
+    },
+    "s1": {
+      "body": [
+        "Liji Sarl est une entreprise agro-industrielle camerounaise pionnière dans la valorisation des ressources locales pour l’alimentation des plus jeunes.",
+        "Spécialisée dans la nutrition infantile et le snacking sain, elle conçoit et commercialise une gamme de compotes pour bébés et enfants élaborée exclusivement à partir de fruits locaux frais. L’entreprise diversifie également son offre avec une gamme de chips de manioc.",
+        "Aujourd'hui, Liji Sarl s'impose dans les rayons des grandes surfaces et supermarchés comme une alternative locale, naturelle et de haute qualité aux produits importés."
+      ]
+    },
+    "s2": {
+      "title": "Le défi de L'agence",
+      "body": [
+        "Créer une identité visuelle forte et une stratégie de contenu percutante pour les campagnes de lancement de LIJI.",
+        "L'enjeu : traduire l'esprit audacieux de la marque en images et messages qui résonnent avec une audience africaine jeune et urbaine, tout en conservant un positionnement premium."
+      ]
+    },
+    "s3": {
+      "p1_title": "Branding & Identité Graphique",
+      "p1_body": "Création d'une identité visuelle et packaging moderne et pétillante qui parle à la fois aux enfants et adultes.",
+      "p2_title": "Social Media Management",
+      "p2_body": "Déploiement d'une stratégie de contenu sur Facebook et Instagram axée sur la pédagogie (conseils nutritionnels) et la proximité. Nous avons mis en scène les produits à travers des visuels de haute qualité et des interactions quotidiennes pour créer un lien affectif avec les mamans."
+    },
+    "s4": {
+      "r1_title": "Impact Marque & Engagement Audience",
+      "r1_body": "La série de campagnes a généré une forte portée organique et a établi LIJI comme une voix reconnue dans la mode camerounaise — avec un contenu qui voyage sur toutes les plateformes."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Présentation de la marque",
@@ -410,30 +443,26 @@
       ]
     },
     "p04": {
-      "title": "H-Choice — guider chaque choix vers la bonne décision.",
+      "title": "Comprendre pour mieux traiter.",
       "category": "Web & Produit",
       "descriptions": [
-        "Une plateforme de conseil et d'orientation pensée pour simplifier des décisions complexes dans un marché saturé d'options.",
-        "Design UX centré utilisateur, architecture de l'information claire et parcours de conversion optimisés."
+        "Un traitement peut être avancé, structuré, médicalement irréprochable. Mais sans écoute, sans vision globale, il ne transforme pas réellement une vie."
       ],
       "taglines": ["Choisir mieux, vivre mieux."]
     },
     "p05": {
-      "title": "Spicy — la saveur d'une marque qui ose.",
+      "title": "La perception fait tout.",
       "category": "Stratégie & Branding",
       "descriptions": [
-        "Spicy revendique la différence. Notre travail : construire une identité de marque aussi percutante que son nom — audacieuse, cohérente, inoubliable.",
-        "Du naming au design system, en passant par la stratégie éditoriale digitale."
+        "Un produit peut être excellent, répondre à tous les standards, cocher toutes les cases. Mais s’il ne crée pas de désir, s’il ne suscite rien, il disparaît dans le bruit."
       ],
       "taglines": ["Pimenter, c'est se distinguer."]
     },
     "p06": {
-      "title": "Accent Média — amplifier chaque message, toucher chaque audience.",
+      "title": "Transformer aujourd’hui pour construire demain.",
       "category": "Média & Communication",
       "descriptions": [
-        "Accompagner une régie média dans sa transformation digitale, avec des outils de communication qui reflètent son positionnement premium.",
-        "Stratégie de contenu, refonte éditoriale et production de supports commerciaux haute définition."
-      ],
+        "Le digital transforme les interactions. L’environnement physique façonne les expériences. C’est à l’intersection des deux que se créent les solutions les plus durables."      ],
       "taglines": [
         "Le bon message, au bon moment.",
         "L'impact, c'est une science."

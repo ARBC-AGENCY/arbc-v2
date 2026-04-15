@@ -303,6 +303,39 @@
       "p5_body": "Structured point-of-sale presence: merchandising, commercial animations and development of the local distribution network."
     }
   },
+  "Liji": {
+    "annotation1": "Liji",
+    "nav": {
+      "s1": "Brand Presentation",
+      "s2": "Agency Challenge",
+      "s3": "Our Response",
+      "s4": "Results"
+    },
+    "s1": {
+      "body": [
+        "Liji Sarl is a pioneering Cameroonian agro-industrial company dedicated to adding value to local resources for young children's nutrition.",
+        "Specializing in infant nutrition and healthy snacking, it designs and markets a range of fruit compotes for babies and children, made exclusively from fresh local fruits. The company also diversifies its offering with a line of cassava chips.",
+        "Today, Liji Sarl stands out on the shelves of supermarkets and grocery stores as a local, natural, and high-quality alternative to imported products."
+      ]
+    },
+    "s2": {
+      "title": "The Agency's Challenge",
+      "body": [
+        "Create a strong visual identity and an impactful content strategy for LIJI's launch campaigns.",
+        "The challenge: translate the brand's audacious spirit into imagery and messaging that resonates with a young, urban African audience while maintaining premium appeal."
+      ]
+    },
+    "s3": {
+      "p1_title": "Branding & Graphic Identity",
+      "p1_body": "Creation of a modern and vibrant visual identity and packaging that speaks to both children and adults.",
+      "p2_title": "Social Media Management",
+      "p2_body": "Deployment of a content strategy on Facebook and Instagram focused on pedagogy (nutritional advice) and proximity. We showcased the products through high-quality visuals and daily interactions to build an emotional connection with mothers."
+    },
+    "s4": {
+      "r1_title": "Brand Impact & Audience Engagement",
+      "r1_body": "The campaign series generated strong organic reach and established LIJI as a recognizable voice in Cameroonian fashion — with content that travels across platforms."
+    }
+  },
   "AccentMedia": {
     "nav": {
       "s1": "Brand Presentation",
@@ -406,29 +439,26 @@
       ]
     },
     "p04": {
-      "title": "H-Choice — guiding every choice toward the right decision.",
+      "title": "Understanding leads to better treatment.",
       "category": "Web & Product",
       "descriptions": [
-        "A guidance platform designed to simplify complex decisions in a market saturated with options.",
-        "User-centred UX design, clear information architecture and optimised conversion flows."
+        "A treatment can be advanced, structured, medically flawless. But without listening, without a holistic vision, it does not truly transform a life."
       ],
       "taglines": ["Choose better, live better."]
     },
     "p05": {
-      "title": "Spicy — the flavour of a brand that dares.",
+      "title": "Perception is everything.",
       "category": "Strategy & Branding",
       "descriptions": [
-        "Spicy claims the difference. Our work: build a brand identity as punchy as its name — bold, consistent, unforgettable.",
-        "From naming to design system, through to digital editorial strategy."
+        "A product can be excellent, meet every standard, tick all the boxes. But if it doesn’t create desire, if it stirs nothing — it disappears into the noise."
       ],
       "taglines": ["To spice things up is to stand out."]
     },
     "p06": {
-      "title": "Accent Media — amplifying every message, reaching every audience.",
+      "title": "Transform today to build tomorrow.",
       "category": "Media & Communication",
       "descriptions": [
-        "Supporting a media agency through its digital transformation with communication tools that reflect its premium positioning.",
-        "Content strategy, editorial redesign and high-definition commercial production."
+        "Digital technology transforms interactions. The physical environment shapes experiences. It is at the intersection of the two that the most sustainable solutions are created."
       ],
       "taglines": [
         "The right message, at the right time.",
