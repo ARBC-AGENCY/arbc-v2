@@ -142,7 +142,8 @@ function ServiceSection({
           height: "100%",
           display: "flex",
           alignItems: "center",
-          padding: "4rem clamp(2.5rem, 5vw, 6rem) 4rem clamp(3.5rem, 6vw, 8rem)",
+          padding:
+            "4rem clamp(2.5rem, 5vw, 6rem) 4rem clamp(3.5rem, 6vw, 8rem)",
         }}
       >
         <div style={{ maxWidth: 560 }}>
@@ -459,7 +460,7 @@ export default function Services() {
         )}
 
       {/* Outer pin container */}
-      <div ref={outerRef}>
+      <div ref={outerRef} className="once-in">
         {/* Horizontal track */}
         <div
           key={displayTab}
@@ -471,6 +472,7 @@ export default function Services() {
             opacity: fading ? 0 : 1,
             transition: fading ? "opacity 0.32s ease" : "opacity 0.28s ease",
           }}
+          className="once-in"
         >
           {services.map((s, i) => (
             <ServiceSection

@@ -42,7 +42,7 @@ export interface ProjectSliderState {
   imageWipeRef:       React.RefObject<HTMLDivElement | null>;
   blocksContainerRef: React.RefObject<HTMLDivElement | null>;
   headlineRef:        React.RefObject<HTMLHeadingElement | null>;
-  cursorBtnRef:       React.RefObject<HTMLButtonElement | null>;
+  cursorBtnRef:       React.RefObject<HTMLDivElement | null>;
   trackRef:           React.RefObject<HTMLDivElement | null>;
   draggableRef:       React.MutableRefObject<Draggable | null>;
   // Handlers
@@ -90,7 +90,7 @@ export function useProjectSlider(): ProjectSliderState {
   const imageWipeRef       = useRef<HTMLDivElement>(null);
   const blocksContainerRef = useRef<HTMLDivElement>(null);
   const headlineRef        = useRef<HTMLHeadingElement>(null);
-  const cursorBtnRef       = useRef<HTMLButtonElement>(null);
+  const cursorBtnRef       = useRef<HTMLDivElement>(null);
   const trackRef           = useRef<HTMLDivElement>(null);
   const draggableRef       = useRef<Draggable | null>(null);
   const xQuickRef          = useRef<((v: number) => void) | null>(null);

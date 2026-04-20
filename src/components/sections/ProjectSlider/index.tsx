@@ -144,22 +144,19 @@ export default function ProjectSlider() {
           position: "relative",
           width: "min(88vw, 1340px)",
           height: "clamp(400px, 62vh, 760px)",
-          cursor: "pointer",
         }}
-        onMouseEnter={s.handleMouseEnter}
-        onMouseLeave={s.handleMouseLeave}
-        onMouseMove={s.handleMouseMove}
       >
-        {/* ── Background image ──────────────────────────────────────────── */}
+        {/* ── Background image (purely visual, no pointer events) ─────── */}
         <div
           ref={s.imageContainerRef}
           style={{
             position: "absolute",
             inset: 0,
             overflow: "hidden",
+            pointerEvents: "none",
           }}
         >
-          {/* Theme-aware backdrop — visible while clip-path wipe is in progress */}
+          {/* Theme-aware backdrop */}
           <div
             style={{
               position: "absolute",
@@ -197,7 +194,6 @@ export default function ProjectSlider() {
             style={{
               position: "absolute",
               inset: 0,
-              pointerEvents: "none",
               background: [
                 "linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 55%)",
                 "linear-gradient(to top,   rgba(0,0,0,0.5)  0%, transparent 45%)",
@@ -207,21 +203,26 @@ export default function ProjectSlider() {
           />
         </div>
 
-        {/* ── Cursor-following "Voir le projet" button ──────────────────── */}
+        {/* ── Interaction layer — owns mouse events + cursor circle ─────── */}
+        {/* Single div so mouseleave only fires when truly leaving the card  */}
         <div
           style={{
             position: "absolute",
             inset: 0,
+            cursor: "pointer",
+            zIndex: 8,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            pointerEvents: "none",
-            zIndex: 8,
           }}
+          onMouseEnter={s.handleMouseEnter}
+          onMouseLeave={s.handleMouseLeave}
+          onMouseMove={s.handleMouseMove}
+          onClick={() => navigate(`/projects/${project.slug}`, project.name)}
         >
-          <button
+          {/* Cursor circle — child of this layer, so never causes mouseleave */}
+          <div
             ref={s.cursorBtnRef}
-            onClick={() => navigate(`/projects/${project.slug}`, project.name)}
             style={{
               width: "108px",
               height: "108px",
@@ -241,13 +242,11 @@ export default function ProjectSlider() {
               userSelect: "none",
               lineHeight: 1.3,
               padding: "0 1rem",
-              border: "none",
-              cursor: "pointer",
-              pointerEvents: "auto",
+              pointerEvents: "none",
             }}
           >
             {t("viewProject")}
-          </button>
+          </div>
         </div>
 
         {/* ── Text blocks — independently positioned per project ─────────── */}
