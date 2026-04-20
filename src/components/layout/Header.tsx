@@ -5,8 +5,8 @@ import { useTheme } from "next-themes";
 import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n/navigation";
-import { useTransitionContext } from "@/context/TransitionContext";
+import { usePathname, useRouter } from "@/i18n/navigation";
+
 import TransitionLink from "@/components/ui/TransitionLink";
 
 export default function Header() {
@@ -14,10 +14,12 @@ export default function Header() {
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("Nav");
   const pathname = usePathname();
-  const { navigate } = useTransitionContext();
+  const router = useRouter();
 
-  // True when on a project detail page (e.g. /projects/accent-media)
-  const isProjectDetail = /^\/projects\/[^/]+$/.test(pathname);
+
+  // Show X close button on project detail pages and the about page
+  const isProjectDetail =
+    /^\/projects\/[^/]+$/.test(pathname) || pathname === "/about";
 
   const logoRef = useRef<HTMLDivElement>(null);
   const ctaWrapperRef = useRef<HTMLDivElement>(null);
@@ -27,12 +29,9 @@ export default function Header() {
 
   useEffect(() => setMounted(true), []);
 
-  // Entrance animations + initial underline state
+  // Entrance animations (run once on first mount)
   useEffect(() => {
     if (!mounted) return;
-
-    gsap.set(underlineRef.current, { scaleX: 0, transformOrigin: "left center" });
-
     gsap.fromTo(
       logoRef.current,
       { opacity: 0, x: -40 },
@@ -45,10 +44,16 @@ export default function Header() {
     );
   }, [mounted]);
 
-  // Dual-strength magnetic: magnetRef moves at STRENGTH, textRef at TEXT_STRENGTH
+  // Dual-strength magnetic — re-runs whenever the About CTA mounts/remounts,
+  // i.e. whenever isProjectDetail flips back to false.
   useEffect(() => {
+    if (isProjectDetail) return; // X button is showing, CTA elements don't exist
+
     const el = magnetRef.current;
     if (!el) return;
+
+    // Reset underline for the freshly mounted element
+    gsap.set(underlineRef.current, { scaleX: 0, transformOrigin: "left center" });
 
     const STRENGTH = 30;
     const TEXT_STRENGTH = 13;
@@ -84,7 +89,7 @@ export default function Header() {
       el.removeEventListener("mouseenter", onEnter);
       el.removeEventListener("mouseleave", onLeave);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isProjectDetail]); // re-attach whenever CTA toggles back into view
 
   const isDark = !mounted || resolvedTheme === "dark";
   const logoSrc = isDark ? "/images/ARBC-white.svg" : "/images/ARBC-dark.svg";
@@ -111,7 +116,7 @@ export default function Header() {
         {isProjectDetail ? (
           /* ── X close button ── */
           <button
-            onClick={() => navigate("/projects", "projects")}
+            onClick={() => router.back()}
             aria-label="Close project"
             style={{
               display: "flex",

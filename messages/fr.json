@@ -499,7 +499,8 @@
       "title": "Transformer aujourd’hui pour construire demain.",
       "category": "Média & Communication",
       "descriptions": [
-        "Le digital transforme les interactions. L’environnement physique façonne les expériences. C’est à l’intersection des deux que se créent les solutions les plus durables."      ],
+        "Le digital transforme les interactions. L’environnement physique façonne les expériences. C’est à l’intersection des deux que se créent les solutions les plus durables."
+      ],
       "taglines": [
         "Le bon message, au bon moment.",
         "L'impact, c'est une science."
@@ -513,5 +514,54 @@
       ],
       "taglines": ["Construire, c'est aussi raconter."]
     }
+  },
+  "About": {
+    "prev": "Précédent",
+    "next": "Suivant",
+    "hero_headline1": "Nous sommes les",
+    "hero_headline2": "SHIFT MAKERS",
+    "hero_headline3": ", des instigateurs du changement.",
+    "hero_description": "Nous fusionnons l'héritage culturel et l'innovation radicale pour propulser les marques dans une nouvelle dimension cinétique.",
+    "history_tag": "Historique",
+    "history_title": "DOUALA 2018.",
+    "history_p1": "Tout a commencé dans l'effervescence de Douala. Une vision claire : redéfinir les codes de la communication créative en Afrique Centrale.",
+    "history_p2": "ARBC est né de la volonté de créer un pont entre les racines profondes et les aspirations futuristes. Depuis 2018, nous avons transformé des idées brutes en récits puissants, devenant le partenaire stratégique des leaders de demain.",
+    "history_timeline": [
+      { "year": "2018", "label": "Fondation — Douala" },
+      { "year": "2020", "label": "Ouverture bureau — Yaoundé" },
+      { "year": "2023", "label": "Filiale — Abidjan, Côte d'Ivoire" },
+      { "year": "2024", "label": "50+ collaborateurs" }
+    ],
+    "founders_title": "FONDATEURS",
+    "founders_subtitle": "Les Visionnaires",
+    "founder1_role": "Co-fondateur & CEO",
+    "founder2_role": "Country Manager, Côte d'Ivoire",
+    "founder3_role": "Directeur Créatif",
+    "founder4_role": "Directeur Créatif",
+    "team_title": "L'ÉQUIPE",
+    "team_subtitle": "L'Équipe",
+    "contact_h1": "Let's",
+    "contact_h2": "Shift",
+    "contact_h3": "it.",
+    "contact_hubs": "Nos Hubs",
+    "hub1_city": "DOUALA",
+    "hub1_addr": "Rue de la Joie, Akwa",
+    "hub2_city": "YAOUNDÉ",
+    "hub2_addr": "Bastos, Avenue de l'indépendance",
+    "hub3_city": "ABIDJAN",
+    "hub3_addr": "Cocody, Deux Plateaux",
+    "form_name_label": "Nom Complet",
+    "form_name_placeholder": "Votre nom",
+    "form_email_label": "Email",
+    "form_email_placeholder": "votre@email.com",
+    "form_message_label": "Message",
+    "form_message_placeholder": "Parlez-nous de votre projet…",
+    "form_submit": "Envoyer le message",
+    "form_sending": "Envoi en cours…",
+    "form_success_title": "Message envoyé !",
+    "form_success_body": "Nous vous répondrons dans les plus brefs délais.",
+    "form_error_title": "Échec de l'envoi",
+    "form_error_body": "Une erreur est survenue. Veuillez réessayer.",
+    "footer_copy": "© 2026 ARBC AGENCY. LES SHIFT MAKERS."
   }
 }
