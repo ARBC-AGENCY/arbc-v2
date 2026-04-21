@@ -42,7 +42,9 @@ export default function ProjectSlider() {
               ...seg.style,
             }}
             // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: project.id + " — " + t(`${pid}.category`) }}
+            dangerouslySetInnerHTML={{
+              __html: project.id + " — " + t(`${pid}.category`),
+            }}
           />
         );
 
@@ -140,10 +142,10 @@ export default function ProjectSlider() {
     >
       {/* Outer rectangle — overflow visible so blocks can overhang any edge */}
       <div
+        className="h-[clamp(400px,62vh,760px)]"
         style={{
           position: "relative",
-          width: "min(88vw, 1340px)",
-          height: "clamp(400px, 62vh, 760px)",
+          width: "min(80vw, 1340px)",
         }}
       >
         {/* ── Background image (purely visual, no pointer events) ─────── */}
@@ -258,6 +260,7 @@ export default function ProjectSlider() {
             pointerEvents: "none",
             zIndex: 10,
           }}
+          className="hidden md:block"
         >
           {project.blocks.map((block, bi) => (
             <div
@@ -288,14 +291,51 @@ export default function ProjectSlider() {
         <div
           style={{
             position: "absolute",
-            bottom: "-2.5rem",
-            right: "-10rem",
             display: "flex",
             alignItems: "center",
             gap: "0.75rem",
             zIndex: 10,
           }}
+          className="left-1/2 -translate-x-1/2 scale-55 xs:scale-70 sm:scale-85 md:left-auto md:translate-x-0 md:scale-100 -bottom-20 md:-right-15 md:-bottom-10 xl:-right-25"
         >
+          {/* Previous button — mobile only */}
+          <button
+            className="flex items-center justify-center md:hidden"
+            onClick={() => s.switchProject(s.activeIndex - 1)}
+            aria-label={t("prev")}
+            onMouseEnter={(e) =>
+              gsap.to(e.currentTarget, { scale: 1.12, duration: 0.2, ease: "power2.out" })
+            }
+            onMouseLeave={(e) =>
+              gsap.to(e.currentTarget, { scale: 1, duration: 0.2, ease: "power2.out" })
+            }
+            style={{
+              flexShrink: 0,
+              width: "44px",
+              height: "44px",
+              borderRadius: "9999px",
+              border: `1px solid ${s.nextBorder}`,
+              background: s.nextBg,
+              backdropFilter: "blur(6px)",
+              cursor: "pointer",
+              color: "#e7501e",
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              aria-hidden="true"
+              style={{ transform: "scaleX(-1)" }}
+            >
+              <path
+                fill="currentColor"
+                d="M15.4,9.88,10.81,5.29a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L14,11.29a1,1,0,0,1,0,1.42L9.4,17.29a1,1,0,0,0,1.41,1.42l4.59-4.59A3,3,0,0,0,15.4,9.88Z"
+              />
+            </svg>
+          </button>
+
           {/* Visual shell — background + padding outside the clipping container */}
           <div
             style={{
@@ -307,12 +347,7 @@ export default function ProjectSlider() {
           >
             {/* Rail window */}
             <div
-              style={{
-                width: `${3 * THUMB_W + 2 * THUMB_GAP}px`,
-                height: `${THUMB_H + 6}px`,
-                overflow: "hidden",
-                cursor: "grab",
-              }}
+              className=" w-134 h-28.5 overflow-hidden cursor-grab"
             >
               {/* Draggable track — triple-cloned */}
               <div

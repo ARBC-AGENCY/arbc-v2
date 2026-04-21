@@ -445,6 +445,7 @@
   },
   "Projects": {
     "viewProject": "Voir le projet →",
+    "prev": "Précédent",
     "next": "Suivant",
     "annotation_line1": "Nos",
     "annotation_line2": "Projets",

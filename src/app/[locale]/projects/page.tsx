@@ -7,10 +7,10 @@ export default function ExplorePage() {
 
   return (
     <main data-page-name="projects">
-      <div className="once-in">
+      <div className="once-in overflow-hidden">
         <ProjectSlider />
       </div>
-      <div className="once-in">
+      <div className="once-in hidden sm:block">
         <PageAnnotation
           line1={t("annotation_line1")}
           line2={t("annotation_line2")}

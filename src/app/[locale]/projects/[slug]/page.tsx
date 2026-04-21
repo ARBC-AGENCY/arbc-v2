@@ -69,9 +69,9 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main data-page-name={displayName}>
       <section
-        className="once-in"
+        className="once-in h-dvh"
         style={{
-          minHeight: "100vh",
+          minHeight: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -102,7 +102,8 @@ export default async function ProjectPage({ params }: Props) {
             marginBottom: "3rem",
           }}
         >
-          Page projet en construction — le contenu détaillé sera ajouté prochainement.
+          Page projet en construction — le contenu détaillé sera ajouté
+          prochainement.
         </p>
 
         <TransitionLink

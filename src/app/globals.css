@@ -126,8 +126,9 @@
   --duration-fast: 200ms;
   --duration-normal: 500ms;
   --duration-slow: 900ms;
-}
 
+  --breakpoint-xs: 30rem;
+}
 
 :root {
   color-scheme: light;
