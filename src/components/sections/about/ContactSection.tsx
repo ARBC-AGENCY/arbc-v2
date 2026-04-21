@@ -213,8 +213,8 @@ export default function ContactSection({
 
         {/* ── Right — form ────────────────────────────────────────────────── */}
         <div
-          className="fade-up"
-          style={{ backgroundColor: CARD_BG, padding: "3rem" }}
+          className="fade-up py-8 px-6 md:p-12"
+          style={{ backgroundColor: CARD_BG }}
         >
           <form
             onSubmit={handleSubmit}
@@ -327,7 +327,6 @@ export default function ContactSection({
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 border: "none",
-                padding: "1.25rem",
                 borderRadius: "9999px",
                 cursor: isLoading ? "not-allowed" : "pointer",
                 transition:
@@ -337,6 +336,7 @@ export default function ContactSection({
                 justifyContent: "center",
                 gap: "0.6rem",
               }}
+              className="p-4 md:p-5"
             >
               {isLoading ? (
                 <>

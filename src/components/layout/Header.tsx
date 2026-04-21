@@ -17,7 +17,6 @@ export default function Header() {
   const pathname = usePathname();
   const { navigateBack } = useTransitionContext();
 
-
   // Show X close button on project detail pages and the about page
   const isProjectDetail =
     /^\/projects\/[^/]+$/.test(pathname) || pathname === "/about";
@@ -36,12 +35,12 @@ export default function Header() {
     gsap.fromTo(
       logoRef.current,
       { opacity: 0, x: -40 },
-      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 }
+      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 },
     );
     gsap.fromTo(
       ctaWrapperRef.current,
       { opacity: 0, x: 40 },
-      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 }
+      { opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.4 },
     );
   }, [mounted]);
 
@@ -54,7 +53,10 @@ export default function Header() {
     if (!el) return;
 
     // Reset underline for the freshly mounted element
-    gsap.set(underlineRef.current, { scaleX: 0, transformOrigin: "left center" });
+    gsap.set(underlineRef.current, {
+      scaleX: 0,
+      transformOrigin: "left center",
+    });
 
     const STRENGTH = 30;
     const TEXT_STRENGTH = 13;
@@ -73,13 +75,26 @@ export default function Header() {
     };
 
     const onEnter = () => {
-      gsap.to(underlineRef.current, { scaleX: 1, duration: 0.3, ease: "power2.out" });
+      gsap.to(underlineRef.current, {
+        scaleX: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
     };
 
     const onLeave = () => {
       gsap.to(el, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
-      gsap.to(textRef.current, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
-      gsap.to(underlineRef.current, { scaleX: 0, duration: 0.3, ease: "power2.in" });
+      gsap.to(textRef.current, {
+        x: 0,
+        y: 0,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.3)",
+      });
+      gsap.to(underlineRef.current, {
+        scaleX: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
     };
 
     el.addEventListener("mousemove", onMove);
@@ -97,7 +112,7 @@ export default function Header() {
   const textColor = isDark ? "#ffffff" : "#2B2A29";
 
   return (
-    <header className="fixed top-6 left-12 right-12 z-50 flex justify-between items-center px-6 lg:px-12 py-6">
+    <header className="fixed top-6 left-6 right-6 md:left-12 md:right-12 z-50 flex justify-between items-center py-2 lg:px-12 lg:py-6 ">
       {/* Logo */}
       <div ref={logoRef} style={{ opacity: 0 }}>
         <TransitionLink href="/" label="home" aria-label="ARBC — Home">
@@ -118,9 +133,7 @@ export default function Header() {
           /* ── X close button ── */
           <button
             onClick={() =>
-              navigateBack(
-                pathname === "/about" ? "home" : "projects"
-              )
+              navigateBack(pathname === "/about" ? "home" : "projects")
             }
             aria-label="Close project"
             style={{
@@ -154,7 +167,11 @@ export default function Header() {
           /* ── About CTA — dual-strength magnetic ── */
           <div
             ref={magnetRef}
-            style={{ display: "inline-block", position: "relative", cursor: "pointer" }}
+            style={{
+              display: "inline-block",
+              position: "relative",
+              cursor: "pointer",
+            }}
           >
             <TransitionLink href="/about" label="about">
               <span

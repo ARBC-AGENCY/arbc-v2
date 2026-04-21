@@ -8,43 +8,51 @@ import MemberCard from "./MemberCard";
 import ArrowBtn from "./ArrowBtn";
 
 import imgChristian from "@/assets/images/team/Christian.webp";
-import imgDuval     from "@/assets/images/team/Duval.webp";
-import imgFranck    from "@/assets/images/team/Franck.webp";
-import imgHarold    from "@/assets/images/team/Harold.webp";
-import imgIness     from "@/assets/images/team/Iness.webp";
-import imgJeanne    from "@/assets/images/team/Jeanne.webp";
-import imgJuly      from "@/assets/images/team/July.webp";
-import imgKarel     from "@/assets/images/team/Karel.webp";
-import imgKlad      from "@/assets/images/team/Klad.webp";
-import imgLoic      from "@/assets/images/team/Loic.webp";
-import imgOphelie   from "@/assets/images/team/Ophelie.webp";
-import imgPatrick   from "@/assets/images/team/Patrick.webp";
-import imgRogers    from "@/assets/images/team/Rogers.webp";
+import imgDuval from "@/assets/images/team/Duval.webp";
+import imgFranck from "@/assets/images/team/Franck.webp";
+import imgHarold from "@/assets/images/team/Harold.webp";
+import imgIness from "@/assets/images/team/Iness.webp";
+import imgJeanne from "@/assets/images/team/Jeanne.webp";
+import imgJuly from "@/assets/images/team/July.webp";
+import imgKarel from "@/assets/images/team/Karel.webp";
+import imgKlad from "@/assets/images/team/Klad.webp";
+import imgLoic from "@/assets/images/team/Loic.webp";
+import imgOphelie from "@/assets/images/team/Ophelie.webp";
+import imgPatrick from "@/assets/images/team/Patrick.webp";
+import imgRogers from "@/assets/images/team/Rogers.webp";
 
-const TEXT   = "#e5e2e1";
-const MUTED  = "rgba(255,255,255,0.4)";
+const TEXT = "#e5e2e1";
+const MUTED = "rgba(255,255,255,0.4)";
 const BORDER = "rgba(255,255,255,0.08)";
 
 const TEAM_MEMBERS = [
   { src: imgChristian.src, name: "Christian Nessack", role: "Digital Manager" },
-  { src: imgDuval.src,     name: "Duval Georges",     role: "Directeur Artistique" },
-  { src: imgFranck.src,    name: "Franc Ymele",    role: "Infographiste" },
-  { src: imgHarold.src,    name: "Harold Ngueda",    role: "Dev Master" },
-  { src: imgIness.src,     name: "Inesse Siankam",     role: "Assistante Digital Manager" },
-  { src: imgJeanne.src,    name: "Jeanne Nnoubobong",    role: "Project Manager" },
-  { src: imgJuly.src,      name: "Juliana Ndjap",      role: "Chef de Marque" },
-  { src: imgKarel.src,     name: "Carelle Djiottio",     role: "Infographiste" },
-  { src: imgKlad.src,      name: "Armel Kuete",      role: "Infographiste" },
-  { src: imgLoic.src,      name: "Loïc Tayo",      role: "Directeur Artistique" },
-  { src: imgOphelie.src,   name: "Ophélie Ongolo",   role: "Project Manager" },
-  { src: imgPatrick.src,   name: "John Patrick",   role: "Infographiste" },
-  { src: imgRogers.src,    name: "Roger Efala",    role: "Assistant Project Manager" },
+  { src: imgDuval.src, name: "Duval Georges", role: "Directeur Artistique" },
+  { src: imgFranck.src, name: "Franc Ymele", role: "Infographiste" },
+  { src: imgHarold.src, name: "Harold Ngueda", role: "Dev Master" },
+  {
+    src: imgIness.src,
+    name: "Inesse Siankam",
+    role: "Assistante Digital Manager",
+  },
+  { src: imgJeanne.src, name: "Jeanne Nnoubobong", role: "Project Manager" },
+  { src: imgJuly.src, name: "Juliana Ndjap", role: "Chef de Marque" },
+  { src: imgKarel.src, name: "Carelle Djiottio", role: "Infographiste" },
+  { src: imgKlad.src, name: "Armel Kuete", role: "Infographiste" },
+  { src: imgLoic.src, name: "Loïc Tayo", role: "Directeur Artistique" },
+  { src: imgOphelie.src, name: "Ophélie Ongolo", role: "Project Manager" },
+  { src: imgPatrick.src, name: "John Patrick", role: "Infographiste" },
+  {
+    src: imgRogers.src,
+    name: "Roger Efala",
+    role: "Assistant Project Manager",
+  },
 ];
 
 const CARD_W = 260;
-const GAP    = 24;
-const UNIT   = CARD_W + GAP;
-const N      = TEAM_MEMBERS.length;
+const GAP = 24;
+const UNIT = CARD_W + GAP;
+const N = TEAM_MEMBERS.length;
 
 const tripled = [...TEAM_MEMBERS, ...TEAM_MEMBERS, ...TEAM_MEMBERS];
 
@@ -60,9 +68,9 @@ export default function TeamSection({
   nextLabel: string;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const trackRef   = useRef<HTMLDivElement>(null);
-  const posRef     = useRef(N);
-  const animRef    = useRef(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef(N);
+  const animRef = useRef(false);
   const [visible, setVisible] = useState(4);
   const windowW = visible * CARD_W + (visible - 1) * GAP;
 
@@ -73,7 +81,7 @@ export default function TeamSection({
 
     gsap.to(trackRef.current, {
       x: -posRef.current * UNIT,
-      duration: 1.5,
+      duration: 1,
       ease: "power1.inOut",
       onComplete: () => {
         animRef.current = false;
@@ -162,7 +170,6 @@ export default function TeamSection({
           <h2
             style={{
               fontFamily: "var(--font-title)",
-              fontSize: "var(--text-4xl)",
               fontWeight: 700,
               fontStyle: "italic",
               letterSpacing: "-0.03em",
@@ -170,8 +177,9 @@ export default function TeamSection({
               margin: 0,
               color: TEXT,
             }}
+            className="text-2xl! md:text-3xl!"
           >
-          <span style={{ color: ORANGE }}>.</span>  {title} 
+            <span style={{ color: ORANGE }}>.</span> {title}
           </h2>
           <span
             style={{
@@ -189,20 +197,25 @@ export default function TeamSection({
 
       {/* Centered row: arrow + window + arrow */}
       <div
-        className="fade-up"
+        className="fade-up flex items-end md:items-center"
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
           gap: "1.5rem",
         }}
       >
         <ArrowBtn dir="left" onClick={() => slide(-1)} label={prevLabel} />
 
-        <div style={{ width: `${windowW}px`, overflow: "hidden", flexShrink: 0 }}>
+        <div
+          style={{ width: `${windowW}px`, overflow: "hidden", flexShrink: 0 }}
+        >
           <div
             ref={trackRef}
-            style={{ display: "flex", gap: `${GAP}px`, willChange: "transform" }}
+            style={{
+              display: "flex",
+              gap: `${GAP}px`,
+              willChange: "transform",
+            }}
           >
             {tripled.map((m, i) => (
               <MemberCard
@@ -218,7 +231,6 @@ export default function TeamSection({
 
         <ArrowBtn dir="right" onClick={() => slide(1)} label={nextLabel} />
       </div>
-
     </section>
   );
 }

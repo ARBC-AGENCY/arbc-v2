@@ -7,10 +7,10 @@ import { ORANGE, BG } from "./_constants";
 import MemberCard from "./MemberCard";
 import ArrowBtn from "./ArrowBtn";
 
-const TEXT     = "#e5e2e1";
-const MUTED    = "rgba(255,255,255,0.4)";
-const BORDER   = "rgba(255,255,255,0.08)";
-const CARD_W   = 260;
+const TEXT = "#e5e2e1";
+const MUTED = "rgba(255,255,255,0.4)";
+const BORDER = "rgba(255,255,255,0.08)";
+const CARD_W = 260;
 
 export default function FoundersSection({
   title,
@@ -55,8 +55,8 @@ export default function FoundersSection({
     if (trackRef.current)
       gsap.to(trackRef.current, {
         x: -(next * CARD_W),
-        duration: 0.55,
-        ease: "expo.out",
+        duration: 1,
+        ease: "power1.inOut",
       });
   };
 
@@ -94,7 +94,7 @@ export default function FoundersSection({
               margin: 0,
               color: TEXT,
             }}
-            className="text-xl md:text-4xl"
+            className="text-2xl! md:text-3xl!"
           >
             <span style={{ color: ORANGE }}>.</span>
             {title}
@@ -129,28 +129,64 @@ export default function FoundersSection({
         {/* Mobile/tablet: single-item carousel — mirrors TeamSection layout */}
         <div className="founders-carousel" style={{ display: "none" }}>
           {/* Arrow + window + arrow row */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1.5rem" }}>
-            <ArrowBtn dir="left" onClick={() => goTo(activeIdx - 1)} label="Previous" />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "1.5rem",
+            }}
+            className="flex items-end md:items-center"
+          >
+            <ArrowBtn
+              dir="left"
+              onClick={() => goTo(activeIdx - 1)}
+              label="Previous"
+            />
 
             {/* Fixed-width window clips to one card */}
-            <div style={{ width: `${CARD_W}px`, overflow: "hidden", flexShrink: 0 }}>
+            <div
+              style={{
+                width: `${CARD_W}px`,
+                overflow: "hidden",
+                flexShrink: 0,
+              }}
+            >
               <div
                 ref={trackRef}
                 style={{ display: "flex", willChange: "transform" }}
               >
                 {founders.map((f) => (
-                  <div key={f.name} style={{ width: `${CARD_W}px`, flexShrink: 0 }}>
-                    <MemberCard src={f.src} name={f.name} role={f.role} style={{ width: `${CARD_W}px` }} />
+                  <div
+                    key={f.name}
+                    style={{ width: `${CARD_W}px`, flexShrink: 0 }}
+                  >
+                    <MemberCard
+                      src={f.src}
+                      name={f.name}
+                      role={f.role}
+                      style={{ width: `${CARD_W}px` }}
+                    />
                   </div>
                 ))}
               </div>
             </div>
 
-            <ArrowBtn dir="right" onClick={() => goTo(activeIdx + 1)} label="Next" />
+            <ArrowBtn
+              dir="right"
+              onClick={() => goTo(activeIdx + 1)}
+              label="Next"
+            />
           </div>
 
           {/* Dot indicators */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1.75rem" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "0.5rem",
+              marginTop: "1.75rem",
+            }}
+          >
             {founders.map((_, i) => (
               <button
                 key={i}
@@ -161,7 +197,8 @@ export default function FoundersSection({
                   borderRadius: "50%",
                   border: "none",
                   padding: 0,
-                  backgroundColor: i === activeIdx ? ORANGE : "rgba(255,255,255,0.3)",
+                  backgroundColor:
+                    i === activeIdx ? ORANGE : "rgba(255,255,255,0.3)",
                   cursor: "pointer",
                 }}
               />
