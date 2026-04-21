@@ -6,11 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { ORANGE, BG } from "./_constants";
 
-const TEXT       = "#e5e2e1";
-const MUTED      = "rgba(229,226,225,0.6)";
-const CARD_BG    = "#1c1c1c";
-const INPUT_BG   = "#242424";
-const INPUT_LINE = "rgba(255,255,255,0.1)";
+const TEXT = "#e5e2e1";
+const MUTED = "rgba(229,226,225,0.6)";
+const CARD_BG = "#1c1c1c";
+const INPUT_BG = "#242424";
+const INPUT_LINE = "rgba(231, 80, 30,0.5)";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -23,9 +23,18 @@ function Spinner() {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      style={{ animation: "spin 0.8s linear infinite", verticalAlign: "middle" }}
+      style={{
+        animation: "spin 0.8s linear infinite",
+        verticalAlign: "middle",
+      }}
     >
-      <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.25)" strokeWidth="3" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="rgba(255,255,255,0.25)"
+        strokeWidth="3"
+      />
       <path
         d="M12 2 A10 10 0 0 1 22 12"
         stroke="#fff"
@@ -44,11 +53,11 @@ export default function ContactSection({
 }) {
   const sectionRef = useRef<HTMLElement>(null);
 
-  const [name,    setName]    = useState("");
-  const [email,   setEmail]   = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status,  setStatus]  = useState<Status>("idle");
-  const [errMsg,  setErrMsg]  = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errMsg, setErrMsg] = useState("");
 
   // ── Scroll-triggered fade-up ─────────────────────────────────────────────
   useEffect(() => {
@@ -156,7 +165,12 @@ export default function ContactSection({
           >
             {t("contact_h1")}
             <br />
-            <span style={{ WebkitTextStroke: `1px ${ORANGE}`, color: "transparent" }}>
+            <span
+              style={{
+                WebkitTextStroke: `1px ${ORANGE}`,
+                color: "transparent",
+              }}
+            >
               {t("contact_h2")}
             </span>{" "}
             {t("contact_h3")}
@@ -299,11 +313,14 @@ export default function ContactSection({
               disabled={isLoading}
               onMouseEnter={(e) => {
                 if (isLoading) return;
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 20px rgba(231,80,30,0.3)";
+                (e.currentTarget as HTMLButtonElement).style.transform =
+                  "translateY(-2px)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                  "0 10px 20px rgba(231,80,30,0.3)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLButtonElement).style.transform =
+                  "translateY(0)";
                 (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
               }}
               style={{
@@ -318,7 +335,8 @@ export default function ContactSection({
                 padding: "1.25rem",
                 borderRadius: "9999px",
                 cursor: isLoading ? "not-allowed" : "pointer",
-                transition: "transform 0.2s, box-shadow 0.2s, background-color 0.2s",
+                transition:
+                  "transform 0.2s, box-shadow 0.2s, background-color 0.2s",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -349,15 +367,42 @@ export default function ContactSection({
                 }}
               >
                 {/* Checkmark icon */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "2px" }}>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style={{ flexShrink: 0, marginTop: "2px" }}
+                >
                   <circle cx="12" cy="12" r="10" fill="rgba(231,80,30,0.2)" />
-                  <path d="M7 12.5l3.5 3.5 6.5-7" stroke="{ORANGE}" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M7 12.5l3.5 3.5 6.5-7"
+                    stroke="{ORANGE}"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
                 <div>
-                  <p style={{ margin: 0, fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "{ORANGE}", fontWeight: 600 }}>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontFamily: "var(--font-body)",
+                      fontSize: "var(--text-sm)",
+                      color: "{ORANGE}",
+                      fontWeight: 600,
+                    }}
+                  >
                     {t("form_success_title")}
                   </p>
-                  <p style={{ margin: "0.25rem 0 0", fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "rgba(231,80,30,0.7)" }}>
+                  <p
+                    style={{
+                      margin: "0.25rem 0 0",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "var(--text-xs)",
+                      color: "rgba(231,80,30,0.7)",
+                    }}
+                  >
                     {t("form_success_body")}
                   </p>
                 </div>
@@ -377,16 +422,42 @@ export default function ContactSection({
                 }}
               >
                 {/* Warning icon */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "2px" }}>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style={{ flexShrink: 0, marginTop: "2px" }}
+                >
                   <circle cx="12" cy="12" r="10" fill="rgba(231,80,30,0.15)" />
-                  <path d="M12 8v5" stroke={ORANGE} strokeWidth="2" strokeLinecap="round" />
+                  <path
+                    d="M12 8v5"
+                    stroke={ORANGE}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
                   <circle cx="12" cy="16" r="1" fill={ORANGE} />
                 </svg>
                 <div>
-                  <p style={{ margin: 0, fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: ORANGE, fontWeight: 600 }}>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontFamily: "var(--font-body)",
+                      fontSize: "var(--text-sm)",
+                      color: ORANGE,
+                      fontWeight: 600,
+                    }}
+                  >
                     {t("form_error_title")}
                   </p>
-                  <p style={{ margin: "0.25rem 0 0", fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "rgba(231,80,30,0.7)" }}>
+                  <p
+                    style={{
+                      margin: "0.25rem 0 0",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "var(--text-xs)",
+                      color: "rgba(231,80,30,0.7)",
+                    }}
+                  >
                     {errMsg || t("form_error_body")}
                   </p>
                 </div>

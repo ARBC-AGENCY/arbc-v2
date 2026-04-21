@@ -12,10 +12,12 @@ import { hasSeenIntroRecently, markIntroSeen } from "@/lib/introGate";
 
 interface TransitionContextValue {
   navigate: (href: string, label: string) => void;
+  navigateBack: (label: string) => void;
 }
 
 const TransitionContext = createContext<TransitionContextValue>({
   navigate: () => {},
+  navigateBack: () => {},
 });
 
 export function TransitionProvider({ children }: { children: ReactNode }) {
@@ -60,8 +62,23 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const navigateBack = (label: string) => {
+    if (isNavigating.current) return;
+    isNavigating.current = true;
+
+    const tl = pageTransitionIn(label);
+
+    setTimeout(() => {
+      router.back();
+    }, 550);
+
+    tl.then(() => {
+      isNavigating.current = false;
+    });
+  };
+
   return (
-    <TransitionContext.Provider value={{ navigate }}>
+    <TransitionContext.Provider value={{ navigate, navigateBack }}>
       {children}
     </TransitionContext.Provider>
   );

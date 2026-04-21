@@ -5,16 +5,17 @@ import { useTheme } from "next-themes";
 import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 
 import TransitionLink from "@/components/ui/TransitionLink";
+import { useTransitionContext } from "@/context/TransitionContext";
 
 export default function Header() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("Nav");
   const pathname = usePathname();
-  const router = useRouter();
+  const { navigateBack } = useTransitionContext();
 
 
   // Show X close button on project detail pages and the about page
@@ -116,7 +117,11 @@ export default function Header() {
         {isProjectDetail ? (
           /* ── X close button ── */
           <button
-            onClick={() => router.back()}
+            onClick={() =>
+              navigateBack(
+                pathname === "/about" ? "home" : "projects"
+              )
+            }
             aria-label="Close project"
             style={{
               display: "flex",

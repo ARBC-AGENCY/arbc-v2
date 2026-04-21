@@ -5,7 +5,7 @@ import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ORANGE, BG } from "./_constants";
 
-const TEXT  = "#e5e2e1";
+const TEXT = "#e5e2e1";
 const MUTED = "rgba(229,226,225,0.6)";
 
 export default function HistorySection({
@@ -140,7 +140,9 @@ export default function HistorySection({
               marginBottom: "1.5rem",
             }}
           >
-            <div style={{ width: "1rem", height: "1rem", backgroundColor: ORANGE }} />
+            <div
+              style={{ width: "1rem", height: "1rem", backgroundColor: ORANGE }}
+            />
             <span
               style={{
                 fontFamily: "var(--font-body)",
@@ -161,7 +163,7 @@ export default function HistorySection({
               fontWeight: 700,
               fontStyle: "italic",
               letterSpacing: "-0.03em",
-              marginBottom: "2rem",
+              marginBottom: "1rem",
               color: TEXT,
             }}
           >
@@ -171,15 +173,15 @@ export default function HistorySection({
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "1.5rem",
+              gap: "1rem",
               fontFamily: "var(--font-body)",
-              fontSize: "var(--text-sm)",
+              fontSize: "var(--text-xs)",
               lineHeight: 1.8,
               color: MUTED,
             }}
           >
-            <p style={{ margin: 0 }}>{p1}</p>
-            <p style={{ margin: 0 }}>{p2}</p>
+            <p style={{ margin: 0, fontSize: "var(--text-sm)" }}>{p1}</p>
+            <p style={{ margin: 0, fontSize: "var(--text-sm)" }}>{p2}</p>
           </div>
         </div>
       </div>
