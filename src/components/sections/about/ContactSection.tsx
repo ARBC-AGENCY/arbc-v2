@@ -136,17 +136,12 @@ export default function ContactSection({
   return (
     <section
       ref={sectionRef}
-      style={{ padding: "6rem 5rem", backgroundColor: BG }}
+      className="py-12 px-6 md:py-16 md:px-12 lg:py-24 lg:px-20"
+      style={{ backgroundColor: BG }}
     >
       <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "5rem",
-          alignItems: "start",
-        }}
+        className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-start"
+        style={{ maxWidth: "1400px" }}
       >
         {/* ── Left — headline + hubs ──────────────────────────────────────── */}
         <div className="fade-up">
@@ -466,6 +461,7 @@ export default function ContactSection({
           </form>
         </div>
       </div>
+
     </section>
   );
 }

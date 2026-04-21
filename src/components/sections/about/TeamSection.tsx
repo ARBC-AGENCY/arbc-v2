@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ORANGE, BG } from "./_constants";
@@ -41,12 +41,10 @@ const TEAM_MEMBERS = [
   { src: imgRogers.src,    name: "Roger Efala",    role: "Assistant Project Manager" },
 ];
 
-const CARD_W  = 260;
-const GAP     = 24;
-const UNIT    = CARD_W + GAP;
-const VISIBLE = 4;
-const N       = TEAM_MEMBERS.length;
-const WINDOW_W = VISIBLE * CARD_W + (VISIBLE - 1) * GAP;
+const CARD_W = 260;
+const GAP    = 24;
+const UNIT   = CARD_W + GAP;
+const N      = TEAM_MEMBERS.length;
 
 const tripled = [...TEAM_MEMBERS, ...TEAM_MEMBERS, ...TEAM_MEMBERS];
 
@@ -65,6 +63,8 @@ export default function TeamSection({
   const trackRef   = useRef<HTMLDivElement>(null);
   const posRef     = useRef(N);
   const animRef    = useRef(false);
+  const [visible, setVisible] = useState(4);
+  const windowW = visible * CARD_W + (visible - 1) * GAP;
 
   const slide = (dir: 1 | -1) => {
     if (animRef.current || !trackRef.current) return;
@@ -88,15 +88,30 @@ export default function TeamSection({
     });
   };
 
+  // Responsive visible-card count: 1 on mobile, 2 on tablet, 4 on desktop
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setVisible(w < 640 ? 1 : w < 1024 ? 2 : 4);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Reset track position + autoplay only on desktop (visible === 4)
   useEffect(() => {
     if (!trackRef.current) return;
+    posRef.current = N;
     gsap.set(trackRef.current, { x: -N * UNIT });
+
+    if (visible < 4) return; // no autoplay on mobile / tablet
     const interval = setInterval(() => {
       if (!animRef.current) slide(1);
     }, 3000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [visible]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -125,15 +140,12 @@ export default function TeamSection({
   return (
     <section
       ref={sectionRef}
-      style={{ padding: "6rem 0", backgroundColor: BG }}
+      className="about-team py-12 px-6 md:py-16 md:px-12 lg:py-24 lg:px-20"
+      style={{ backgroundColor: BG }}
     >
       <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "0 5rem",
-          marginBottom: "3.5rem",
-        }}
+        className="about-team__header mx-auto mb-10 md:mb-14"
+        style={{ maxWidth: "1400px" }}
       >
         <div
           className="fade-up"
@@ -187,7 +199,7 @@ export default function TeamSection({
       >
         <ArrowBtn dir="left" onClick={() => slide(-1)} label={prevLabel} />
 
-        <div style={{ width: `${WINDOW_W}px`, overflow: "hidden", flexShrink: 0 }}>
+        <div style={{ width: `${windowW}px`, overflow: "hidden", flexShrink: 0 }}>
           <div
             ref={trackRef}
             style={{ display: "flex", gap: `${GAP}px`, willChange: "transform" }}
@@ -206,6 +218,7 @@ export default function TeamSection({
 
         <ArrowBtn dir="right" onClick={() => slide(1)} label={nextLabel} />
       </div>
+
     </section>
   );
 }

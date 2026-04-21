@@ -5,10 +5,12 @@ import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ORANGE, BG } from "./_constants";
 import MemberCard from "./MemberCard";
+import ArrowBtn from "./ArrowBtn";
 
-const TEXT = "#e5e2e1";
-const MUTED = "rgba(255,255,255,0.4)";
-const BORDER = "rgba(255,255,255,0.08)";
+const TEXT     = "#e5e2e1";
+const MUTED    = "rgba(255,255,255,0.4)";
+const BORDER   = "rgba(255,255,255,0.08)";
+const CARD_W   = 260;
 
 export default function FoundersSection({
   title,
@@ -52,7 +54,7 @@ export default function FoundersSection({
     setActiveIdx(next);
     if (trackRef.current)
       gsap.to(trackRef.current, {
-        x: `-${next * 100}%`,
+        x: -(next * CARD_W),
         duration: 0.55,
         ease: "expo.out",
       });
@@ -61,9 +63,13 @@ export default function FoundersSection({
   return (
     <section
       ref={sectionRef}
-      style={{ padding: "6rem 0", backgroundColor: BG }}
+      className="about-founders py-12 px-6 md:py-16 md:px-12 lg:py-24 lg:px-20"
+      style={{ backgroundColor: BG }}
     >
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 5rem" }}>
+      <div
+        className="about-founders__inner mx-auto"
+        style={{ maxWidth: "1400px" }}
+      >
         {/* Header */}
         <div
           className="fade-up"
@@ -81,7 +87,6 @@ export default function FoundersSection({
           <h2
             style={{
               fontFamily: "var(--font-title)",
-              fontSize: "var(--text-4xl)",
               fontWeight: 700,
               fontStyle: "italic",
               letterSpacing: "-0.03em",
@@ -89,6 +94,7 @@ export default function FoundersSection({
               margin: 0,
               color: TEXT,
             }}
+            className="text-xl md:text-4xl"
           >
             <span style={{ color: ORANGE }}>.</span>
             {title}
@@ -120,35 +126,31 @@ export default function FoundersSection({
           ))}
         </div>
 
-        {/* Mobile: single-item carousel */}
+        {/* Mobile/tablet: single-item carousel — mirrors TeamSection layout */}
         <div className="founders-carousel" style={{ display: "none" }}>
-          <div style={{ overflow: "hidden" }}>
-            <div
-              ref={trackRef}
-              style={{ display: "flex", willChange: "transform" }}
-            >
-              {founders.map((f) => (
-                <div
-                  key={f.name}
-                  style={{
-                    minWidth: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <MemberCard src={f.src} name={f.name} role={f.role} />
-                </div>
-              ))}
+          {/* Arrow + window + arrow row */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1.5rem" }}>
+            <ArrowBtn dir="left" onClick={() => goTo(activeIdx - 1)} label="Previous" />
+
+            {/* Fixed-width window clips to one card */}
+            <div style={{ width: `${CARD_W}px`, overflow: "hidden", flexShrink: 0 }}>
+              <div
+                ref={trackRef}
+                style={{ display: "flex", willChange: "transform" }}
+              >
+                {founders.map((f) => (
+                  <div key={f.name} style={{ width: `${CARD_W}px`, flexShrink: 0 }}>
+                    <MemberCard src={f.src} name={f.name} role={f.role} style={{ width: `${CARD_W}px` }} />
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <ArrowBtn dir="right" onClick={() => goTo(activeIdx + 1)} label="Next" />
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "0.5rem",
-              marginTop: "2rem",
-            }}
-          >
+
+          {/* Dot indicators */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1.75rem" }}>
             {founders.map((_, i) => (
               <button
                 key={i}
@@ -159,8 +161,7 @@ export default function FoundersSection({
                   borderRadius: "50%",
                   border: "none",
                   padding: 0,
-                  backgroundColor:
-                    i === activeIdx ? ORANGE : "rgba(255,255,255,0.3)",
+                  backgroundColor: i === activeIdx ? ORANGE : "rgba(255,255,255,0.3)",
                   cursor: "pointer",
                 }}
               />
@@ -170,7 +171,7 @@ export default function FoundersSection({
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 1023px) {
           .founders-grid     { display: none !important; }
           .founders-carousel { display: block !important; }
         }

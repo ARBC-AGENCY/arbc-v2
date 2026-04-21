@@ -372,8 +372,8 @@ export default function ModelViewer() {
   return (
     <div
       style={{
-        width: "clamp(360px, 36vw, 480px)",
-        height: "clamp(260px, 36vw, 480px)",
+        width: "min(clamp(360px, 36vw, 480px), 80vw)",
+        height: "min(clamp(260px, 36vw, 480px), 80vw)",
         margin: "0 auto",
         position: "relative",
       }}

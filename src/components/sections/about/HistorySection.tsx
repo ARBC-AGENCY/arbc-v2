@@ -50,20 +50,18 @@ export default function HistorySection({
   return (
     <section
       ref={sectionRef}
-      style={{ padding: "6rem 5rem", backgroundColor: BG }}
+      className="flex justify-center py-12 px-6 md:py-16 md:px-12 lg:py-24 lg:px-20"
+      style={{ backgroundColor: BG }}
     >
       <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "5rem",
-          alignItems: "center",
-        }}
+        className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20 items-center"
+        style={{ maxWidth: "1400px" }}
       >
-        {/* Left — timeline */}
-        <div className="fade-up" style={{ position: "relative" }}>
+        {/* Left — vertical timeline (tablet+) */}
+        <div
+          className="fade-up hidden md:block"
+          style={{ position: "relative" }}
+        >
           <div
             style={{
               position: "absolute",
@@ -130,6 +128,86 @@ export default function HistorySection({
           </div>
         </div>
 
+        {/* Left — horizontal timeline (mobile only) */}
+        <div
+          className="fade-up block md:hidden"
+          style={{ position: "relative" }}
+        >
+          {/* Connecting line */}
+          <div
+            style={{
+              position: "absolute",
+              top: "4px",
+              left: "5px",
+              right: "5px",
+              height: "2px",
+              backgroundColor: ORANGE,
+              opacity: 0.4,
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              position: "relative",
+            }}
+          >
+            {timeline.map(({ year, label }) => (
+              <div
+                key={year}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  flex: 1,
+                  paddingTop: 0,
+                }}
+              >
+                {/* Dot */}
+                <div
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                    backgroundColor: ORANGE,
+                    flexShrink: 0,
+                    marginBottom: "0.6rem",
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                />
+                <p
+                  style={{
+                    fontFamily: "var(--font-title)",
+                    fontSize: "var(--text-sm)",
+                    fontWeight: 700,
+                    fontStyle: "italic",
+                    color: ORANGE,
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: "center",
+                  }}
+                >
+                  {year}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.65rem",
+                    color: MUTED,
+                    margin: "0.3rem 0 0",
+                    textAlign: "center",
+                    lineHeight: 1.3,
+                    padding: "0 2px",
+                  }}
+                >
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Right — text */}
         <div className="fade-up">
           <div
@@ -137,8 +215,8 @@ export default function HistorySection({
               display: "flex",
               alignItems: "center",
               gap: "1rem",
-              marginBottom: "1.5rem",
             }}
+            className="mb-2 md:mb-6"
           >
             <div
               style={{ width: "1rem", height: "1rem", backgroundColor: ORANGE }}
@@ -159,13 +237,12 @@ export default function HistorySection({
           <h2
             style={{
               fontFamily: "var(--font-title)",
-              fontSize: "var(--text-3xl)",
               fontWeight: 700,
               fontStyle: "italic",
               letterSpacing: "-0.03em",
-              marginBottom: "1rem",
               color: TEXT,
             }}
+            className="text-xl! mb-2 md:mb-4 md:text-3xl! "
           >
             {title}
           </h2>
