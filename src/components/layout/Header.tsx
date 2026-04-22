@@ -112,7 +112,7 @@ export default function Header() {
   const textColor = isDark ? "#ffffff" : "#2B2A29";
 
   return (
-    <header className="fixed top-6 left-6 right-6 md:left-12 md:right-12 z-50 flex justify-between items-center py-2 lg:px-12 lg:py-6 ">
+    <header className="fixed top-6 left-6 right-6 md:left-12 md:right-12 z-50 flex justify-between items-center py-2  ">
       {/* Logo */}
       <div ref={logoRef} style={{ opacity: 0 }}>
         <TransitionLink href="/" label="home" aria-label="ARBC — Home">
