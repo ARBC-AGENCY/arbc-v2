@@ -142,7 +142,7 @@ export default function ProjectSlider() {
     >
       {/* Outer rectangle — overflow visible so blocks can overhang any edge */}
       <div
-        className="h-[clamp(400px,62vh,760px)]"
+        className="max-xs:h-[80vw] h-[clamp(400px,50vh,760px)]"
         style={{
           position: "relative",
           width: "min(80vw, 1340px)",
@@ -296,11 +296,11 @@ export default function ProjectSlider() {
             gap: "0.75rem",
             zIndex: 10,
           }}
-          className="left-1/2 -translate-x-1/2 scale-55 xs:scale-70 sm:scale-85 md:left-auto md:translate-x-0 md:scale-100 -bottom-20 md:-right-15 md:-bottom-10 xl:-right-25"
+          className="left-1/2 -translate-x-1/2 scale-45 min-[375px]:scale-55 xs:scale-70 sm:scale-85 md:left-auto md:translate-x-0 md:scale-100 -bottom-30 md:-right-15 md:-bottom-10 xl:-right-25 max-[375px]:flex-col max-[375px]:items-center"
         >
-          {/* Previous button — mobile only */}
+          {/* Previous button — side (375px–md only) */}
           <button
-            className="flex items-center justify-center md:hidden"
+            className="flex items-center justify-center max-[375px]:hidden md:hidden"
             onClick={() => s.switchProject(s.activeIndex - 1)}
             aria-label={t("prev")}
             onMouseEnter={(e) =>
@@ -427,8 +427,9 @@ export default function ProjectSlider() {
             </div>
           </div>
 
-          {/* Next button */}
+          {/* Next button — side (375px+ only) */}
           <button
+            className="flex items-center justify-center max-[375px]:hidden"
             onClick={() => s.switchProject(s.activeIndex + 1)}
             aria-label={t("next")}
             onMouseEnter={(e) =>
@@ -454,9 +455,6 @@ export default function ProjectSlider() {
               background: s.nextBg,
               backdropFilter: "blur(6px)",
               cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               color: "#e7501e",
             }}
           >
@@ -473,6 +471,42 @@ export default function ProjectSlider() {
               />
             </svg>
           </button>
+
+          {/* Below-rail arrows — < 375px only */}
+          <div className="hidden max-[375px]:flex justify-center gap-3">
+            <button
+              className="flex items-center justify-center"
+              onClick={() => s.switchProject(s.activeIndex - 1)}
+              aria-label={t("prev")}
+              onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.12, duration: 0.2, ease: "power2.out" })}
+              onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2, ease: "power2.out" })}
+              style={{
+                width: "44px", height: "44px", borderRadius: "9999px",
+                border: `1px solid ${s.nextBorder}`, background: s.nextBg,
+                backdropFilter: "blur(6px)", cursor: "pointer", color: "#e7501e", flexShrink: 0,
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style={{ transform: "scaleX(-1)" }}>
+                <path fill="currentColor" d="M15.4,9.88,10.81,5.29a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L14,11.29a1,1,0,0,1,0,1.42L9.4,17.29a1,1,0,0,0,1.41,1.42l4.59-4.59A3,3,0,0,0,15.4,9.88Z" />
+              </svg>
+            </button>
+            <button
+              className="flex items-center justify-center"
+              onClick={() => s.switchProject(s.activeIndex + 1)}
+              aria-label={t("next")}
+              onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.12, duration: 0.2, ease: "power2.out" })}
+              onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2, ease: "power2.out" })}
+              style={{
+                width: "44px", height: "44px", borderRadius: "9999px",
+                border: `1px solid ${s.nextBorder}`, background: s.nextBg,
+                backdropFilter: "blur(6px)", cursor: "pointer", color: "#e7501e", flexShrink: 0,
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M15.4,9.88,10.81,5.29a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L14,11.29a1,1,0,0,1,0,1.42L9.4,17.29a1,1,0,0,0,1.41,1.42l4.59-4.59A3,3,0,0,0,15.4,9.88Z" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>

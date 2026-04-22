@@ -121,7 +121,7 @@ export default function Header() {
             alt="ARBC"
             width={96}
             height={48}
-            className="w-20 lg:w-24 h-auto cursor-pointer"
+            className="max-xs:w-15 w-20 lg:w-24 h-auto cursor-pointer"
             priority
           />
         </TransitionLink>
@@ -185,6 +185,7 @@ export default function Header() {
                   position: "relative",
                   zIndex: 2,
                 }}
+                className="max-xs:text-md!"
               >
                 {t("about")}
               </span>
