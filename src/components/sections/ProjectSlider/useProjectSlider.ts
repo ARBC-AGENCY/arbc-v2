@@ -43,6 +43,7 @@ export interface ProjectSliderState {
   blocksContainerRef: React.RefObject<HTMLDivElement | null>;
   headlineRef:        React.RefObject<HTMLHeadingElement | null>;
   cursorBtnRef:       React.RefObject<HTMLDivElement | null>;
+  viewBtnRef:         React.RefObject<HTMLButtonElement | null>;
   trackRef:           React.RefObject<HTMLDivElement | null>;
   draggableRef:       React.MutableRefObject<Draggable | null>;
   // Handlers
@@ -91,6 +92,7 @@ export function useProjectSlider(): ProjectSliderState {
   const blocksContainerRef = useRef<HTMLDivElement>(null);
   const headlineRef        = useRef<HTMLHeadingElement>(null);
   const cursorBtnRef       = useRef<HTMLDivElement>(null);
+  const viewBtnRef         = useRef<HTMLButtonElement>(null);
   const trackRef           = useRef<HTMLDivElement>(null);
   const draggableRef       = useRef<Draggable | null>(null);
   const xQuickRef          = useRef<((v: number) => void) | null>(null);
@@ -102,6 +104,7 @@ export function useProjectSlider(): ProjectSliderState {
     gsap.set(cursorBtnRef.current, { opacity: 0, scale: 0.8 });
     xQuickRef.current = gsap.quickTo(cursorBtnRef.current, "x", { duration: 0.7, ease: "power3.out" });
     yQuickRef.current = gsap.quickTo(cursorBtnRef.current, "y", { duration: 0.7, ease: "power3.out" });
+    if (viewBtnRef.current) gsap.set(viewBtnRef.current, { opacity: 0, y: 12 });
   }, []);
 
   // ── Draggable setup ──────────────────────────────────────────────────────
@@ -181,6 +184,11 @@ export function useProjectSlider(): ProjectSliderState {
         onComplete: () => split.revert(),
       });
     }
+    gsap.fromTo(
+      viewBtnRef.current,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.38, ease: "expo.out", delay: delay + 0.35 },
+    );
   }
 
   // ── Project switch ───────────────────────────────────────────────────────
@@ -206,6 +214,7 @@ export function useProjectSlider(): ProjectSliderState {
     });
 
     tl.to(blocksContainerRef.current, { y: -12, opacity: 0, duration: 0.26, ease: "power2.in" });
+    tl.to(viewBtnRef.current, { opacity: 0, y: -8, duration: 0.22, ease: "power2.in" }, "<");
     tl.to(
       imageWipeRef.current,
       { clipPath: "inset(0 100% 0 0%)", duration: 0.4, ease: "power2.inOut" },
@@ -245,6 +254,12 @@ export function useProjectSlider(): ProjectSliderState {
         onComplete: () => split.revert(),
       });
     }
+
+    gsap.fromTo(
+      viewBtnRef.current,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.38, ease: "expo.out", delay: 0.38 },
+    );
   }
 
   // ── Cursor follower ──────────────────────────────────────────────────────
@@ -267,5 +282,6 @@ export function useProjectSlider(): ProjectSliderState {
     headlineRef, cursorBtnRef, trackRef, draggableRef,
     switchProject,
     handleMouseEnter, handleMouseLeave, handleMouseMove,
+    viewBtnRef,
   };
 }

@@ -251,6 +251,29 @@ export default function ProjectSlider() {
           </div>
         </div>
 
+        {/* ── Mobile "view project" CTA — touch devices only (< md) ────────── */}
+        <button
+          ref={s.viewBtnRef}
+          className="max-[375px]:top-6 min-[375px]:bottom-6 md:hidden absolute  left-1/2 -translate-x-1/2"
+          style={{
+            zIndex: 12,
+            backgroundColor: "#e7501e",
+            color: "#fff",
+            fontFamily: "var(--font-body)",
+            fontSize: "var(--text-sm)",
+            fontWeight: 500,
+            letterSpacing: "0.06em",
+            padding: "0.55rem 1.5rem",
+            borderRadius: "9999px",
+            border: "none",
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+          }}
+          onClick={() => navigate(`/projects/${project.slug}`, project.name)}
+        >
+          {t("viewProject")}
+        </button>
+
         {/* ── Text blocks — independently positioned per project ─────────── */}
         <div
           ref={s.blocksContainerRef}
