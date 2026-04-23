@@ -7,7 +7,7 @@ interface PageAnnotationProps {
 
 export default function PageAnnotation({ line1, line2 }: PageAnnotationProps) {
   return (
-    <div className="fixed bottom-6 left-12 lg:bottom-10 z-50 flex items-end gap-3">
+    <div className="fixed bottom-6 left-12 lg:bottom-10 z-50  items-end gap-3 hidden sm:flex">
       {/* Orange square indicator */}
       <div
         className="shrink-0 w-3.5 h-3.5 mb-0.5"
