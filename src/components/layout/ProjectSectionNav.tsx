@@ -24,6 +24,15 @@ export default function ProjectSectionNav({ sections, activeIndex, onSelect, mob
   const prevIndexRef = useRef(activeIndex);
 
   const isDark      = mounted ? resolvedTheme === "dark" : true;
+
+  // Shorten labels that are too long for the single-label mobile pill.
+  // If the first word is short (article like "Le", "La", "Notre"…) take two words
+  // so we don't end up showing a meaningless article alone.
+  const shortLabel = (s: string) => {
+    if (s.length <= 16) return s;
+    const words = s.split(" ");
+    return words[0].length >= 8 ? words[0] : words.slice(0, 2).join(" ");
+  };
   const pillBg      = isDark ? "rgba(25, 25, 25, 0.80)"  : "rgba(204, 204, 204, 0.80)";
   const pillBorder  = isDark ? "rgba(255,255,255,0.10)"  : "rgba(0,0,0,0.12)";
   const activeC     = isDark ? "#ffffff"                  : "#1a1a1a";
@@ -62,7 +71,7 @@ export default function ProjectSectionNav({ sections, activeIndex, onSelect, mob
   // ── Mobile mode: initialize label text when mode activates ────────────────
   useEffect(() => {
     if (!mobileMode || !labelRef.current) return;
-    labelRef.current.textContent = sections[activeIndex];
+    labelRef.current.textContent = shortLabel(sections[activeIndex]);
     prevIndexRef.current = activeIndex;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobileMode]);
@@ -80,7 +89,7 @@ export default function ProjectSectionNav({ sections, activeIndex, onSelect, mob
     // dir > 0 = scrolling forward: exit up, enter from below
     // dir < 0 = scrolling back:    exit down, enter from above
     const dir       = activeIndex > prev ? 1 : -1;
-    const nextLabel = sections[activeIndex];
+    const nextLabel = shortLabel(sections[activeIndex]);
 
     gsap.killTweensOf(label);
     gsap.to(label, {
