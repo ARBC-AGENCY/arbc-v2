@@ -560,5 +560,9 @@
     "form_error_title": "Sending failed",
     "form_error_body": "Something went wrong. Please try again.",
     "footer_copy": "© 2024 ARBC AGENCY. THE SHIFT MAKERS."
+  },
+  "Portfolio": {
+    "hint": "drag or scroll",
+    "view_works": "View works"
   }
 }

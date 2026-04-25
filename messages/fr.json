@@ -564,5 +564,9 @@
     "form_error_title": "Échec de l'envoi",
     "form_error_body": "Une erreur est survenue. Veuillez réessayer.",
     "footer_copy": "© 2026 ARBC AGENCY. LES SHIFT MAKERS."
+  },
+  "Portfolio": {
+    "hint": "glisser ou défiler",
+    "view_works": "Voir les projets"
   }
 }
