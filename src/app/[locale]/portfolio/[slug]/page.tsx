@@ -2,6 +2,8 @@ import Image from "next/image";
 import TransitionLink from "@/components/ui/TransitionLink";
 import { PORTFOLIO_ITEMS } from "@/data/portfolio";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return PORTFOLIO_ITEMS.map((p) => ({ slug: p.slug }));
 }
