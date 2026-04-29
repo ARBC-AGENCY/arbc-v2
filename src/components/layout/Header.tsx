@@ -19,7 +19,9 @@ export default function Header() {
 
   // Show X close button on project detail pages and the about page
   const isProjectDetail =
-    /^\/projects\/[^/]+$/.test(pathname) || pathname === "/about";
+    /^\/projects\/[^/]+$/.test(pathname) ||
+    /^\/portfolio\/[^/]+$/.test(pathname) ||
+    pathname === "/about";
 
   const logoRef = useRef<HTMLDivElement>(null);
   const ctaWrapperRef = useRef<HTMLDivElement>(null);
@@ -132,9 +134,11 @@ export default function Header() {
         {isProjectDetail ? (
           /* ── X close button ── */
           <button
-            onClick={() =>
-              navigateBack(pathname === "/about" ? "home" : "projects")
-            }
+            onClick={() => {
+              if (pathname === "/about") return navigateBack("home");
+              if (/^\/portfolio\/[^/]+$/.test(pathname)) return navigateBack("portfolio");
+              navigateBack("projects");
+            }}
             aria-label="Close project"
             style={{
               display: "flex",

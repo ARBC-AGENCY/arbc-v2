@@ -568,5 +568,20 @@
   "Portfolio": {
     "hint": "glisser ou défiler",
     "view_works": "Voir les projets"
+  },
+  "PortfolioDetail": {
+    "filter_all": "Tout",
+    "filter_designs": "Designs",
+    "filter_videos": "Vidéos",
+    "filter_web": "Web",
+    "assets_empty": "Médias bientôt disponibles",
+    "assets_empty_sub": "L'étude de cas complète sera publiée prochainement.",
+    "lightbox_close": "Fermer",
+    "lightbox_prev": "Précédent",
+    "lightbox_next": "Suivant",
+    "featured_video_label": "Vidéo vedette",
+    "back_to_portfolio": "← Retour au portfolio",
+    "nav_hint": "← → pour naviguer · Échap pour fermer",
+    "directed_by": "Réalisé par ARBC Agency"
   }
 }

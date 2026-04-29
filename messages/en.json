@@ -564,5 +564,20 @@
   "Portfolio": {
     "hint": "drag or scroll",
     "view_works": "View works"
+  },
+  "PortfolioDetail": {
+    "filter_all": "All",
+    "filter_designs": "Designs",
+    "filter_videos": "Videos",
+    "filter_web": "Web",
+    "assets_empty": "Assets coming soon",
+    "assets_empty_sub": "Full case study will be published shortly.",
+    "lightbox_close": "Close",
+    "lightbox_prev": "Previous",
+    "lightbox_next": "Next",
+    "featured_video_label": "Featured Video",
+    "back_to_portfolio": "← Back to portfolio",
+    "nav_hint": "← → to navigate · ESC to close",
+    "directed_by": "Directed by ARBC Agency"
   }
 }
