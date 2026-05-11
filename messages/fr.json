@@ -531,14 +531,14 @@
       { "year": "2018", "label": "Fondation — Douala" },
       { "year": "2020", "label": "Ouverture bureau — Yaoundé" },
       { "year": "2023", "label": "Filiale — Abidjan, Côte d'Ivoire" },
-      { "year": "2024", "label": "50+ collaborateurs" }
+      { "year": "2026", "label": "50+ collaborateurs" }
     ],
     "founders_title": "FONDATEURS",
     "founders_subtitle": "Les Visionnaires",
-    "founder1_role": "Co-fondateur & CEO",
+    "founder1_role": "Country Manager, Cameroun",
     "founder2_role": "Country Manager, Côte d'Ivoire",
-    "founder3_role": "Directeur Créatif",
-    "founder4_role": "Directeur Créatif",
+    "founder3_role": "Directeur Créatif en Chef",
+    "founder4_role": "Directeur Créatif Senior",
     "team_title": "La Team",
     "team_subtitle": "L'Équipe",
     "contact_h1": "Let's",
@@ -546,11 +546,11 @@
     "contact_h3": "it.",
     "contact_hubs": "Nos Hubs",
     "hub1_city": "DOUALA",
-    "hub1_addr": "Rue de la Joie, Akwa",
+    "hub1_addr": "Carrefour Basson, Logpom",
     "hub2_city": "YAOUNDÉ",
-    "hub2_addr": "Bastos, Avenue de l'indépendance",
+    "hub2_addr": "Rond point express",
     "hub3_city": "ABIDJAN",
-    "hub3_addr": "Cocody, Deux Plateaux",
+    "hub3_addr": "Cocody, Deux Plateaux, rue K125",
     "form_name_label": "Nom Complet",
     "form_name_placeholder": "Votre nom",
     "form_email_label": "Email",
@@ -563,7 +563,7 @@
     "form_success_body": "Nous vous répondrons dans les plus brefs délais.",
     "form_error_title": "Échec de l'envoi",
     "form_error_body": "Une erreur est survenue. Veuillez réessayer.",
-    "footer_copy": "© 2026 ARBC AGENCY. LES SHIFT MAKERS."
+    "footer_copy": "©2026 ARBC AGENCY. LES SHIFT MAKERS."
   },
   "Portfolio": {
     "hint": "glisser ou défiler",

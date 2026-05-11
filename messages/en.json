@@ -527,14 +527,14 @@
       { "year": "2018", "label": "Foundation — Douala" },
       { "year": "2020", "label": "Office opening — Yaoundé" },
       { "year": "2023", "label": "Subsidiary — Abidjan, Ivory Coast" },
-      { "year": "2024", "label": "50+ employees" }
+      { "year": "2024", "label": "30+ employees" }
     ],
     "founders_title": "FOUNDERS",
     "founders_subtitle": "The Visionaries",
-    "founder1_role": "Co-founder & CEO",
+    "founder1_role": "Country Manager, Cameroon",
     "founder2_role": "Country Manager, Ivory Coast",
-    "founder3_role": "Creative Director",
-    "founder4_role": "Creative Director",
+    "founder3_role": "Managing Creative Director",
+    "founder4_role": "Lead Creative Director",
     "team_title": "THE TEAM",
     "team_subtitle": "The Crew",
     "contact_h1": "Let's",
@@ -544,9 +544,9 @@
     "hub1_city": "DOUALA",
     "hub1_addr": "Rue de la Joie, Akwa",
     "hub2_city": "YAOUNDÉ",
-    "hub2_addr": "Bastos, Avenue de l'indépendance",
+    "hub2_addr": "Rond point express",
     "hub3_city": "ABIDJAN",
-    "hub3_addr": "Cocody, Deux Plateaux",
+    "hub3_addr": "Cocody, Deux Plateaux, rue K125",
     "form_name_label": "Full Name",
     "form_name_placeholder": "Your name",
     "form_email_label": "Email",
@@ -559,7 +559,7 @@
     "form_success_body": "We'll get back to you as soon as possible.",
     "form_error_title": "Sending failed",
     "form_error_body": "Something went wrong. Please try again.",
-    "footer_copy": "© 2024 ARBC AGENCY. THE SHIFT MAKERS."
+    "footer_copy": "©2026 ARBC AGENCY. THE SHIFT MAKERS."
   },
   "Portfolio": {
     "hint": "drag or scroll",
