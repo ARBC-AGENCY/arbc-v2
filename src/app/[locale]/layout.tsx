@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
@@ -10,6 +10,11 @@ import Header from "@/components/layout/Header";
 import Nav from "@/components/layout/Nav";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 // Tell Next.js (and Amplify) to pre-render one static build per locale.
 // Without this, [locale] is treated as fully dynamic — every request hits the
@@ -34,6 +39,39 @@ export async function generateMetadata({
       languages: {
         fr: "https://www.arbc-agency.com/fr",
         en: "https://www.arbc-agency.com/en",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: `https://www.arbc-agency.com/${locale}`,
+      siteName: "ARBC Agency",
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+      alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
+      type: "website",
+      images: [
+        {
+          url: "https://www.arbc-agency.com/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: t("title"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["https://www.arbc-agency.com/og-image.png"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
   };

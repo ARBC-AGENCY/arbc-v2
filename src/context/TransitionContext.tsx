@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useRef,
   type ReactNode,
 } from "react";
@@ -26,6 +27,15 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
   const isNavigating = useRef(false);
   const pathnameRef = useRef(pathname);
   pathnameRef.current = pathname;
+  const pendingResume = useRef<(() => void) | null>(null);
+
+  // When Next.js commits the new page (pathname changes), release the overlay.
+  useEffect(() => {
+    if (pendingResume.current) {
+      pendingResume.current();
+      pendingResume.current = null;
+    }
+  }, [pathname]);
 
   const navigate = (href: string, label: string) => {
     // Prevent double-fires
@@ -47,7 +57,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
 
     isNavigating.current = true;
 
-    const tl = pageTransitionIn(targetLabel);
+    const { tl, resume } = pageTransitionIn(targetLabel);
+    pendingResume.current = resume;
 
     // Push the route ~550 ms in — the overlay has covered the screen by then
     setTimeout(() => {
@@ -55,8 +66,6 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       router.push(targetHref as any);
     }, 550);
 
-    // once-in spring is fired inside the timeline via tl.call() — no separate
-    // pageTransitionOut needed here. Just reset the lock when done.
     tl.then(() => {
       isNavigating.current = false;
     });
@@ -66,7 +75,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     if (isNavigating.current) return;
     isNavigating.current = true;
 
-    const tl = pageTransitionIn(label);
+    const { tl, resume } = pageTransitionIn(label);
+    pendingResume.current = resume;
 
     setTimeout(() => {
       router.back();

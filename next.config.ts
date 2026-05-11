@@ -4,6 +4,14 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig = {
   allowedDevOrigins: ["192.168.68.73"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.arbc-agency.com",
+      },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);

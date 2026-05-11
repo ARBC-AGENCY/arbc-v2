@@ -133,17 +133,20 @@ export function firstLoadTransition(
 // ── Inter-page transition ─────────────────────────────────────────────────
 /**
  * Cinematic overlay sweep for navigation between pages.
- * Returns the GSAP timeline so TransitionContext can attach .then() for
- * resetting the navigation lock.
+ * Returns the timeline AND a resume() function. The timeline pauses after
+ * the entry phase (overlay fully covering the screen); TransitionContext
+ * calls resume() once the new page's pathname is committed to the DOM,
+ * preventing the overlay from sweeping out before the new page is rendered.
  */
 export function pageTransitionIn(
   destinationLabel: string
-): gsap.core.Timeline {
+): { tl: gsap.core.Timeline; resume: () => void } {
   setActiveWord(destinationLabel);
   lockScroll();
 
   const isMobile = window.innerWidth <= 540;
   const tl = gsap.timeline();
+  let shouldResume = false;
 
   // ── Initial state ──────────────────────────────────────────────────────
   tl.set(".loading-container", { pointerEvents: "auto", zIndex: 10000 });
@@ -170,8 +173,20 @@ export function pageTransitionIn(
     delay: 0.05,
   });
 
+  // ── Hold until new page is painted ────────────────────────────────────
+  // If resume() was already called (fast navigation / cache hit) this
+  // callback is a no-op and the timeline plays straight through.
+  tl.call(() => {
+    if (!shouldResume) tl.pause();
+  });
+
   // ── Exit: shared with firstLoadTransition ─────────────────────────────
   appendExit(tl, isMobile);
 
-  return tl;
+  const resume = () => {
+    shouldResume = true;
+    if (tl.paused()) tl.resume();
+  };
+
+  return { tl, resume };
 }
